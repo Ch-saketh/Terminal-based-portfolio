@@ -77,6 +77,31 @@ export interface SkillCategory {
   skills: SkillItem[];
 }
 
+export interface GitCommitMilestone {
+  hash: string;
+  parentHash?: string;
+  date: string;
+  author: string;
+  message: string;
+  shortMessage: string;
+  event: string;
+  category: 'project' | 'hackathon' | 'career' | 'milestone' | 'education' | 'architecture';
+  branch: string;
+  branchColor?: string;
+  whatHappened: string;
+  whatWasLearned: string;
+  technologies: string[];
+  metrics?: string[];
+  links?: {
+    label: string;
+    url: string;
+    isCli?: boolean;
+    cliCmd?: string;
+  }[];
+  diffPreview?: string;
+  graphConnector?: string;
+}
+
 export interface ExperienceItem {
   id: string;
   role: string;
@@ -92,6 +117,7 @@ export interface ExperienceItem {
   impactMetrics: string[];
   keyAchievements: string[];
   technologies: string[];
+  associatedCommit?: string;
 }
 
 export interface EducationItem {

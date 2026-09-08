@@ -1,0 +1,446 @@
+.gitContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background: var(--color-bg-secondary, #0d111a);
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: 6px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  color: var(--color-text-primary, #e6edf3);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.headerBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary-cyan, #00f2fe);
+}
+
+.systemBadge {
+  font-size: 11px;
+  background: rgba(0, 242, 254, 0.1);
+  color: var(--color-primary-cyan, #00f2fe);
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 242, 254, 0.25);
+}
+
+.viewTabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.viewTabBtn {
+  background: transparent;
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.1));
+  color: var(--color-text-muted, #768390);
+  font-family: inherit;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.viewTabBtn:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.viewTabBtn.activeView {
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--color-primary-green, #00ff88);
+  border-color: rgba(0, 255, 136, 0.35);
+}
+
+/* Category Filter Chips */
+.categoryFilterRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.catBtn {
+  background: transparent;
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+  color: var(--color-text-dim, #535d68);
+  font-family: inherit;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.catBtn:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.catBtn.activeCat {
+  background: rgba(0, 242, 254, 0.08);
+  color: var(--color-primary-cyan, #00f2fe);
+  border-color: rgba(0, 242, 254, 0.3);
+}
+
+/* Git Graph View */
+.gitGraphContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.commitRowCard {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.06));
+  border-radius: 4px;
+  padding: 10px 14px;
+  display: grid;
+  grid-template-columns: 36px 80px 1fr 100px auto;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 12px;
+}
+
+.commitRowCard:hover,
+.commitRowCard.selectedRow {
+  border-color: var(--color-primary-cyan, #00f2fe);
+  background: rgba(0, 242, 254, 0.03);
+  transform: translateX(2px);
+}
+
+.graphSymbol {
+  font-family: var(--font-mono, monospace);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-primary-green, #00ff88);
+  letter-spacing: -0.05em;
+}
+
+.commitHashBadge {
+  font-weight: 600;
+  color: var(--color-primary-cyan, #00f2fe);
+  background: rgba(0, 242, 254, 0.08);
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  text-align: center;
+}
+
+.commitMsgCol {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.branchPill {
+  font-size: 10px;
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--color-primary-green, #00ff88);
+  padding: 1px 5px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 255, 136, 0.25);
+  white-space: nowrap;
+}
+
+.commitShortText {
+  color: var(--color-text-primary, #ffffff);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.commitDateText {
+  color: var(--color-text-dim, #535d68);
+  font-size: 11px;
+  text-align: right;
+}
+
+.showCommitBtn {
+  background: transparent;
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  color: var(--color-primary-cyan, #00f2fe);
+  font-family: inherit;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.showCommitBtn:hover {
+  background: var(--color-primary-cyan, #00f2fe);
+  color: #0a0e17;
+}
+
+/* Visual Timeline View (Non-Programmer Friendly) */
+.visualTimelineList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.visualTimelineList::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: rgba(0, 242, 254, 0.2);
+}
+
+.timelineCard {
+  position: relative;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.06));
+  border-radius: 4px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.timelineCard::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 18px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary-cyan, #00f2fe);
+  box-shadow: 0 0 6px var(--color-primary-cyan, #00f2fe);
+}
+
+.timelineCard:hover {
+  border-color: var(--color-primary-green, #00ff88);
+  transform: translateX(3px);
+}
+
+.timelineCardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.eventTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.eventDateBadge {
+  font-size: 11px;
+  color: var(--color-primary-cyan, #00f2fe);
+  background: rgba(0, 242, 254, 0.08);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.eventNarrative {
+  font-size: 12px;
+  color: var(--color-text-secondary, #adbac7);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.techPillsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.techPill {
+  font-size: 10px;
+  padding: 2px 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  color: #768390;
+}
+
+/* Compact Log View */
+.compactLogContainer {
+  background: #06090e;
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: 4px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.compactLogLine {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.compactLogLine:hover {
+  color: var(--color-primary-green, #00ff88);
+}
+
+/* Deep Commit Inspector Drawer/Card */
+.commitInspectorCard {
+  background: #06090e;
+  border: 1px solid var(--color-primary-green, #00ff88);
+  box-shadow: 0 0 16px rgba(0, 255, 136, 0.12);
+  border-radius: 5px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.inspectorTopBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+  padding-bottom: 8px;
+}
+
+.commitTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.commitMetaBlock {
+  font-size: 11px;
+  color: var(--color-text-muted, #768390);
+  line-height: 1.4;
+}
+
+.closeBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--color-text-muted, #768390);
+  font-family: inherit;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.closeBtn:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+.inspectorSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.sectionHeader {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-primary-cyan, #00f2fe);
+  text-transform: uppercase;
+}
+
+.diffContainer {
+  background: #04060a;
+  border: 1px solid rgba(0, 242, 254, 0.15);
+  border-radius: 4px;
+  padding: 10px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: var(--color-primary-green, #00ff88);
+  white-space: pre;
+  overflow-x: auto;
+  line-height: 1.35;
+}
+
+/* CLI Quick Action Chips */
+.cliBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+}
+
+.cliLabel {
+  font-size: 11px;
+  color: var(--color-text-dim, #535d68);
+}
+
+.cliChip {
+  background: transparent;
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  color: var(--color-primary-cyan, #00f2fe);
+  font-family: inherit;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cliChip:hover {
+  background: rgba(0, 242, 254, 0.1);
+  color: #fff;
+  border-color: var(--color-primary-cyan, #00f2fe);
+}
+
+@media (max-width: 768px) {
+  .commitRowCard {
+    grid-template-columns: 30px 70px 1fr auto;
+  }
+  .commitDateText {
+    display: none;
+  }
+}

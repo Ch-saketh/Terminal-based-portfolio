@@ -3,6 +3,7 @@ import { profileData } from '../../content/profile';
 import { projectsData } from '../../content/projects';
 import { skillsData } from '../../content/skills';
 import { experienceData } from '../../content/experience';
+import { gitMilestonesData } from '../../content/timeline';
 import { systemConfig } from '../../content/config';
 
 export function createInitialVFS(): VFSDirectory {
@@ -234,8 +235,45 @@ ${cat.skills
     };
   });
 
-  // Generate experience files
-  const experienceFiles: Record<string, any> = {};
+  // Generate experience files and git milestones
+  const experienceFiles: Record<string, any> = {
+    'git-log.md': {
+      name: 'git-log.md',
+      type: 'file',
+      extension: 'md',
+      permissions: '-rw-r--r--',
+      sizeBytes: 2400,
+      content: `# SAKETH.OS Career Git History & Milestones
+
+${gitMilestonesData
+  .map(
+    (m) => `### commit ${m.hash} (${m.branch})
+**Date:** ${m.date} | **Author:** ${m.author}
+**Event:** ${m.event}
+**Message:** ${m.message}
+
+#### What Happened:
+${m.whatHappened}
+
+#### What Was Learned:
+${m.whatWasLearned}
+
+#### Stack:
+${m.technologies.join(', ')}
+`
+  )
+  .join('\n---\n\n')}
+`
+    },
+    'milestones.json': {
+      name: 'milestones.json',
+      type: 'file',
+      extension: 'json',
+      permissions: '-rw-r--r--',
+      sizeBytes: JSON.stringify(gitMilestonesData).length,
+      content: JSON.stringify(gitMilestonesData, null, 2)
+    }
+  };
   experienceData.forEach((e) => {
     experienceFiles[`${e.id}.md`] = {
       name: `${e.id}.md`,

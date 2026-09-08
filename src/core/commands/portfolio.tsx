@@ -105,14 +105,21 @@ export const portfolioCommands: CommandDefinition[] = [
   },
   {
     name: 'experience',
-    aliases: ['career', 'jobs'],
-    description: 'View career history, achievements, and impact metrics',
-    usage: 'experience',
+    aliases: ['career', 'jobs', 'journey', 'timeline', 'milestones'],
+    description: 'View career Git history, milestones, and achievements timeline',
+    usage: 'experience [timeline|graph|log] [commit-hash]',
     category: 'portfolio',
-    execute: () => ({
-      type: 'custom',
-      component: <ExperienceRenderer />
-    })
+    execute: (ctx) => {
+      const viewArg = ctx.args[0]?.toLowerCase();
+      const initialView =
+        viewArg === 'timeline' ? 'timeline' : viewArg === 'log' ? 'log' : 'graph';
+      const commitArg = ctx.args.find((a) => a.length === 7 || a.startsWith('#'));
+
+      return {
+        type: 'custom',
+        component: <ExperienceRenderer initialView={initialView} initialCommitHash={commitArg} />
+      };
+    }
   },
   {
     name: 'achievements',
