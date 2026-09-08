@@ -31,7 +31,7 @@ class SoundEngine {
   }
 
   /**
-   * Subtle mechanical keypress click
+   * Mechanical keypress click (crisp & tactile)
    */
   public playKeyClick() {
     if (this.isMuted) return;
@@ -45,21 +45,21 @@ class SoundEngine {
 
       osc.type = 'sine';
       osc.frequency.setValueAtTime(1400 + Math.random() * 200, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(300, ctx.currentTime + 0.015);
+      osc.frequency.exponentialRampToValueAtTime(300, ctx.currentTime + 0.02);
 
       filter.type = 'bandpass';
-      filter.frequency.setValueAtTime(1000, ctx.currentTime);
-      filter.Q.setValueAtTime(2, ctx.currentTime);
+      filter.frequency.setValueAtTime(1200, ctx.currentTime);
+      filter.Q.setValueAtTime(2.5, ctx.currentTime);
 
-      gain.gain.setValueAtTime(0.04, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.015);
+      gain.gain.setValueAtTime(0.18, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.02);
 
       osc.connect(filter);
       filter.connect(gain);
       gain.connect(ctx.destination);
 
       osc.start();
-      osc.stop(ctx.currentTime + 0.015);
+      osc.stop(ctx.currentTime + 0.02);
     } catch {
       void 0;
     }
@@ -78,17 +78,17 @@ class SoundEngine {
       const gain = ctx.createGain();
 
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(440, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.04);
+      osc.frequency.setValueAtTime(520, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(1040, ctx.currentTime + 0.05);
 
-      gain.gain.setValueAtTime(0.05, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.04);
+      gain.gain.setValueAtTime(0.22, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.05);
 
       osc.connect(gain);
       gain.connect(ctx.destination);
 
       osc.start();
-      osc.stop(ctx.currentTime + 0.04);
+      osc.stop(ctx.currentTime + 0.05);
     } catch {
       void 0;
     }
@@ -107,17 +107,17 @@ class SoundEngine {
       const gain = ctx.createGain();
 
       osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(160, ctx.currentTime);
-      osc.frequency.linearRampToValueAtTime(110, ctx.currentTime + 0.08);
+      osc.frequency.setValueAtTime(180, ctx.currentTime);
+      osc.frequency.linearRampToValueAtTime(120, ctx.currentTime + 0.1);
 
-      gain.gain.setValueAtTime(0.06, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.08);
+      gain.gain.setValueAtTime(0.25, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.1);
 
       osc.connect(gain);
       gain.connect(ctx.destination);
 
       osc.start();
-      osc.stop(ctx.currentTime + 0.08);
+      osc.stop(ctx.currentTime + 0.1);
     } catch {
       void 0;
     }
@@ -140,14 +140,14 @@ class SoundEngine {
         osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.05);
 
         gain.gain.setValueAtTime(0, ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.03, ctx.currentTime + 0.08 + idx * 0.05);
-        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.6);
+        gain.gain.linearRampToValueAtTime(0.14, ctx.currentTime + 0.08 + idx * 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.7);
 
         osc.connect(gain);
         gain.connect(ctx.destination);
 
         osc.start(ctx.currentTime + idx * 0.05);
-        osc.stop(ctx.currentTime + 0.6);
+        osc.stop(ctx.currentTime + 0.7);
       });
     } catch {
       void 0;
@@ -171,14 +171,14 @@ class SoundEngine {
         osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.04);
 
         gain.gain.setValueAtTime(0, ctx.currentTime + idx * 0.04);
-        gain.gain.linearRampToValueAtTime(0.04, ctx.currentTime + idx * 0.04 + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.35);
+        gain.gain.linearRampToValueAtTime(0.18, ctx.currentTime + idx * 0.04 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.4);
 
         osc.connect(gain);
         gain.connect(ctx.destination);
 
         osc.start(ctx.currentTime + idx * 0.04);
-        osc.stop(ctx.currentTime + 0.35);
+        osc.stop(ctx.currentTime + 0.4);
       });
     } catch {
       void 0;
