@@ -1,0 +1,315 @@
+.terminalWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-window);
+  font-family: var(--font-mono);
+  position: relative;
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background-color: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-subtle);
+  user-select: none;
+}
+
+.trafficLights {
+  display: flex;
+  gap: 8px;
+}
+
+.trafficDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.trafficDot:hover {
+  opacity: 0.8;
+}
+
+.dotClose {
+  background-color: #ef4444;
+}
+
+.dotMin {
+  background-color: #f59e0b;
+}
+
+.dotMax {
+  background-color: #10b981;
+}
+
+.terminalTitle {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  font-weight: var(--font-medium);
+}
+
+.terminalMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.statusIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #34d399;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 6px #10b981;
+}
+
+/* Scrollable Canvas Body */
+.terminalBody {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scroll-behavior: smooth;
+}
+
+/* Prompt Styles */
+.promptContainer {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.promptUser {
+  color: var(--term-prompt-user);
+}
+
+.promptAt {
+  color: var(--term-prompt-at);
+  margin: 0 1px;
+}
+
+.promptHost {
+  color: var(--term-prompt-host);
+}
+
+.promptColon {
+  color: var(--text-muted);
+  margin: 0 2px;
+}
+
+.promptPath {
+  color: var(--term-prompt-path);
+}
+
+.promptChar {
+  color: var(--term-prompt-char);
+  margin-left: 4px;
+  margin-right: 8px;
+}
+
+/* Input Row Styles */
+.inputRowContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-height: 24px;
+  cursor: text;
+  margin-top: 4px;
+}
+
+.inputDisplayWrapper {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  position: relative;
+  flex: 1;
+}
+
+.typedText {
+  color: var(--text-primary);
+  white-space: pre;
+}
+
+.activeCursorChar {
+  display: inline-block;
+  background-color: var(--term-cursor);
+  color: var(--bg-primary);
+  font-weight: var(--font-bold);
+  min-width: 8px;
+  min-height: 1.15em;
+  animation: cursor-blink 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.hiddenNativeInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: text;
+  z-index: 2;
+}
+
+/* Output Stream */
+.outputStreamContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bannerRow {
+  margin-bottom: 8px;
+}
+
+.bannerAscii {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.1;
+  color: var(--accent-primary);
+  text-shadow: 0 0 8px var(--accent-primary-dim);
+  overflow-x: auto;
+}
+
+.commandEchoRow {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.echoedText {
+  color: var(--text-primary);
+  font-weight: var(--font-medium);
+  font-size: var(--text-sm);
+}
+
+.errorRow {
+  display: flex;
+  gap: 8px;
+  color: #f87171;
+  font-size: var(--text-sm);
+  background: var(--accent-error-dim);
+  border-left: 3px solid #ef4444;
+  padding: 6px 10px;
+  border-radius: var(--radius-xs);
+}
+
+.errorPrefix {
+  font-weight: var(--font-bold);
+}
+
+.successRow {
+  display: flex;
+  gap: 8px;
+  color: #34d399;
+  font-size: var(--text-sm);
+  background: var(--accent-primary-dim);
+  border-left: 3px solid #10b981;
+  padding: 6px 10px;
+  border-radius: var(--radius-xs);
+}
+
+.successPrefix {
+  font-weight: var(--font-bold);
+}
+
+.systemRow {
+  display: flex;
+  gap: 8px;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.systemTag {
+  color: var(--accent-secondary);
+  font-weight: var(--font-semibold);
+}
+
+.infoRow, .standardRow {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+}
+
+.rawTextOutput {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: var(--leading-normal);
+}
+
+/* Autocomplete Overlay */
+.autocompleteOverlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glow);
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  z-index: 50;
+  max-width: 450px;
+  margin-bottom: 6px;
+}
+
+.autocompleteHeader {
+  font-size: 10px;
+  font-weight: var(--font-bold);
+  color: var(--accent-secondary);
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 3px;
+}
+
+.autocompleteGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.autocompleteItem {
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+}
+
+.autocompleteItem.selected, .autocompleteItem:hover {
+  background: var(--accent-primary-dim);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}

@@ -1,0 +1,21 @@
+@import '../tokens/colors.css';
+@import '../tokens/typography.css';
+@import '../tokens/elevation.css';
+@import './reset.css';
+@import '../effects/crt.css';
+@import '../utilities.css';
+
+/* Global OS shell structural rules */
+#root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+  background-image: 
+    radial-gradient(ellipse at top left, rgba(16, 185, 129, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(6, 182, 212, 0.04) 0%, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+}

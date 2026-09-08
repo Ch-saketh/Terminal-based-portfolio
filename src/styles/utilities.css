@@ -1,0 +1,80 @@
+/* Terminal utility classes */
+.mono {
+  font-family: var(--font-mono);
+}
+
+.sans {
+  font-family: var(--font-sans);
+}
+
+.text-accent {
+  color: var(--accent-primary);
+}
+
+.text-cyan {
+  color: var(--accent-secondary);
+}
+
+.text-violet {
+  color: var(--accent-tertiary);
+}
+
+.text-amber {
+  color: var(--accent-warning);
+}
+
+.text-crimson {
+  color: var(--accent-error);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-dim {
+  color: var(--text-dim);
+}
+
+.glow {
+  text-shadow: 0 0 8px var(--border-glow);
+}
+
+.box-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.terminal-border {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-secondary);
+}
+
+.terminal-border:focus-within {
+  border-color: var(--border-glow);
+}
+
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+}
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  font-size: var(--text-xs);
+  border-radius: var(--radius-xs);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+.badge-tag.highlight {
+  border-color: var(--accent-primary-dim);
+  color: var(--accent-primary);
+  background: var(--accent-primary-dim);
+}
