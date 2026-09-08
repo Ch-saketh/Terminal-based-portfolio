@@ -153,6 +153,37 @@ class SoundEngine {
       void 0;
     }
   }
+
+  /**
+   * Achievement / Success arpeggio
+   */
+  public playSuccess() {
+    if (this.isMuted) return;
+    const ctx = this.getAudioContext();
+    if (!ctx) return;
+
+    try {
+      const freqs = [523.25, 659.25, 783.99, 1046.5]; // C5, E5, G5, C6
+      freqs.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.04);
+
+        gain.gain.setValueAtTime(0, ctx.currentTime + idx * 0.04);
+        gain.gain.linearRampToValueAtTime(0.04, ctx.currentTime + idx * 0.04 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.35);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(ctx.currentTime + idx * 0.04);
+        osc.stop(ctx.currentTime + 0.35);
+      });
+    } catch {
+      void 0;
+    }
+  }
 }
 
 export const soundEngine = new SoundEngine();

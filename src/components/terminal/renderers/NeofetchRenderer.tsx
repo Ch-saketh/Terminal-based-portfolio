@@ -11,7 +11,7 @@ export const NeofetchRenderer: React.FC = () => {
   const formatUptime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const hrs = Math.floor(mins / 60);
-    return `${hrs} hours, ${mins % 60} mins`;
+    return `${hrs}h ${mins % 60}m (99.99% Reliability)`;
   };
 
   const asciiLogo = `
@@ -33,18 +33,23 @@ export const NeofetchRenderer: React.FC = () => {
         <div className={styles.neofetchRow}>
           <span className={styles.neofetchKey}>OS:</span>
           <span className={styles.neofetchVal}>
-            {systemConfig.osName} v{systemConfig.osVersion}
+            {systemConfig.osName} v{systemConfig.osVersion} (x86_64 WebAssembly)
           </span>
         </div>
 
         <div className={styles.neofetchRow}>
-          <span className={styles.neofetchKey}>Host:</span>
-          <span className={styles.neofetchVal}>Developer Workstation (POSIX Architecture)</span>
+          <span className={styles.neofetchKey}>Developer:</span>
+          <span className={styles.neofetchVal}>{profileData.name} ({profileData.handle})</span>
         </div>
 
         <div className={styles.neofetchRow}>
-          <span className={styles.neofetchKey}>Kernel:</span>
-          <span className={styles.neofetchVal}>{systemConfig.kernelVersion}</span>
+          <span className={styles.neofetchKey}>Stack:</span>
+          <span className={styles.neofetchVal}>Spring Boot, Python/FastAPI, Go, React, Qdrant, PostgreSQL</span>
+        </div>
+
+        <div className={styles.neofetchRow}>
+          <span className={styles.neofetchKey}>Projects:</span>
+          <span className={styles.neofetchVal}>Weavly / Zyra, PageMatch, CinePortal, SAKETH.OS</span>
         </div>
 
         <div className={styles.neofetchRow}>
@@ -53,28 +58,18 @@ export const NeofetchRenderer: React.FC = () => {
         </div>
 
         <div className={styles.neofetchRow}>
-          <span className={styles.neofetchKey}>Shell:</span>
-          <span className={styles.neofetchVal}>zsh 5.9 (x86_64-apple-darwin22.0)</span>
+          <span className={styles.neofetchKey}>Current Focus:</span>
+          <span className={styles.neofetchVal}>{profileData.currentFocus.slice(0, 2).join(' & ')}</span>
+        </div>
+
+        <div className={styles.neofetchRow}>
+          <span className={styles.neofetchKey}>Kernel:</span>
+          <span className={styles.neofetchVal}>{systemConfig.kernelVersion}</span>
         </div>
 
         <div className={styles.neofetchRow}>
           <span className={styles.neofetchKey}>Theme:</span>
-          <span className={styles.neofetchVal}>{theme} (matrix phosphor)</span>
-        </div>
-
-        <div className={styles.neofetchRow}>
-          <span className={styles.neofetchKey}>CPU Load:</span>
-          <span className={styles.neofetchVal}>{metrics.cpu}% (8 Cores Virtualized)</span>
-        </div>
-
-        <div className={styles.neofetchRow}>
-          <span className={styles.neofetchKey}>Memory:</span>
-          <span className={styles.neofetchVal}>{metrics.memoryMb}MB / 16384MB</span>
-        </div>
-
-        <div className={styles.neofetchRow}>
-          <span className={styles.neofetchKey}>Contact:</span>
-          <span className={styles.neofetchVal}>{profileData.email}</span>
+          <span className={styles.neofetchVal}>{theme} (terminal phosphor)</span>
         </div>
 
         <div className={styles.colorBlocks}>
