@@ -1,0 +1,284 @@
+.homeViewport {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: var(--color-bg-primary, #0a0e17);
+  color: var(--color-text-primary, #e6edf3);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* 1. Header Bar */
+.osHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 16px;
+  background-color: var(--color-bg-secondary, #0d111a);
+  border-bottom: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+  user-select: none;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.osHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trafficDots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dotRed {
+  background-color: #ff5f56;
+}
+
+.dotYellow {
+  background-color: #ffbd2e;
+}
+
+.dotGreen {
+  background-color: #27c93f;
+}
+
+.promptLocation {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary-cyan, #00f2fe);
+  letter-spacing: -0.02em;
+}
+
+.navTabsContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.navTabsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.navTabBtn {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--color-text-muted, #768390);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.tabBrace {
+  color: var(--color-text-dim, #444c56);
+}
+
+.tabNum {
+  color: var(--color-primary-cyan, #00f2fe);
+  font-size: 11px;
+}
+
+.tabLabel {
+  color: inherit;
+}
+
+.navTabBtn:hover {
+  color: var(--color-text-primary, #ffffff);
+  background: rgba(0, 242, 254, 0.05);
+}
+
+.navTabBtn.activeTab {
+  color: var(--color-primary-green, #00ff88);
+  background: rgba(0, 255, 136, 0.08);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+}
+
+.navTabBtn.activeTab .tabBrace {
+  color: var(--color-primary-green, #00ff88);
+}
+
+.osHeaderRight {
+  display: flex;
+  align-items: center;
+}
+
+.timeDisplay {
+  font-size: 12px;
+  color: var(--color-text-muted, #768390);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 2. Main Workspace Grid */
+.mainWorkspaceGrid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+/* 3. Bottom HUD Matrix */
+.bottomHudMatrix {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  padding: 0 16px 16px 16px;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 4. Terminal Prompt Footer */
+.terminalFooterBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background-color: var(--color-bg-secondary, #0d111a);
+  border-top: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+  font-size: 12px;
+  color: var(--color-text-muted, #768390);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.footerPrompt {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: inherit;
+  color: var(--color-text-secondary, #adbac7);
+}
+
+.footerPromptUser {
+  color: var(--color-primary-green, #00ff88);
+  font-weight: 600;
+}
+
+.footerColon {
+  color: var(--color-text-dim, #444c56);
+}
+
+.footerPath {
+  color: var(--color-primary-cyan, #00f2fe);
+}
+
+.footerPromptChar {
+  color: var(--color-text-primary, #ffffff);
+  margin-right: 4px;
+}
+
+.footerText {
+  color: var(--color-text-muted, #768390);
+  max-width: 450px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.footerCursor {
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  background-color: var(--color-primary-green, #00ff88);
+  animation: cursorBlink 1s infinite;
+  margin-left: 2px;
+}
+
+.footerMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--color-text-dim, #535d68);
+}
+
+@keyframes cursorBlink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+  .mainWorkspaceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .bottomHudMatrix {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .osHeaderRight {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .bottomHudMatrix {
+    grid-template-columns: 1fr;
+  }
+
+  .osHeader {
+    padding: 0 8px;
+  }
+
+  .navTabBtn {
+    padding: 4px 6px;
+    font-size: 11px;
+  }
+
+  .footerMeta {
+    display: none;
+  }
+
+  .terminalFooterBar {
+    padding: 6px 10px;
+  }
+}
