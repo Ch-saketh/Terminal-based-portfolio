@@ -1,5 +1,6 @@
 export interface ProjectItem {
   id: string;
+  name: string;
   slug: string;
   title: string;
   category:
@@ -10,12 +11,25 @@ export interface ProjectItem {
     | 'Full Stack';
   tagline: string;
   description: string;
+  what: string;
+  why: string;
+  how: string;
+  problem: string;
+  solution: string;
   highlights: string[];
   architecture: {
     overview: string;
     keyDecisions: string[];
+    diagramAscii?: string;
   };
+  features: string[];
+  challenges: {
+    challenge: string;
+    resolution: string;
+  }[];
+  learnings: string[];
   metrics: string[];
+  technologies: string[];
   techStack: {
     core: string[];
     infrastructure: string[];
@@ -27,6 +41,10 @@ export interface ProjectItem {
     liveDemo?: string;
     docs?: string;
   };
+  images?: {
+    caption: string;
+    url: string;
+  }[];
   featured: boolean;
   status: 'production' | 'active' | 'archived';
   stars?: number;

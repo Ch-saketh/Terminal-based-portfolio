@@ -6,43 +6,183 @@ import { experienceData } from '../../content/experience';
 import { systemConfig } from '../../content/config';
 
 export function createInitialVFS(): VFSDirectory {
-  // Generate dynamic project files
-  const projectFiles: Record<string, any> = {};
+  // Generate dynamic project directories matching POSIX layout
+  const projectDirectories: Record<string, any> = {};
   projectsData.forEach((p) => {
-    projectFiles[`${p.slug}.md`] = {
-      name: `${p.slug}.md`,
-      type: 'file',
-      extension: 'md',
-      permissions: '-rw-r--r--',
-      sizeBytes: p.description.length * 2,
-      content: `# ${p.title}
-Category: ${p.category}
-Status: ${p.status} | Stars: ${p.stars ?? 0}
+    projectDirectories[p.slug] = {
+      name: p.slug,
+      type: 'directory',
+      permissions: 'drwxr-xr-x',
+      children: {
+        'README.md': {
+          name: 'README.md',
+          type: 'file',
+          extension: 'md',
+          permissions: '-rw-r--r--',
+          sizeBytes: 2400,
+          content: `# ${p.title}
+Status: ${p.status.toUpperCase()} | Category: ${p.category} | Stars: ${p.stars ?? 0}
+Tagline: ${p.tagline}
 
-${p.tagline}
+## 1. WHAT IT IS
+${p.what}
 
-## Overview
-${p.description}
+## 2. WHY IT WAS BUILT
+${p.why}
 
-## Key Highlights
-${p.highlights.map((h) => `- ${h}`).join('\n')}
+## 3. HOW IT WORKS
+${p.how}
 
-## Architecture Decisions
+## 4. PROBLEM & SOLUTION
+### The Problem:
+${p.problem}
+
+### The Solution:
+${p.solution}
+
+## 5. ARCHITECTURE OVERVIEW
 ${p.architecture.overview}
-${p.architecture.keyDecisions.map((d) => `* ${d}`).join('\n')}
 
-## Metrics & Impact
+\`\`\`
+${p.architecture.diagramAscii || ''}
+\`\`\`
+
+### Key Architectural Decisions:
+${p.architecture.keyDecisions.map((d) => `- ${d}`).join('\n')}
+
+## 6. CORE FEATURES
+${p.features.map((f) => `- ${f}`).join('\n')}
+
+## 7. ENGINEERING CHALLENGES & RESOLUTIONS
+${p.challenges
+  .map(
+    (c, i) => `### Challenge ${i + 1}: ${c.challenge}
+**Resolution:** ${c.resolution}`
+  )
+  .join('\n\n')}
+
+## 8. KEY LEARNINGS
+${p.learnings.map((l) => `- ${l}`).join('\n')}
+
+## 9. PRODUCTION METRICS & IMPACT
 ${p.metrics.map((m) => `* ${m}`).join('\n')}
 
-## Tech Stack
-Core: ${p.techStack.core.join(', ')}
-Infrastructure: ${p.techStack.infrastructure.join(', ')}
-Databases: ${p.techStack.databases.join(', ')}
+## 10. TECH STACK
+- Core: ${p.techStack.core.join(', ')}
+- Infrastructure: ${p.techStack.infrastructure.join(', ')}
+- Databases: ${p.techStack.databases.join(', ')}
+- Tools: ${p.techStack.tools.join(', ')}
 
 Links:
-GitHub: ${p.links.github ?? 'N/A'}
-Demo: ${p.links.liveDemo ?? 'N/A'}
+- GitHub: ${p.links.github || 'N/A'}
+- Live Demo: ${p.links.liveDemo || 'N/A'}
+- Docs: ${p.links.docs || 'N/A'}
 `
+        },
+        'stack.json': {
+          name: 'stack.json',
+          type: 'file',
+          extension: 'json',
+          permissions: '-rw-r--r--',
+          sizeBytes: JSON.stringify(p.techStack).length,
+          content: JSON.stringify(p.techStack, null, 2)
+        },
+        'metrics.json': {
+          name: 'metrics.json',
+          type: 'file',
+          extension: 'json',
+          permissions: '-rw-r--r--',
+          sizeBytes: JSON.stringify(p.metrics).length,
+          content: JSON.stringify(
+            {
+              project: p.name,
+              metrics: p.metrics,
+              status: p.status,
+              stars: p.stars ?? 0
+            },
+            null,
+            2
+          )
+        },
+        'challenges.md': {
+          name: 'challenges.md',
+          type: 'file',
+          extension: 'md',
+          permissions: '-rw-r--r--',
+          sizeBytes: 800,
+          content: `# ${p.name} — Engineering Challenges
+
+${p.challenges
+  .map(
+    (c, i) => `## ${i + 1}. ${c.challenge}
+**Engineered Resolution:** ${c.resolution}`
+  )
+  .join('\n\n')}
+`
+        },
+        architecture: {
+          name: 'architecture',
+          type: 'directory',
+          permissions: 'drwxr-xr-x',
+          children: {
+            'system-design.md': {
+              name: 'system-design.md',
+              type: 'file',
+              extension: 'md',
+              permissions: '-rw-r--r--',
+              sizeBytes: 950,
+              content: `# ${p.name} — System Architecture\n\n${p.architecture.overview}\n\n## Data Flow Diagram:\n\`\`\`\n${p.architecture.diagramAscii || 'N/A'}\n\`\`\`\n\n## Key Architecture Decisions:\n${p.architecture.keyDecisions.map((d) => `- ${d}`).join('\n')}`
+            },
+            'trade-offs.md': {
+              name: 'trade-offs.md',
+              type: 'file',
+              extension: 'md',
+              permissions: '-rw-r--r--',
+              sizeBytes: 600,
+              content: `# Engineering Trade-Offs & Decisions\n\n${p.architecture.keyDecisions.map((d, i) => `### Decision ${i + 1}\n${d}`).join('\n\n')}`
+            }
+          }
+        },
+        features: {
+          name: 'features',
+          type: 'directory',
+          permissions: 'drwxr-xr-x',
+          children: {
+            'specs.md': {
+              name: 'specs.md',
+              type: 'file',
+              extension: 'md',
+              permissions: '-rw-r--r--',
+              sizeBytes: 650,
+              content: `# ${p.name} Feature Specifications\n\n${p.features.map((f) => `- [x] ${f}`).join('\n')}`
+            }
+          }
+        },
+        screenshots: {
+          name: 'screenshots',
+          type: 'directory',
+          permissions: 'drwxr-xr-x',
+          children: {
+            'manifest.json': {
+              name: 'manifest.json',
+              type: 'file',
+              extension: 'json',
+              permissions: '-rw-r--r--',
+              sizeBytes: 150,
+              content: JSON.stringify(
+                {
+                  project: p.slug,
+                  images: p.images || [
+                    { caption: `${p.name} Architecture Overview`, url: '/assets/architecture.png' }
+                  ]
+                },
+                null,
+                2
+              )
+            }
+          }
+        }
+      }
     };
   });
 
@@ -227,7 +367,7 @@ User: ${profileData.name} <${profileData.email}>
                 name: 'projects',
                 type: 'directory',
                 permissions: 'drwxr-xr-x',
-                children: projectFiles
+                children: projectDirectories
               },
               skills: {
                 name: 'skills',
