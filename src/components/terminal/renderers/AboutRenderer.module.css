@@ -1,0 +1,278 @@
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 14px;
+  background: var(--color-bg-secondary, #0d111a);
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: 6px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  color: var(--color-text-primary, #e6edf3);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inspectorHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.inspectorTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary-cyan, #00f2fe);
+}
+
+.systemBadge {
+  font-size: 11px;
+  background: rgba(0, 242, 254, 0.1);
+  color: var(--color-primary-cyan, #00f2fe);
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 242, 254, 0.25);
+}
+
+.tabControls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.formatTab {
+  background: transparent;
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.1));
+  color: var(--color-text-muted, #768390);
+  font-family: inherit;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.formatTab:hover {
+  color: var(--color-text-primary, #ffffff);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.formatTab.activeTab {
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--color-primary-green, #00ff88);
+  border-color: rgba(0, 255, 136, 0.3);
+}
+
+/* Sections Grid */
+.sectionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.05));
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-primary-green, #00ff88);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sectionTag {
+  color: var(--color-text-dim, #535d68);
+}
+
+.contentList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: var(--color-text-secondary, #adbac7);
+  line-height: 1.5;
+}
+
+.contentItem {
+  list-style-type: none;
+  position: relative;
+}
+
+.contentItem::before {
+  content: '>';
+  position: absolute;
+  left: -14px;
+  color: var(--color-primary-cyan, #00f2fe);
+}
+
+.educationCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 2px solid var(--color-primary-cyan, #00f2fe);
+  padding: 8px 12px;
+  border-radius: 0 4px 4px 0;
+}
+
+.eduDegree {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-text-primary, #ffffff);
+}
+
+.eduMeta {
+  font-size: 12px;
+  color: var(--color-text-muted, #768390);
+}
+
+.eduFocus {
+  font-size: 12px;
+  color: var(--color-primary-green, #00ff88);
+  margin-top: 4px;
+}
+
+.philosophyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.philosophyCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.06));
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.philosophyTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-primary-cyan, #00f2fe);
+}
+
+.philosophyDesc {
+  font-size: 12px;
+  color: var(--color-text-muted, #768390);
+  line-height: 1.4;
+}
+
+/* JSON Viewer */
+.jsonContainer {
+  position: relative;
+  background: #06090e;
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: 4px;
+  padding: 14px;
+  overflow-x: auto;
+}
+
+.jsonTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.jsonFileName {
+  font-size: 11px;
+  color: var(--color-primary-cyan, #00f2fe);
+}
+
+.copyBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text-muted, #768390);
+  font-family: inherit;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.copyBtn:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.jsonCode {
+  margin: 0;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 12px;
+  line-height: 1.5;
+  color: #adbac7;
+}
+
+/* Quick Action Buttons */
+.quickActionsRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+}
+
+.actionLabel {
+  font-size: 11px;
+  color: var(--color-text-dim, #535d68);
+}
+
+.cmdChip {
+  background: transparent;
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  color: var(--color-primary-cyan, #00f2fe);
+  font-family: inherit;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cmdChip:hover {
+  background: rgba(0, 242, 254, 0.1);
+  color: #ffffff;
+  border-color: var(--color-primary-cyan, #00f2fe);
+}
+
+@media (max-width: 768px) {
+  .philosophyGrid {
+    grid-template-columns: 1fr;
+  }
+}

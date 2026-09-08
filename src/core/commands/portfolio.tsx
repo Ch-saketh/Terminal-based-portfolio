@@ -1,6 +1,7 @@
 import { CommandDefinition } from '../../types/terminal';
 import { profileData } from '../../content/profile';
 import { WhoamiRenderer } from '../../components/terminal/renderers/WhoamiRenderer';
+import { AboutRenderer } from '../../components/terminal/renderers/AboutRenderer';
 import { ProjectsRenderer } from '../../components/terminal/renderers/ProjectsRenderer';
 import { SkillsRenderer } from '../../components/terminal/renderers/SkillsRenderer';
 import { ExperienceRenderer } from '../../components/terminal/renderers/ExperienceRenderer';
@@ -21,13 +22,24 @@ export const portfolioCommands: CommandDefinition[] = [
   },
   {
     name: 'about',
-    description: 'Detailed developer biography, philosophies, and focus areas',
-    usage: 'about',
+    aliases: ['bio-extended', 'about-me'],
+    description: 'Detailed developer biography, education, philosophies, focus, and profile.json',
+    usage: 'about [--json|--overview]',
     category: 'portfolio',
-    execute: () => ({
-      type: 'custom',
-      component: <WhoamiRenderer />
-    })
+    options: [
+      { flag: '--json', description: 'Render interactive profile.json data schema' },
+      { flag: '--overview', description: 'Render overview system summary' }
+    ],
+    execute: (ctx) => {
+      const isJson = !!ctx.flags.json;
+      const isOverview = !!ctx.flags.overview;
+      const initialTab = isJson ? 'json' : isOverview ? 'overview' : 'md';
+
+      return {
+        type: 'custom',
+        component: <AboutRenderer initialTab={initialTab} />
+      };
+    }
   },
   {
     name: 'projects',

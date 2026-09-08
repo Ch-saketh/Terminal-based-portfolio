@@ -61,9 +61,19 @@ export interface ExperienceItem {
   technologies: string[];
 }
 
+export interface EducationItem {
+  degree: string;
+  institution: string;
+  timeline: string;
+  location: string;
+  focus: string[];
+  gpa?: string;
+}
+
 export interface DeveloperProfile {
   name: string;
   handle: string;
+  roles: string[];
   headline: string;
   location: string;
   status: string;
@@ -73,6 +83,27 @@ export interface DeveloperProfile {
   twitter?: string;
   gpgKeyFingerprint: string;
   bio: string[];
+  education: EducationItem[];
+  engineeringInterests: string[];
+  developmentPhilosophy: {
+    title: string;
+    description: string;
+  }[];
+  currentFocus: string[];
+  longTermGoals: string[];
+  profileJson: {
+    role: string;
+    focus: string[];
+    interests: string[];
+    currently_learning: string[];
+    core_competencies: string[];
+    philosophy: string[];
+    education: {
+      degree: string;
+      school: string;
+      year: string;
+    };
+  };
   stats: {
     yearsExperience: number;
     productionDeployments: string;

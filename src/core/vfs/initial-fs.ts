@@ -125,6 +125,53 @@ This is an interactive developer operating system and developer portfolio.
 Pro-tip: Use [Tab] for autocomplete and [Up/Down] for command history.
 `
               },
+              'about.md': {
+                name: 'about.md',
+                type: 'file',
+                extension: 'md',
+                permissions: '-rw-r--r--',
+                sizeBytes: 1280,
+                content: `# ${profileData.name} — Engineering Profile
+Headline: ${profileData.headline}
+Location: ${profileData.location}
+Status: ${profileData.status}
+
+## 1. Developer Roles
+${profileData.roles.map((r) => `- ${r}`).join('\n')}
+
+## 2. Education
+${profileData.education
+  .map(
+    (e) => `### ${e.degree}
+Institution: ${e.institution} (${e.timeline})
+Location: ${e.location}
+Key Focus: ${e.focus.join(', ')}`
+  )
+  .join('\n\n')}
+
+## 3. Engineering Interests
+${profileData.engineeringInterests.map((interest) => `- ${interest}`).join('\n')}
+
+## 4. Development Philosophy
+${profileData.developmentPhilosophy
+  .map((p) => `* **${p.title}**: ${p.description}`)
+  .join('\n')}
+
+## 5. Current Focus
+${profileData.currentFocus.map((f) => `- ${f}`).join('\n')}
+
+## 6. Long-Term Goals
+${profileData.longTermGoals.map((g) => `- ${g}`).join('\n')}
+`
+              },
+              'profile.json': {
+                name: 'profile.json',
+                type: 'file',
+                extension: 'json',
+                permissions: '-rw-r--r--',
+                sizeBytes: JSON.stringify(profileData.profileJson).length,
+                content: JSON.stringify(profileData.profileJson, null, 2)
+              },
               'bio.txt': {
                 name: 'bio.txt',
                 type: 'file',
