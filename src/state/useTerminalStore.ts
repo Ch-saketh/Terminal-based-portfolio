@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { TerminalOutputLine, CommandContext } from '../types/terminal';
 import { parseCommand } from '../core/cli/parser';
 import { commandRegistry } from '../core/cli/registry';
+import { findCommandSuggestion } from '../core/cli/suggestions';
 import { useFileSystemStore } from './useFileSystemStore';
 import { useSystemStore } from './useSystemStore';
 import { useWindowStore } from './useWindowStore';
@@ -61,7 +62,7 @@ export const useTerminalStore = create<TerminalState>((set, get) => ({
 
   appendLine: (line) => {
     set((state) => ({
-      lines: [...state.lines, { ...line, id: createLineId() }]
+      lines: [...state.lines, { ...line, id: createLineId(), timestamp: Date.now() }]
     }));
   },
 
@@ -72,6 +73,7 @@ export const useTerminalStore = create<TerminalState>((set, get) => ({
   executeCommand: async (rawInput: string) => {
     const trimmed = rawInput.trim();
     const cwd = useFileSystemStore.getState().cwd;
+    const startTime = performance.now();
 
     // Echo the user input line with prompt
     get().appendLine({
@@ -110,9 +112,17 @@ export const useTerminalStore = create<TerminalState>((set, get) => ({
 
     if (!commandDef) {
       soundEngine.playErrorSound();
+      const suggestion = findCommandSuggestion(parsed.name);
+      let errorMsg = `zsh: command not found: ${parsed.name}.`;
+      if (suggestion) {
+        errorMsg += ` Did you mean '${suggestion}'? Type 'help' to see all available commands.`;
+      } else {
+        errorMsg += ` Type 'help' or click the dock to view available commands.`;
+      }
+
       get().appendLine({
         type: 'error',
-        content: `zsh: command not found: ${parsed.name}. Type "help" or click the bottom dock to view available commands.`
+        content: errorMsg
       });
       set({ isExecuting: false });
       return;
@@ -124,6 +134,7 @@ export const useTerminalStore = create<TerminalState>((set, get) => ({
       flags: parsed.flags,
       raw: rawInput,
       cwd,
+      history: get().history,
       setTheme: (theme) => useSystemStore.getState().setTheme(theme),
       toggleSound: () => useSystemStore.getState().toggleSound(),
       toggleCrt: () => useSystemStore.getState().toggleCrt(),
@@ -134,11 +145,14 @@ export const useTerminalStore = create<TerminalState>((set, get) => ({
 
     try {
       const result = await commandDef.execute(context);
+      const duration = Math.round(performance.now() - startTime);
+
       if (result.type !== 'system' || result.text || result.component) {
         get().appendLine({
           type: result.type,
           content: result.text,
-          component: result.component
+          component: result.component,
+          executionDurationMs: duration
         });
       }
     } catch (err: any) {
