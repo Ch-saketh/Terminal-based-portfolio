@@ -1,0 +1,5 @@
+# robots.txt for SAKETH.OS
+User-agent: *
+Allow: /
+
+Sitemap: https://saketh-chokkapu-portfolio.vercel.app/sitemap.xml
