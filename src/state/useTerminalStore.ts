@@ -9,6 +9,8 @@ import { useWindowStore } from './useWindowStore';
 import { soundEngine } from '../core/audio/soundEngine';
 import { systemConfig } from '../content/config';
 
+import { registerAllCommands } from '../core/commands';
+
 interface TerminalState {
   lines: TerminalOutputLine[];
   history: string[];
@@ -109,6 +111,10 @@ export const useTerminalStore = create<TerminalState>((set, get) => ({
     if (!parsed) {
       set({ isExecuting: false });
       return;
+    }
+
+    if (commandRegistry.getAllCommands().length === 0) {
+      registerAllCommands();
     }
 
     const commandDef = commandRegistry.getCommand(parsed.name);

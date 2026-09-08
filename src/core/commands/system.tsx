@@ -163,5 +163,23 @@ export const systemCommands: CommandDefinition[] = [
       type: 'text',
       text: ctx.args.join(' ')
     })
+  },
+  {
+    name: 'hi',
+    aliases: ['hello', 'hey', 'greetings'],
+    description: 'Say hello to Saketh and view quick-start developer guide',
+    usage: 'hi',
+    category: 'system',
+    execute: () => ({
+      type: 'info',
+      text: `👋 Hello and welcome to SAKETH.OS!\n\n` +
+        `I'm Saketh Chokkapu — Lead Systems Architect & Full-Stack Engineer.\n\n` +
+        `Quick navigation commands to get started:\n` +
+        `  • 'whoami'    — Developer identity & philosophy\n` +
+        `  • 'projects'  — Flagship engineering projects (Weavly, CinePortal, PageMatch)\n` +
+        `  • 'skills'    — Interactive technical stack telemetry matrix\n` +
+        `  • 'git log'   — Career journey & milestone commits\n` +
+        `  • 'help'      — Full command manual and CLI options`
+    })
   }
 ];

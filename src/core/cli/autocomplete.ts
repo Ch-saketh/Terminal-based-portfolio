@@ -1,4 +1,5 @@
 import { commandRegistry } from './registry';
+import { registerAllCommands } from '../commands';
 import { vfsInstance } from '../vfs/vfs';
 import { tokenizeCommandLine } from './parser';
 
@@ -10,6 +11,10 @@ export interface AutocompleteResult {
 }
 
 export function getAutocompleteSuggestions(input: string, cwd: string): AutocompleteResult | null {
+  if (commandRegistry.getAllCommands().length === 0) {
+    registerAllCommands();
+  }
+
   const isTrailingSpace = input.endsWith(' ');
   const tokens = tokenizeCommandLine(input);
 
