@@ -61,9 +61,12 @@ export const useTerminalStore = create<TerminalState>((set, get) => ({
   },
 
   appendLine: (line) => {
-    set((state) => ({
-      lines: [...state.lines, { ...line, id: createLineId(), timestamp: Date.now() }]
-    }));
+    set((state) => {
+      const newLine = { ...line, id: createLineId(), timestamp: Date.now() };
+      const nextLines = [...state.lines, newLine];
+      const capped = nextLines.length > 120 ? nextLines.slice(nextLines.length - 120) : nextLines;
+      return { lines: capped };
+    });
   },
 
   clearLines: () => {

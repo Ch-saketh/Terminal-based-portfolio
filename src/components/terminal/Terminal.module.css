@@ -315,3 +315,44 @@
   border-color: var(--accent-primary);
   color: var(--accent-primary);
 }
+
+/* Mobile Accessory Keypad Toolbar */
+.mobileKeypadRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background-color: var(--bg-tertiary);
+  border-top: 1px solid var(--border-subtle);
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobileKeyBtn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--color-primary-cyan, #00f2fe);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-fast, 0.15s ease);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.mobileKeyBtn:hover,
+.mobileKeyBtn:active {
+  background: rgba(0, 242, 254, 0.15);
+  color: #ffffff;
+  border-color: var(--color-primary-cyan, #00f2fe);
+}
+
+@media (min-width: 1024px) {
+  .mobileKeypadRow {
+    display: none;
+  }
+}

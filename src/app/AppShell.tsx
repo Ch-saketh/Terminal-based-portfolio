@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { HomeView } from '../components/home/HomeView';
 import { BiosBootScreen } from '../components/boot/BiosBootScreen';
-import { MatrixRain } from '../components/shared/MatrixRain';
-import { DesignSystemShowcase } from '../components/showcase/DesignSystemShowcase';
+
+const MatrixRain = lazy(() =>
+  import('../components/shared/MatrixRain').then((m) => ({ default: m.MatrixRain }))
+);
+const DesignSystemShowcase = lazy(() =>
+  import('../components/showcase/DesignSystemShowcase').then((m) => ({
+    default: m.DesignSystemShowcase
+  }))
+);
 import { useSystemStore } from '../state/useSystemStore';
 import { useAchievementStore } from '../state/useAchievementStore';
 import { triggerConfetti } from '../utils/confetti';
@@ -106,7 +113,9 @@ export const AppShell: React.FC = () => {
       {bootCompleted && (
         <>
           {showcaseActive ? (
-            <DesignSystemShowcase onClose={() => toggleShowcase(false)} />
+            <Suspense fallback={null}>
+              <DesignSystemShowcase onClose={() => toggleShowcase(false)} />
+            </Suspense>
           ) : (
             <HomeView />
           )}
@@ -185,7 +194,9 @@ export const AppShell: React.FC = () => {
           style={{ position: 'fixed', inset: 0, zIndex: 9000, cursor: 'pointer' }}
           title="Click or press ESC to exit Matrix"
         >
-          <MatrixRain />
+          <Suspense fallback={null}>
+            <MatrixRain />
+          </Suspense>
           <div
             style={{
               position: 'fixed',
