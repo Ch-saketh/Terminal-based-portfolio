@@ -187,9 +187,43 @@ ${p.challenges
   });
 
   // Generate dynamic skills files
-  const skillFiles: Record<string, any> = {};
+  // Generate dynamic skills files and stack matrix
+  const skillFiles: Record<string, any> = {
+    'stack-matrix.md': {
+      name: 'stack-matrix.md',
+      type: 'file',
+      extension: 'md',
+      permissions: '-rw-r--r--',
+      sizeBytes: 2800,
+      content: `# SAKETH.OS Engineering Stack & Skill Diagnostic Matrix
+
+${skillsData
+  .map(
+    (cat) => `## ${cat.category.toUpperCase()}
+${cat.skills
+  .map(
+    (s) =>
+      `- **${s.name.padEnd(20)}** ${s.asciiMeter} [${s.classification.toUpperCase()}] ${
+        s.experienceYears ? `(${s.experienceYears} yrs)` : ''
+      }\n  *Used For:* ${s.whatUsedFor}\n  *Concepts:* ${s.engineeringConcepts.join(', ')}`
+  )
+  .join('\n\n')}`
+  )
+  .join('\n\n---\n\n')}
+`
+    },
+    'skills-graph.json': {
+      name: 'skills-graph.json',
+      type: 'file',
+      extension: 'json',
+      permissions: '-rw-r--r--',
+      sizeBytes: JSON.stringify(skillsData).length,
+      content: JSON.stringify(skillsData, null, 2)
+    }
+  };
+
   skillsData.forEach((s) => {
-    const slug = s.category.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    const slug = s.slug || s.category.toLowerCase().replace(/[^a-z0-9]+/g, '-');
     skillFiles[`${slug}.json`] = {
       name: `${slug}.json`,
       type: 'file',

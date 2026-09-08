@@ -64,14 +64,44 @@ export const portfolioCommands: CommandDefinition[] = [
   },
   {
     name: 'skills',
-    aliases: ['stack', 'tech', 'competencies'],
-    description: 'Display categorized technical competencies, tools, and experience levels',
-    usage: 'skills',
+    aliases: ['stack', 'tech', 'competencies', 'matrix'],
+    description: 'Display categorized engineering skill graph, diagnostics, and stack matrix',
+    usage: 'skills [backend|ai|databases|frontend|tools|languages|cloud|devops|cs] [--inspect=<tech>]',
     category: 'portfolio',
-    execute: () => ({
-      type: 'custom',
-      component: <SkillsRenderer />
-    })
+    options: [
+      { flag: '--inspect', description: 'Deep inspect a specific technology' },
+      { flag: '--category', description: 'Filter by specific engineering category' }
+    ],
+    execute: (ctx) => {
+      const categoryArg = ctx.args[0] || (typeof ctx.flags.category === 'string' ? ctx.flags.category : undefined);
+      const inspectArg = typeof ctx.flags.inspect === 'string' ? ctx.flags.inspect : undefined;
+
+      return {
+        type: 'custom',
+        component: <SkillsRenderer category={categoryArg} inspectSkillId={inspectArg} />
+      };
+    }
+  },
+  {
+    name: 'inspect',
+    aliases: ['stack-inspect', 'tech-inspect'],
+    description: 'Deep inspect a specific technology (e.g. inspect spring-boot, inspect qdrant)',
+    usage: 'inspect <technology-id>',
+    category: 'portfolio',
+    execute: (ctx) => {
+      const techId = ctx.args[0];
+      if (!techId) {
+        return {
+          type: 'error',
+          text: 'inspect: missing technology identifier. Usage: inspect <technology> (e.g. inspect spring-boot, inspect qdrant, inspect python)'
+        };
+      }
+
+      return {
+        type: 'custom',
+        component: <SkillsRenderer inspectSkillId={techId} />
+      };
+    }
   },
   {
     name: 'experience',

@@ -50,16 +50,31 @@ export interface ProjectItem {
   stars?: number;
 }
 
+export type SkillClassification = 'Primary' | 'Working Knowledge' | 'Exploring';
+
+export interface SkillItem {
+  id: string;
+  name: string;
+  category: string;
+  classification: SkillClassification;
+  asciiMeter: string;
+  experienceYears?: number;
+  whatUsedFor: string;
+  associatedProjects: {
+    name: string;
+    slug: string;
+  }[];
+  engineeringConcepts: string[];
+  relatedTech: string[];
+  keyCapabilities: string[];
+}
+
 export interface SkillCategory {
   category: string;
+  slug: string;
   iconName: string;
   description: string;
-  skills: {
-    name: string;
-    level: 'Expert' | 'Advanced' | 'Proficient';
-    years: number;
-    tags: string[];
-  }[];
+  skills: SkillItem[];
 }
 
 export interface ExperienceItem {
