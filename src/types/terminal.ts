@@ -1,6 +1,7 @@
 import React from 'react';
 
-export type OutputType = 'text' | 'error' | 'success' | 'info' | 'warning' | 'custom' | 'system' | 'banner' | 'command';
+export type OutputType =
+  'text' | 'error' | 'success' | 'info' | 'warning' | 'custom' | 'system' | 'banner' | 'command';
 
 export interface TerminalOutputLine {
   id: string;

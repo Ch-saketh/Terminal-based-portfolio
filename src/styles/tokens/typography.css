@@ -1,14 +1,15 @@
 :root {
-  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-mono:
+    'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  --text-xs: 0.75rem;    /* 12px */
-  --text-sm: 0.84rem;    /* 13.5px */
-  --text-base: 0.95rem;  /* 15.2px */
-  --text-lg: 1.1rem;     /* 17.6px */
-  --text-xl: 1.3rem;     /* 20.8px */
-  --text-2xl: 1.6rem;    /* 25.6px */
-  --text-3xl: 2.1rem;    /* 33.6px */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.84rem; /* 13.5px */
+  --text-base: 0.95rem; /* 15.2px */
+  --text-lg: 1.1rem; /* 17.6px */
+  --text-xl: 1.3rem; /* 20.8px */
+  --text-2xl: 1.6rem; /* 25.6px */
+  --text-3xl: 2.1rem; /* 33.6px */
 
   --font-light: 300;
   --font-regular: 400;

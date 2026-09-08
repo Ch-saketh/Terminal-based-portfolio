@@ -28,13 +28,13 @@ export const NeofetchRenderer: React.FC = () => {
       <div className={styles.neofetchLogo}>{asciiLogo}</div>
 
       <div className={styles.neofetchInfo}>
-        <div className={styles.neofetchHeader}>
-          saketh@{systemConfig.hostname}
-        </div>
+        <div className={styles.neofetchHeader}>saketh@{systemConfig.hostname}</div>
 
         <div className={styles.neofetchRow}>
           <span className={styles.neofetchKey}>OS:</span>
-          <span className={styles.neofetchVal}>{systemConfig.osName} v{systemConfig.osVersion}</span>
+          <span className={styles.neofetchVal}>
+            {systemConfig.osName} v{systemConfig.osVersion}
+          </span>
         </div>
 
         <div className={styles.neofetchRow}>

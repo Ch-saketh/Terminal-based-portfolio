@@ -58,8 +58,14 @@ export const useSystemStore = create<SystemState>((set, get) => ({
     set({
       metrics: {
         cpu: Math.min(95, Math.max(8, Math.round(prev.cpu + (Math.random() * 8 - 4)))),
-        memoryMb: Math.min(800, Math.max(300, Math.round(prev.memoryMb + (Math.random() * 12 - 6)))),
-        networkKbps: Math.min(250, Math.max(10, Math.round(prev.networkKbps + (Math.random() * 20 - 10)))),
+        memoryMb: Math.min(
+          800,
+          Math.max(300, Math.round(prev.memoryMb + (Math.random() * 12 - 6)))
+        ),
+        networkKbps: Math.min(
+          250,
+          Math.max(10, Math.round(prev.networkKbps + (Math.random() * 20 - 10)))
+        ),
         uptimeSeconds: prev.uptimeSeconds + 1
       }
     });

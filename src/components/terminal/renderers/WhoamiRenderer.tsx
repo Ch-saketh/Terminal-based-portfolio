@@ -13,9 +13,7 @@ export const WhoamiRenderer: React.FC = () => {
           </h2>
           <div className={styles.headline}>{profileData.headline}</div>
         </div>
-        <div className={styles.statusPill}>
-          {profileData.status}
-        </div>
+        <div className={styles.statusPill}>{profileData.status}</div>
       </div>
 
       <div className={styles.bioBlock}>

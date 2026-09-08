@@ -21,7 +21,10 @@ interface WindowState {
   minimizeWindow: (id: string) => void;
   maximizeWindow: (id: string) => void;
   focusWindow: (id: string) => void;
-  updateWindowBounds: (id: string, bounds: { position?: { x: number; y: number }; size?: { width: number; height: number } }) => void;
+  updateWindowBounds: (
+    id: string,
+    bounds: { position?: { x: number; y: number }; size?: { width: number; height: number } }
+  ) => void;
 }
 
 const defaultWindows: Record<string, WindowInstance> = {

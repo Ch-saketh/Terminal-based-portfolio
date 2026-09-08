@@ -15,7 +15,9 @@ class SoundEngine {
       }
     }
     if (this.ctx && this.ctx.state === 'suspended') {
-      this.ctx.resume().catch(() => {});
+      this.ctx.resume().catch(() => {
+        void 0;
+      });
     }
     return this.ctx;
   }
@@ -42,7 +44,6 @@ class SoundEngine {
       const filter = ctx.createBiquadFilter();
 
       osc.type = 'sine';
-      // Slight pitch variance for realism
       osc.frequency.setValueAtTime(1400 + Math.random() * 200, ctx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(300, ctx.currentTime + 0.015);
 
@@ -60,7 +61,7 @@ class SoundEngine {
       osc.start();
       osc.stop(ctx.currentTime + 0.015);
     } catch {
-      // Audio autoplay policy fallback
+      void 0;
     }
   }
 
@@ -88,7 +89,9 @@ class SoundEngine {
 
       osc.start();
       osc.stop(ctx.currentTime + 0.04);
-    } catch {}
+    } catch {
+      void 0;
+    }
   }
 
   /**
@@ -115,7 +118,9 @@ class SoundEngine {
 
       osc.start();
       osc.stop(ctx.currentTime + 0.08);
-    } catch {}
+    } catch {
+      void 0;
+    }
   }
 
   /**
@@ -144,7 +149,9 @@ class SoundEngine {
         osc.start(ctx.currentTime + idx * 0.05);
         osc.stop(ctx.currentTime + 0.6);
       });
-    } catch {}
+    } catch {
+      void 0;
+    }
   }
 }
 

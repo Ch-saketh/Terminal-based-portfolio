@@ -251,7 +251,8 @@
   font-weight: var(--font-semibold);
 }
 
-.infoRow, .standardRow {
+.infoRow,
+.standardRow {
   font-size: var(--text-sm);
   color: var(--text-primary);
 }
@@ -308,7 +309,8 @@
   cursor: pointer;
 }
 
-.autocompleteItem.selected, .autocompleteItem:hover {
+.autocompleteItem.selected,
+.autocompleteItem:hover {
   background: var(--accent-primary-dim);
   border-color: var(--accent-primary);
   color: var(--accent-primary);

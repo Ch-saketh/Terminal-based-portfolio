@@ -12,7 +12,7 @@ class CommandRegistry {
     this.commands.set(primaryName, command);
 
     if (command.aliases) {
-      command.aliases.forEach(alias => {
+      command.aliases.forEach((alias) => {
         this.aliasMap.set(alias.toLowerCase(), primaryName);
       });
     }
@@ -44,7 +44,7 @@ class CommandRegistry {
    * Returns commands filtered by category.
    */
   public getByCategory(category: CommandDefinition['category']): CommandDefinition[] {
-    return this.getAllCommands().filter(cmd => cmd.category === category);
+    return this.getAllCommands().filter((cmd) => cmd.category === category);
   }
 }
 

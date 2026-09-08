@@ -19,7 +19,9 @@ export const ProjectsRenderer: React.FC<ProjectsRendererProps> = ({
 
   if (filterSlug) {
     displayed = displayed.filter(
-      (p) => p.slug.toLowerCase() === filterSlug.toLowerCase() || p.id.toLowerCase() === filterSlug.toLowerCase()
+      (p) =>
+        p.slug.toLowerCase() === filterSlug.toLowerCase() ||
+        p.id.toLowerCase() === filterSlug.toLowerCase()
     );
   }
 
@@ -40,7 +42,8 @@ export const ProjectsRenderer: React.FC<ProjectsRendererProps> = ({
     return (
       <div className={styles.projectsContainer}>
         <p className={styles.descText}>
-          No projects matched query{filterSlug ? ` '${filterSlug}'` : ''}{tagFilter ? ` with tag '${tagFilter}'` : ''}.
+          No projects matched query{filterSlug ? ` '${filterSlug}'` : ''}
+          {tagFilter ? ` with tag '${tagFilter}'` : ''}.
         </p>
       </div>
     );
@@ -50,7 +53,8 @@ export const ProjectsRenderer: React.FC<ProjectsRendererProps> = ({
     <div className={styles.projectsContainer}>
       <div className={styles.projectsHeader}>
         <span>
-          Showing <strong>{displayed.length}</strong> engineering project{displayed.length > 1 ? 's' : ''}
+          Showing <strong>{displayed.length}</strong> engineering project
+          {displayed.length > 1 ? 's' : ''}
         </span>
         <span className={styles.usageText}>
           Tip: run <code>cat /home/saketh/projects/&lt;slug&gt;.md</code> for raw markdown

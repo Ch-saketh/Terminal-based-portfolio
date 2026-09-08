@@ -72,7 +72,10 @@ export class VirtualFileSystem {
   /**
    * Lists the children of a directory.
    */
-  public listDirectory(path: string, cwd: string): { success: boolean; nodes?: VFSNode[]; error?: string } {
+  public listDirectory(
+    path: string,
+    cwd: string
+  ): { success: boolean; nodes?: VFSNode[]; error?: string } {
     const node = this.getNode(path, cwd);
     if (!node) {
       return { success: false, error: `ls: cannot access '${path}': No such file or directory` };
@@ -92,7 +95,10 @@ export class VirtualFileSystem {
   /**
    * Reads a file content by path.
    */
-  public readFile(path: string, cwd: string): { success: boolean; content?: string; error?: string } {
+  public readFile(
+    path: string,
+    cwd: string
+  ): { success: boolean; content?: string; error?: string } {
     const node = this.getNode(path, cwd);
     if (!node) {
       return { success: false, error: `cat: ${path}: No such file or directory` };
@@ -106,7 +112,10 @@ export class VirtualFileSystem {
   /**
    * Validates if a path is a navigable directory for `cd`.
    */
-  public changeDirectory(path: string, cwd: string): { success: boolean; newCwd?: string; error?: string } {
+  public changeDirectory(
+    path: string,
+    cwd: string
+  ): { success: boolean; newCwd?: string; error?: string } {
     const targetPath = this.normalizePath(path, cwd);
     const node = this.getNode(targetPath, '/');
 

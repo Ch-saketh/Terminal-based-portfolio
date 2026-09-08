@@ -39,7 +39,12 @@ export const ContactRenderer: React.FC = () => {
           <span className={styles.usageText}>{profileData.email}</span>
         </a>
 
-        <a href={profileData.github} target="_blank" rel="noreferrer" className={styles.contactLinkCard}>
+        <a
+          href={profileData.github}
+          target="_blank"
+          rel="noreferrer"
+          className={styles.contactLinkCard}
+        >
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <Github size={16} color="#06b6d4" />
             <span>GitHub</span>
@@ -47,7 +52,12 @@ export const ContactRenderer: React.FC = () => {
           <span className={styles.usageText}>@Ch-saketh</span>
         </a>
 
-        <a href={profileData.linkedin} target="_blank" rel="noreferrer" className={styles.contactLinkCard}>
+        <a
+          href={profileData.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          className={styles.contactLinkCard}
+        >
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <Linkedin size={16} color="#3b82f6" />
             <span>LinkedIn</span>
@@ -56,7 +66,12 @@ export const ContactRenderer: React.FC = () => {
         </a>
 
         {profileData.twitter && (
-          <a href={profileData.twitter} target="_blank" rel="noreferrer" className={styles.contactLinkCard}>
+          <a
+            href={profileData.twitter}
+            target="_blank"
+            rel="noreferrer"
+            className={styles.contactLinkCard}
+          >
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Twitter size={16} color="#38bdf8" />
               <span>Twitter/X</span>
@@ -66,13 +81,33 @@ export const ContactRenderer: React.FC = () => {
         )}
       </div>
 
-      <div style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 6 }}>
+      <div
+        style={{
+          fontSize: 'var(--text-xs)',
+          color: 'var(--text-muted)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6
+        }}
+      >
         <Key size={14} color="#f59e0b" />
-        <span>GPG Fingerprint: <code>{profileData.gpgKeyFingerprint}</code></span>
+        <span>
+          GPG Fingerprint: <code>{profileData.gpgKeyFingerprint}</code>
+        </span>
       </div>
 
       {status === 'sent' ? (
-        <div style={{ padding: '12px', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid #10b981', borderRadius: '4px', display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div
+          style={{
+            padding: '12px',
+            background: 'rgba(16, 185, 129, 0.1)',
+            border: '1px solid #10b981',
+            borderRadius: '4px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8
+          }}
+        >
           <CheckCircle2 size={16} color="#10b981" />
           <span style={{ fontSize: 'var(--text-xs)', color: '#34d399' }}>
             Transmission initiated via email client relay. Thank you for reaching out!
@@ -80,7 +115,13 @@ export const ContactRenderer: React.FC = () => {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className={styles.contactForm}>
-          <div style={{ fontSize: 'var(--text-xs)', fontWeight: 600, color: 'var(--accent-secondary)' }}>
+          <div
+            style={{
+              fontSize: 'var(--text-xs)',
+              fontWeight: 600,
+              color: 'var(--accent-secondary)'
+            }}
+          >
             &gt; Quick Message Dispatch
           </div>
           <input

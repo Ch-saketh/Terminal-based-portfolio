@@ -12,7 +12,8 @@ export const experienceData: ExperienceItem[] = [
       end: 'Present',
       isCurrent: true
     },
-    summary: 'Led the architectural overhaul of mission-critical event streaming pipelines and microservice edge routing infrastructure.',
+    summary:
+      'Led the architectural overhaul of mission-critical event streaming pipelines and microservice edge routing infrastructure.',
     impactMetrics: [
       'Scaled event ingestion from 200M to 1.8B daily events with 99.995% delivery reliability',
       'Reduced p99 edge API latency from 45ms to 3.8ms across 12 global regions',
@@ -23,7 +24,16 @@ export const experienceData: ExperienceItem[] = [
       'Designed and deployed internal developer portal and CLI toolchain accelerating onboarding time by 3x',
       'Championed zero-trust security architecture with mutual TLS and automated certificate rotation'
     ],
-    technologies: ['Go', 'Rust', 'Kubernetes', 'Kafka', 'PostgreSQL', 'Redis', 'Terraform', 'Prometheus']
+    technologies: [
+      'Go',
+      'Rust',
+      'Kubernetes',
+      'Kafka',
+      'PostgreSQL',
+      'Redis',
+      'Terraform',
+      'Prometheus'
+    ]
   },
   {
     id: 'exp-senior-backend',
@@ -36,7 +46,8 @@ export const experienceData: ExperienceItem[] = [
       end: '2023',
       isCurrent: false
     },
-    summary: 'Core contributor to multi-tenant cloud storage orchestration and asynchronous worker scheduling subsystem.',
+    summary:
+      'Core contributor to multi-tenant cloud storage orchestration and asynchronous worker scheduling subsystem.',
     impactMetrics: [
       'Engineered distributed lock manager and worker pool processing 50,000+ jobs/min',
       'Optimized database connection pooling and slow queries, saving $120,000 in monthly AWS infrastructure cost'
@@ -59,7 +70,8 @@ export const experienceData: ExperienceItem[] = [
       end: '2021',
       isCurrent: false
     },
-    summary: 'Developed high-concurrency client-facing APIs and real-time dashboard analytics interfaces.',
+    summary:
+      'Developed high-concurrency client-facing APIs and real-time dashboard analytics interfaces.',
     impactMetrics: [
       'Shipped real-time collaborative workspace used by 150,000+ active enterprise users',
       'Reduced web client bundle size by 54% through code-splitting and asset optimization'

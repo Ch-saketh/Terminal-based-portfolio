@@ -7,14 +7,16 @@ export const projectsData: ProjectItem[] = [
     title: 'Aether: High-Throughput Service Mesh Ingress & Telemetry Engine',
     category: 'Distributed Systems',
     tagline: 'Sub-millisecond dynamic routing proxy with eBPF-powered distributed tracing.',
-    description: 'A purpose-built edge gateway and microservices routing engine engineered in Go and Rust. Features zero-copy packet inspection, automated mTLS rotation, circuit-breaking heuristics, and Prometheus/OpenTelemetry exporter integration capable of sustaining 250k+ req/sec per node.',
+    description:
+      'A purpose-built edge gateway and microservices routing engine engineered in Go and Rust. Features zero-copy packet inspection, automated mTLS rotation, circuit-breaking heuristics, and Prometheus/OpenTelemetry exporter integration capable of sustaining 250k+ req/sec per node.',
     highlights: [
       'Engineered custom eBPF probes for kernel-level socket telemetry without latency degradation',
       'Implemented token-bucket and sliding-window rate limiters with Redis cluster synchronization',
       'Zero-downtime hot config reload using atomic pointer swapping in Go'
     ],
     architecture: {
-      overview: 'Hybrid control/data plane architecture. Data plane implemented in optimized Rust with async Tokio workers; control plane implemented in Go communicating over gRPC streams.',
+      overview:
+        'Hybrid control/data plane architecture. Data plane implemented in optimized Rust with async Tokio workers; control plane implemented in Go communicating over gRPC streams.',
       keyDecisions: [
         'Used eBPF over iptables for microservice routing to avoid O(N) chain traversal latency at 1,000+ pods',
         'Implemented Raft consensus for decentralized configuration consistency across global clusters'
@@ -44,15 +46,18 @@ export const projectsData: ProjectItem[] = [
     slug: 'nexus-stream',
     title: 'Nexus: Distributed Event Ingestion & CDC Pipeline',
     category: 'Cloud Architecture',
-    tagline: 'Real-time transactional event streaming pipeline handling billions of daily mutations.',
-    description: 'Change Data Capture (CDC) and event orchestration platform designed to synchronize PostgreSQL and MySQL transactional state to BigQuery, ClickHouse, and Elasticsearch with strict exactly-once delivery guarantees.',
+    tagline:
+      'Real-time transactional event streaming pipeline handling billions of daily mutations.',
+    description:
+      'Change Data Capture (CDC) and event orchestration platform designed to synchronize PostgreSQL and MySQL transactional state to BigQuery, ClickHouse, and Elasticsearch with strict exactly-once delivery guarantees.',
     highlights: [
       'Constructed custom WAL (Write-Ahead-Log) parsing daemon for PostgreSQL logical replication',
       'Dynamic schema evolution detection with automatic Protobuf/Avro registry schema migrations',
       'Backpressure-aware ingestion queues preventing memory runaway during traffic surges'
     ],
     architecture: {
-      overview: 'Partitioned Kafka consumers writing to vectorized Arrow batches before bulk flushing to columnar storage.',
+      overview:
+        'Partitioned Kafka consumers writing to vectorized Arrow batches before bulk flushing to columnar storage.',
       keyDecisions: [
         'Decoupled buffer storage using memory-mapped files (mmap) for zero data loss during process crashes',
         'Used RocksDB for embedded state storage to track partition offset acknowledgments'
@@ -83,14 +88,16 @@ export const projectsData: ProjectItem[] = [
     title: 'SAKETH.OS: Interactive Web Terminal & Operating System',
     category: 'Developer Tools',
     tagline: 'Production-grade POSIX-like browser shell environment & developer workstation.',
-    description: 'An interactive developer environment running entirely in client-side TypeScript. Features an AST command parser, in-memory virtual filesystem (VFS) with path resolution, procedural Web Audio sound synthesis, reactive multi-window manager, and rich command rendering modules.',
+    description:
+      'An interactive developer environment running entirely in client-side TypeScript. Features an AST command parser, in-memory virtual filesystem (VFS) with path resolution, procedural Web Audio sound synthesis, reactive multi-window manager, and rich command rendering modules.',
     highlights: [
       'Built bespoke shell tokenizer and flag parser supporting quotes, aliases, pipes, and tab-autocomplete',
       'Implemented hierarchical virtual filesystem with file permissions, symlinks, and directory traversal',
       'Zero runtime CSS-in-JS overhead via compiled CSS Custom Properties and design token system'
     ],
     architecture: {
-      overview: 'Layered kernel and presentation separation. Core CLI engine and VFS are 100% decoupled from React UI via Zustand micro-stores.',
+      overview:
+        'Layered kernel and presentation separation. Core CLI engine and VFS are 100% decoupled from React UI via Zustand micro-stores.',
       keyDecisions: [
         'Used Web Audio API procedural synthesis for keyclick feedback instead of heavy audio downloads',
         'Engineered virtualized terminal line stream maintaining 60fps rendering during large output batches'
@@ -120,15 +127,18 @@ export const projectsData: ProjectItem[] = [
     slug: 'neural-code-index',
     title: 'VectrCode: Semantic Codebase Intelligence & AST Search',
     category: 'AI / Machine Learning',
-    tagline: 'Tree-sitter AST parser coupled with local vector embeddings for deep codebase search.',
-    description: 'Developer indexing tool that parses large codebases into syntactic semantic AST blocks, embeds code snippets using quantized local models, and enables natural-language semantic query exploration via terminal or IDE extensions.',
+    tagline:
+      'Tree-sitter AST parser coupled with local vector embeddings for deep codebase search.',
+    description:
+      'Developer indexing tool that parses large codebases into syntactic semantic AST blocks, embeds code snippets using quantized local models, and enables natural-language semantic query exploration via terminal or IDE extensions.',
     highlights: [
       'Constructed multi-language AST chunking pipeline supporting TypeScript, Go, Python, and Rust',
       'Integrated HNSW vector indexing with sub-10ms similarity searches across 500k+ functions',
       'Lightweight local CLI binary with memory consumption capped under 150MB'
     ],
     architecture: {
-      overview: 'Tree-sitter parser feeds symbol table into local ONNX runtime embeddings generator, stored in a memory-mapped vector index.',
+      overview:
+        'Tree-sitter parser feeds symbol table into local ONNX runtime embeddings generator, stored in a memory-mapped vector index.',
       keyDecisions: [
         'Used Tree-sitter AST node boundaries rather than line-length chunking for semantic integrity',
         'Implemented quantised INT8 vector representations to cut RAM consumption by 75%'

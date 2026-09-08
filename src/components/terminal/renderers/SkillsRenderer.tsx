@@ -6,7 +6,8 @@ export const SkillsRenderer: React.FC = () => {
   return (
     <div className={styles.skillsContainer}>
       <div className={styles.helpHeader}>
-        <span className={styles.highlightText}>SYSTEM COMPETENCIES</span> & Technical Proficiency Index
+        <span className={styles.highlightText}>SYSTEM COMPETENCIES</span> & Technical Proficiency
+        Index
       </div>
 
       {skillsData.map((cat) => (

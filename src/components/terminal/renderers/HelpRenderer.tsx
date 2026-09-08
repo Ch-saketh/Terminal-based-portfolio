@@ -57,7 +57,11 @@ export const HelpRenderer: React.FC = () => {
       })}
 
       <div className={styles.helpFooter}>
-        <span>Tip: Press <strong>[Tab]</strong> for smart path/flag autocomplete &bull; Press <strong>[Up/Down]</strong> to traverse command history &bull; <strong>Ctrl+L</strong> to clear.</span>
+        <span>
+          Tip: Press <strong>[Tab]</strong> for smart path/flag autocomplete &bull; Press{' '}
+          <strong>[Up/Down]</strong> to traverse command history &bull; <strong>Ctrl+L</strong> to
+          clear.
+        </span>
       </div>
     </div>
   );

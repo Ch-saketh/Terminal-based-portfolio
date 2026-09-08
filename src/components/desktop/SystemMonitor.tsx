@@ -25,8 +25,18 @@ export const SystemMonitor: React.FC = () => {
 
   return (
     <div className={styles.monitorContainer}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '8px' }}>
-        <div style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--accent-secondary)' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          borderBottom: '1px solid var(--border-subtle)',
+          paddingBottom: '8px'
+        }}
+      >
+        <div
+          style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--accent-secondary)' }}
+        >
           {systemConfig.osName} Telemetry & Resource Monitor
         </div>
         <button
@@ -38,11 +48,20 @@ export const SystemMonitor: React.FC = () => {
         </button>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px' }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          gap: '12px'
+        }}
+      >
         {/* CPU Metric */}
         <div className={styles.metricCard}>
           <div className={styles.metricTop}>
-            <span className={styles.metricName} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span
+              className={styles.metricName}
+              style={{ display: 'flex', alignItems: 'center', gap: 6 }}
+            >
               <Cpu size={14} /> CPU Utilization
             </span>
             <span className={styles.metricVal}>{metrics.cpu}%</span>
@@ -55,7 +74,10 @@ export const SystemMonitor: React.FC = () => {
         {/* Memory Metric */}
         <div className={styles.metricCard}>
           <div className={styles.metricTop}>
-            <span className={styles.metricName} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span
+              className={styles.metricName}
+              style={{ display: 'flex', alignItems: 'center', gap: 6 }}
+            >
               <HardDrive size={14} /> Memory (RAM)
             </span>
             <span className={styles.metricVal}>{metrics.memoryMb} MB / 16 GB</span>
@@ -63,7 +85,10 @@ export const SystemMonitor: React.FC = () => {
           <div className={styles.progressBarBg}>
             <div
               className={styles.progressBarFill}
-              style={{ width: `${(metrics.memoryMb / 1024) * 100}%`, background: 'var(--accent-secondary)' }}
+              style={{
+                width: `${(metrics.memoryMb / 1024) * 100}%`,
+                background: 'var(--accent-secondary)'
+              }}
             />
           </div>
         </div>
@@ -71,7 +96,10 @@ export const SystemMonitor: React.FC = () => {
         {/* Network Metric */}
         <div className={styles.metricCard}>
           <div className={styles.metricTop}>
-            <span className={styles.metricName} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span
+              className={styles.metricName}
+              style={{ display: 'flex', alignItems: 'center', gap: 6 }}
+            >
               <Wifi size={14} /> Net I/O Speed
             </span>
             <span className={styles.metricVal}>{metrics.networkKbps} KB/s</span>
@@ -79,7 +107,10 @@ export const SystemMonitor: React.FC = () => {
           <div className={styles.progressBarBg}>
             <div
               className={styles.progressBarFill}
-              style={{ width: `${(metrics.networkKbps / 250) * 100}%`, background: 'var(--accent-tertiary)' }}
+              style={{
+                width: `${(metrics.networkKbps / 250) * 100}%`,
+                background: 'var(--accent-tertiary)'
+              }}
             />
           </div>
         </div>
@@ -87,11 +118,34 @@ export const SystemMonitor: React.FC = () => {
 
       {/* Process Table */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 8 }}>
-        <div style={{ fontSize: '11px', fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '0.05em' }}>
+        <div
+          style={{
+            fontSize: '11px',
+            fontWeight: 600,
+            color: 'var(--text-muted)',
+            letterSpacing: '0.05em'
+          }}
+        >
           ACTIVE KERNEL DAEMONS & THREADS
         </div>
-        <div style={{ background: 'var(--bg-tertiary)', border: '1px solid var(--border-subtle)', borderRadius: '4px', padding: '8px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '50px 1fr 80px 80px 70px', fontSize: '11px', color: 'var(--text-dim)', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '4px' }}>
+        <div
+          style={{
+            background: 'var(--bg-tertiary)',
+            border: '1px solid var(--border-subtle)',
+            borderRadius: '4px',
+            padding: '8px'
+          }}
+        >
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '50px 1fr 80px 80px 70px',
+              fontSize: '11px',
+              color: 'var(--text-dim)',
+              borderBottom: '1px solid var(--border-subtle)',
+              paddingBottom: '4px'
+            }}
+          >
             <span>PID</span>
             <span>COMMAND</span>
             <span>CPU %</span>
@@ -101,7 +155,13 @@ export const SystemMonitor: React.FC = () => {
           {processes.map((proc) => (
             <div
               key={proc.pid}
-              style={{ display: 'grid', gridTemplateColumns: '50px 1fr 80px 80px 70px', fontSize: '11px', color: 'var(--text-secondary)', padding: '4px 0' }}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '50px 1fr 80px 80px 70px',
+                fontSize: '11px',
+                color: 'var(--text-secondary)',
+                padding: '4px 0'
+              }}
             >
               <span style={{ color: 'var(--text-muted)' }}>{proc.pid}</span>
               <span style={{ color: 'var(--accent-primary)', fontWeight: 500 }}>{proc.name}</span>

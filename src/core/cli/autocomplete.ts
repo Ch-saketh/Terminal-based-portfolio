@@ -3,10 +3,10 @@ import { vfsInstance } from '../vfs/vfs';
 import { tokenizeCommandLine } from './parser';
 
 export interface AutocompleteResult {
-  suggestion: string;       // Best full replacement or completed string
-  matches: string[];        // All matched candidates
-  prefix: string;           // The token prefix being matched
-  isPartial: boolean;       // Whether multiple candidates share a common prefix
+  suggestion: string; // Best full replacement or completed string
+  matches: string[]; // All matched candidates
+  prefix: string; // The token prefix being matched
+  isPartial: boolean; // Whether multiple candidates share a common prefix
 }
 
 export function getAutocompleteSuggestions(input: string, cwd: string): AutocompleteResult | null {
@@ -23,13 +23,13 @@ export function getAutocompleteSuggestions(input: string, cwd: string): Autocomp
     const commands = commandRegistry.getAllCommands();
     const candidateNames = new Set<string>();
 
-    commands.forEach(cmd => {
+    commands.forEach((cmd) => {
       candidateNames.add(cmd.name);
-      cmd.aliases?.forEach(a => candidateNames.add(a));
+      cmd.aliases?.forEach((a) => candidateNames.add(a));
     });
 
     const matches = Array.from(candidateNames)
-      .filter(name => name.startsWith(currentToken.toLowerCase()))
+      .filter((name) => name.startsWith(currentToken.toLowerCase()))
       .sort();
 
     if (matches.length === 0) return null;
@@ -49,8 +49,8 @@ export function getAutocompleteSuggestions(input: string, cwd: string): Autocomp
 
   // If typing a flag (--...)
   if (currentToken.startsWith('-') && cmd?.options) {
-    const flagOptions = cmd.options.map(o => o.flag);
-    const matches = flagOptions.filter(f => f.startsWith(currentToken));
+    const flagOptions = cmd.options.map((o) => o.flag);
+    const matches = flagOptions.filter((f) => f.startsWith(currentToken));
     if (matches.length > 0) {
       return {
         suggestion: matches.length === 1 ? `${matches[0]} ` : findCommonPrefix(matches),
@@ -80,8 +80,8 @@ export function getAutocompleteSuggestions(input: string, cwd: string): Autocomp
     const listRes = vfsInstance.listDirectory(dirPathToSearch, '/');
     if (listRes.success && listRes.nodes) {
       const matches = listRes.nodes
-        .filter(n => n.name.toLowerCase().startsWith(filePrefix.toLowerCase()))
-        .map(n => {
+        .filter((n) => n.name.toLowerCase().startsWith(filePrefix.toLowerCase()))
+        .map((n) => {
           const suffix = n.type === 'directory' ? '/' : '';
           if (targetPath.includes('/')) {
             const lastSlashIdx = targetPath.lastIndexOf('/');
@@ -105,7 +105,9 @@ export function getAutocompleteSuggestions(input: string, cwd: string): Autocomp
 }
 
 function isPathLike(str: string): boolean {
-  return str.startsWith('/') || str.startsWith('~') || str.startsWith('./') || str.startsWith('../');
+  return (
+    str.startsWith('/') || str.startsWith('~') || str.startsWith('./') || str.startsWith('../')
+  );
 }
 
 function findCommonPrefix(strings: string[]): string {

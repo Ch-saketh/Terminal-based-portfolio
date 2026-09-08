@@ -70,13 +70,7 @@ export function registerAllCommands() {
 
       return {
         type: 'custom',
-        component: (
-          <ProjectsRenderer
-            filterSlug={slugArg}
-            featuredOnly={featured}
-            tagFilter={tag}
-          />
-        )
+        component: <ProjectsRenderer filterSlug={slugArg} featuredOnly={featured} tagFilter={tag} />
       };
     }
   };
@@ -378,7 +372,9 @@ export function registerAllCommands() {
       useSystemStore.getState().setMatrixRain(!active);
       return {
         type: 'success',
-        text: !active ? 'Entering Matrix digital simulation... (Run "matrix" again to exit)' : 'Exited Matrix simulation.'
+        text: !active
+          ? 'Entering Matrix digital simulation... (Run "matrix" again to exit)'
+          : 'Exited Matrix simulation.'
       };
     }
   };

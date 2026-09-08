@@ -14,10 +14,14 @@ export const ExperienceRenderer: React.FC = () => {
           <div className={styles.expCardHeader}>
             <div>
               <div className={styles.expRole}>{exp.role}</div>
-              <div className={styles.expCompany}>{exp.company} &bull; {exp.location}</div>
+              <div className={styles.expCompany}>
+                {exp.company} &bull; {exp.location}
+              </div>
             </div>
             <div className={styles.expMeta}>
-              <span>{exp.period.start} &mdash; {exp.period.end}</span>
+              <span>
+                {exp.period.start} &mdash; {exp.period.end}
+              </span>
               {exp.period.isCurrent && <span className={styles.expCurrent}>Current</span>}
             </div>
           </div>

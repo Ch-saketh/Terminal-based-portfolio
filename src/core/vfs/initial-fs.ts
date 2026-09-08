@@ -8,7 +8,7 @@ import { systemConfig } from '../../content/config';
 export function createInitialVFS(): VFSDirectory {
   // Generate dynamic project files
   const projectFiles: Record<string, any> = {};
-  projectsData.forEach(p => {
+  projectsData.forEach((p) => {
     projectFiles[`${p.slug}.md`] = {
       name: `${p.slug}.md`,
       type: 'file',
@@ -25,14 +25,14 @@ ${p.tagline}
 ${p.description}
 
 ## Key Highlights
-${p.highlights.map(h => `- ${h}`).join('\n')}
+${p.highlights.map((h) => `- ${h}`).join('\n')}
 
 ## Architecture Decisions
 ${p.architecture.overview}
-${p.architecture.keyDecisions.map(d => `* ${d}`).join('\n')}
+${p.architecture.keyDecisions.map((d) => `* ${d}`).join('\n')}
 
 ## Metrics & Impact
-${p.metrics.map(m => `* ${m}`).join('\n')}
+${p.metrics.map((m) => `* ${m}`).join('\n')}
 
 ## Tech Stack
 Core: ${p.techStack.core.join(', ')}
@@ -48,7 +48,7 @@ Demo: ${p.links.liveDemo ?? 'N/A'}
 
   // Generate dynamic skills files
   const skillFiles: Record<string, any> = {};
-  skillsData.forEach(s => {
+  skillsData.forEach((s) => {
     const slug = s.category.toLowerCase().replace(/[^a-z0-9]+/g, '-');
     skillFiles[`${slug}.json`] = {
       name: `${slug}.json`,
@@ -62,7 +62,7 @@ Demo: ${p.links.liveDemo ?? 'N/A'}
 
   // Generate experience files
   const experienceFiles: Record<string, any> = {};
-  experienceData.forEach(e => {
+  experienceData.forEach((e) => {
     experienceFiles[`${e.id}.md`] = {
       name: `${e.id}.md`,
       type: 'file',
@@ -76,10 +76,10 @@ Period: ${e.period.start} - ${e.period.end} (${e.type}) | Location: ${e.location
 ${e.summary}
 
 ## Key Achievements
-${e.keyAchievements.map(a => `- ${a}`).join('\n')}
+${e.keyAchievements.map((a) => `- ${a}`).join('\n')}
 
 ## Impact Metrics
-${e.impactMetrics.map(m => `* ${m}`).join('\n')}
+${e.impactMetrics.map((m) => `* ${m}`).join('\n')}
 
 ## Technologies
 ${e.technologies.join(', ')}
@@ -144,13 +144,17 @@ ${profileData.bio.join('\n\n')}
                 extension: 'json',
                 permissions: '-rw-r--r--',
                 sizeBytes: 256,
-                content: JSON.stringify({
-                  email: profileData.email,
-                  github: profileData.github,
-                  linkedin: profileData.linkedin,
-                  twitter: profileData.twitter,
-                  gpg: profileData.gpgKeyFingerprint
-                }, null, 2)
+                content: JSON.stringify(
+                  {
+                    email: profileData.email,
+                    github: profileData.github,
+                    linkedin: profileData.linkedin,
+                    twitter: profileData.twitter,
+                    gpg: profileData.gpgKeyFingerprint
+                  },
+                  null,
+                  2
+                )
               },
               'gpg-key.asc': {
                 name: 'gpg-key.asc',
@@ -222,9 +226,24 @@ User: ${profileData.name} <${profileData.email}>
         type: 'directory',
         permissions: 'drwxr-xr-x',
         children: {
-          zsh: { name: 'zsh', type: 'file', permissions: '-rwxr-xr-x', content: 'ELF 64-bit LSB executable, x86-64' },
-          ls: { name: 'ls', type: 'file', permissions: '-rwxr-xr-x', content: 'ELF 64-bit LSB executable, x86-64' },
-          cat: { name: 'cat', type: 'file', permissions: '-rwxr-xr-x', content: 'ELF 64-bit LSB executable, x86-64' }
+          zsh: {
+            name: 'zsh',
+            type: 'file',
+            permissions: '-rwxr-xr-x',
+            content: 'ELF 64-bit LSB executable, x86-64'
+          },
+          ls: {
+            name: 'ls',
+            type: 'file',
+            permissions: '-rwxr-xr-x',
+            content: 'ELF 64-bit LSB executable, x86-64'
+          },
+          cat: {
+            name: 'cat',
+            type: 'file',
+            permissions: '-rwxr-xr-x',
+            content: 'ELF 64-bit LSB executable, x86-64'
+          }
         }
       }
     }

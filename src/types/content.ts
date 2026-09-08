@@ -2,7 +2,12 @@ export interface ProjectItem {
   id: string;
   slug: string;
   title: string;
-  category: 'Distributed Systems' | 'AI / Machine Learning' | 'Cloud Architecture' | 'Developer Tools' | 'Full Stack';
+  category:
+    | 'Distributed Systems'
+    | 'AI / Machine Learning'
+    | 'Cloud Architecture'
+    | 'Developer Tools'
+    | 'Full Stack';
   tagline: string;
   description: string;
   highlights: string[];

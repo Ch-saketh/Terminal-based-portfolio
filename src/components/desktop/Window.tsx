@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useWindowStore, WindowInstance } from '../../state/useWindowStore';
 import styles from './Desktop.module.css';
 
@@ -15,10 +15,6 @@ export const Window: React.FC<WindowProps> = ({ window: win, children }) => {
   const [pos, setPos] = useState(win.position);
   const isDragging = useRef(false);
   const dragStart = useRef({ x: 0, y: 0, initialX: 0, initialY: 0 });
-
-  useEffect(() => {
-    setPos(win.position);
-  }, [win.position]);
 
   const handleMouseDown = () => {
     focusWindow(win.id);
@@ -87,7 +83,10 @@ export const Window: React.FC<WindowProps> = ({ window: win, children }) => {
       style={style}
       onMouseDown={handleMouseDown}
     >
-      <div onMouseDown={handleTitleBarMouseDown} style={{ cursor: win.isMaximized ? 'default' : 'move' }}>
+      <div
+        onMouseDown={handleTitleBarMouseDown}
+        style={{ cursor: win.isMaximized ? 'default' : 'move' }}
+      >
         {/* Title bar drag handle */}
       </div>
       <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>

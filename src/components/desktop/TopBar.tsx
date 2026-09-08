@@ -20,7 +20,12 @@ export const TopBar: React.FC = () => {
     const updateTime = () => {
       const now = new Date();
       setTimeStr(
-        now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })
+        now.toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        })
       );
     };
     updateTime();
@@ -41,7 +46,9 @@ export const TopBar: React.FC = () => {
         <div className={styles.brandLogo}>
           <div className={styles.brandDot} />
           <span>{systemConfig.osName}</span>
-          <span style={{ color: 'var(--text-muted)', fontSize: '10px' }}>v{systemConfig.osVersion}</span>
+          <span style={{ color: 'var(--text-muted)', fontSize: '10px' }}>
+            v{systemConfig.osVersion}
+          </span>
         </div>
 
         {activeWindowId && (

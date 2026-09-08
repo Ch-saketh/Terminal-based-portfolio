@@ -111,6 +111,6 @@ export function parseCommand(rawInput: string): ParsedCommand | null {
     raw: rawInput,
     name: commandName,
     args,
-    flags,
+    flags
   };
 }

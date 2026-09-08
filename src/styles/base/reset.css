@@ -1,10 +1,13 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -46,7 +49,8 @@ button {
   color: inherit;
 }
 
-input, textarea {
+input,
+textarea {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
@@ -55,7 +59,8 @@ input, textarea {
   outline: none;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 

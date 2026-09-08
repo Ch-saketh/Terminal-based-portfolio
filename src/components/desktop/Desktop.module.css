@@ -16,7 +16,8 @@
   user-select: none;
 }
 
-.topBarLeft, .topBarRight {
+.topBarLeft,
+.topBarRight {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -271,5 +272,7 @@
 
 .floatingWindow.focused {
   border-color: var(--border-glow);
-  box-shadow: var(--shadow-window), 0 0 15px var(--accent-primary-dim);
+  box-shadow:
+    var(--shadow-window),
+    0 0 15px var(--accent-primary-dim);
 }

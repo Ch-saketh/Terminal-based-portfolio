@@ -15,7 +15,16 @@ export const AppShell: React.FC = () => {
   const crtEnabled = useSystemStore((s) => s.crtEnabled);
 
   return (
-    <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <div
+      style={{
+        position: 'relative',
+        width: '100vw',
+        height: '100vh',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column'
+      }}
+    >
       {/* Top Operating System Bar */}
       <TopBar />
 

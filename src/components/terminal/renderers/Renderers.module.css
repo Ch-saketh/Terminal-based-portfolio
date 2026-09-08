@@ -621,7 +621,8 @@
   border: 1px solid var(--border-subtle);
 }
 
-.formInput, .formTextarea {
+.formInput,
+.formTextarea {
   width: 100%;
   background: var(--bg-tertiary);
   border: 1px solid var(--border-subtle);
@@ -633,7 +634,8 @@
   transition: border-color var(--transition-fast);
 }
 
-.formInput:focus, .formTextarea:focus {
+.formInput:focus,
+.formTextarea:focus {
   border-color: var(--accent-primary);
   box-shadow: 0 0 6px var(--accent-primary-dim);
 }
