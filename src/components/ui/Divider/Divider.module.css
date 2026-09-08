@@ -1,0 +1,50 @@
+.divider {
+  border: none;
+  height: 1px;
+  background-color: var(--border-subtle);
+  margin: var(--space-4) 0;
+  width: 100%;
+}
+
+.divider.dashed {
+  background: none;
+  border-top: 1px dashed var(--border-medium);
+}
+
+.divider.glow {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+  box-shadow: 0 0 8px var(--accent-primary-dim);
+}
+
+.dividerWithLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+  width: 100%;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-subtle);
+}
+
+.dashed .line {
+  background: none;
+  border-top: 1px dashed var(--border-medium);
+}
+
+.glow .line {
+  background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  white-space: nowrap;
+}

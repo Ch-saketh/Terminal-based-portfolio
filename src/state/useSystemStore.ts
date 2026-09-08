@@ -8,6 +8,7 @@ interface SystemState {
   soundEnabled: boolean;
   crtEnabled: boolean;
   matrixRainActive: boolean;
+  showcaseActive: boolean;
   bootSequenceFinished: boolean;
   metrics: {
     cpu: number;
@@ -19,6 +20,7 @@ interface SystemState {
   toggleSound: () => void;
   toggleCrt: () => void;
   setMatrixRain: (active: boolean) => void;
+  toggleShowcase: (active?: boolean) => void;
   completeBoot: () => void;
   updateMetrics: () => void;
 }
@@ -28,6 +30,7 @@ export const useSystemStore = create<SystemState>((set, get) => ({
   soundEnabled: true,
   crtEnabled: true,
   matrixRainActive: false,
+  showcaseActive: false,
   bootSequenceFinished: false,
   metrics: {
     cpu: 14,
@@ -49,6 +52,9 @@ export const useSystemStore = create<SystemState>((set, get) => ({
   },
   setMatrixRain: (active: boolean) => {
     set({ matrixRainActive: active });
+  },
+  toggleShowcase: (active?: boolean) => {
+    set({ showcaseActive: active !== undefined ? active : !get().showcaseActive });
   },
   completeBoot: () => {
     set({ bootSequenceFinished: true });

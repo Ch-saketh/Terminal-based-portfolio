@@ -55,7 +55,7 @@ export function registerAllCommands() {
   // 4. PROJECTS COMMAND
   const projectsCmd: CommandDefinition = {
     name: 'projects',
-    aliases: ['work', 'showcase'],
+    aliases: ['work', 'showcase-projects'],
     description: 'Explore engineering projects, architecture decisions, and metrics',
     usage: 'projects [--featured] [--tag=ai|rust|go] [slug]',
     category: 'portfolio',
@@ -361,7 +361,23 @@ export function registerAllCommands() {
     }
   };
 
-  // 21. MATRIX COMMAND (EASTER EGG)
+  // 21. DESIGN-SYSTEM SHOWCASE COMMAND
+  const showcaseCmd: CommandDefinition = {
+    name: 'design-system',
+    aliases: ['showcase', 'ds', 'components'],
+    description: 'Open SAKETH.OS Design System & UI Primitive Showcase',
+    usage: 'design-system',
+    category: 'system',
+    execute: () => {
+      useSystemStore.getState().toggleShowcase(true);
+      return {
+        type: 'success',
+        text: 'Launching Design System Component Showcase overlay...'
+      };
+    }
+  };
+
+  // 22. MATRIX COMMAND (EASTER EGG)
   const matrixCmd: CommandDefinition = {
     name: 'matrix',
     description: 'Toggle digital rain canvas animation',
@@ -379,7 +395,7 @@ export function registerAllCommands() {
     }
   };
 
-  // 22. SUDO COMMAND (EASTER EGG)
+  // 23. SUDO COMMAND (EASTER EGG)
   const sudoCmd: CommandDefinition = {
     name: 'sudo',
     description: 'Execute command as root / superuser',
@@ -391,7 +407,7 @@ export function registerAllCommands() {
     })
   };
 
-  // 23. FORTUNE COMMAND (EASTER EGG)
+  // 24. FORTUNE COMMAND (EASTER EGG)
   const fortuneCmd: CommandDefinition = {
     name: 'fortune',
     aliases: ['quote'],
@@ -415,7 +431,7 @@ export function registerAllCommands() {
     }
   };
 
-  // 24. CELEBRATE / CONFETTI COMMAND (EASTER EGG)
+  // 25. CELEBRATE / CONFETTI COMMAND (EASTER EGG)
   const celebrateCmd: CommandDefinition = {
     name: 'celebrate',
     description: 'Launch developer celebration particle emitter',
@@ -434,7 +450,7 @@ export function registerAllCommands() {
     }
   };
 
-  // 25. UPTIME COMMAND
+  // 26. UPTIME COMMAND
   const uptimeCmd: CommandDefinition = {
     name: 'uptime',
     description: 'Show how long system has been running',
@@ -450,7 +466,7 @@ export function registerAllCommands() {
     }
   };
 
-  // 26. DATE COMMAND
+  // 27. DATE COMMAND
   const dateCmd: CommandDefinition = {
     name: 'date',
     description: 'Display current system date and UTC time',
@@ -462,7 +478,7 @@ export function registerAllCommands() {
     })
   };
 
-  // 27. ECHO COMMAND
+  // 28. ECHO COMMAND
   const echoCmd: CommandDefinition = {
     name: 'echo',
     description: 'Print text arguments to terminal output',
@@ -496,6 +512,7 @@ export function registerAllCommands() {
     soundCmd,
     crtCmd,
     monitorCmd,
+    showcaseCmd,
     matrixCmd,
     sudoCmd,
     fortuneCmd,

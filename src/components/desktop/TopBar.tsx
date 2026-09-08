@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSystemStore, SystemTheme } from '../../state/useSystemStore';
 import { useWindowStore } from '../../state/useWindowStore';
 import { systemConfig } from '../../content/config';
-import { Volume2, VolumeX, Tv, Monitor, Palette, Activity } from 'lucide-react';
+import { Volume2, VolumeX, Tv, Monitor, Palette, Activity, Layers } from 'lucide-react';
 import styles from './Desktop.module.css';
 
 export const TopBar: React.FC = () => {
@@ -13,6 +13,8 @@ export const TopBar: React.FC = () => {
   const toggleSound = useSystemStore((s) => s.toggleSound);
   const crtEnabled = useSystemStore((s) => s.crtEnabled);
   const toggleCrt = useSystemStore((s) => s.toggleCrt);
+  const showcaseActive = useSystemStore((s) => s.showcaseActive);
+  const toggleShowcase = useSystemStore((s) => s.toggleShowcase);
   const openWindow = useWindowStore((s) => s.openWindow);
   const activeWindowId = useWindowStore((s) => s.activeWindowId);
 
@@ -60,6 +62,16 @@ export const TopBar: React.FC = () => {
       </div>
 
       <div className={styles.topBarRight}>
+        {/* Design System Showcase Launcher */}
+        <button
+          className={`${styles.topBarActionBtn} ${showcaseActive ? styles.active : ''}`}
+          onClick={() => toggleShowcase()}
+          title="Open Design System Component Showcase"
+        >
+          <Layers size={14} />
+          <span>Design System</span>
+        </button>
+
         {/* Telemetry Monitor Launcher */}
         <button
           className={styles.topBarActionBtn}

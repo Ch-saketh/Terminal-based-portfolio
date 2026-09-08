@@ -1,0 +1,76 @@
+.codeBlockWrapper {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  margin: var(--space-2) 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.language {
+  font-size: 11px;
+  color: var(--accent-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  font-weight: var(--font-semibold);
+}
+
+.copyBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.copyBtn:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+
+.copiedText {
+  color: var(--accent-primary);
+}
+
+.pre {
+  margin: 0;
+  padding: var(--space-3);
+  overflow-x: auto;
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+}
+
+.lineRow {
+  display: flex;
+}
+
+.lineNumber {
+  width: 32px;
+  color: var(--text-dim);
+  user-select: none;
+  flex-shrink: 0;
+  text-align: right;
+  padding-right: var(--space-2);
+}
+
+.lineContent {
+  color: var(--text-primary);
+  white-space: pre;
+}

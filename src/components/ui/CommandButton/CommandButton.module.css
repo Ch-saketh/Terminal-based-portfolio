@@ -1,0 +1,137 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-xs);
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  position: relative;
+  line-height: 1;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.sm {
+  padding: 4px 8px;
+  font-size: var(--text-xs);
+}
+
+.md {
+  padding: 6px 14px;
+  font-size: var(--text-sm);
+}
+
+.lg {
+  padding: 10px 20px;
+  font-size: var(--text-base);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.1em;
+}
+
+/* Button Variants */
+.primary {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  border-color: var(--accent-primary);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--accent-primary-hover);
+  box-shadow: 0 0 12px var(--accent-primary-dim);
+}
+
+.secondary {
+  background: var(--accent-secondary);
+  color: var(--bg-primary);
+  border-color: var(--accent-secondary);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--accent-secondary-hover);
+  box-shadow: 0 0 12px var(--accent-secondary-dim);
+}
+
+.outline {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+}
+
+.outline:hover:not(:disabled) {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background: var(--accent-primary-dim);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: transparent;
+}
+
+.ghost:hover:not(:disabled) {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.danger {
+  background: var(--accent-error-dim);
+  color: var(--accent-error);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.danger:hover:not(:disabled) {
+  background: var(--accent-error);
+  color: #ffffff;
+}
+
+/* Terminal Chip Button Style */
+.chip {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  color: var(--accent-primary);
+  font-size: var(--text-xs);
+  padding: 3px 8px;
+}
+
+.chip:hover:not(:disabled) {
+  background: var(--accent-primary-dim);
+  border-color: var(--accent-primary);
+  transform: translateX(2px);
+}
+
+/* Disabled State */
+.button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Spinner for Loading State */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  width: 12px;
+  height: 12px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}

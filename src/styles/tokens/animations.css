@@ -1,0 +1,112 @@
+/* Animation & Motion Foundation Tokens */
+:root {
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  --dur-instant: 100ms;
+  --dur-fast: 180ms;
+  --dur-normal: 280ms;
+  --dur-slow: 450ms;
+}
+
+/* 1. Cursor Blink */
+@keyframes terminalCursorBlink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 2. Status Pulse Animation */
+@keyframes statusPulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+/* 3. Fade In */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 4. Slide Up */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 5. Panel Reveal */
+@keyframes panelReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.98) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 6. Command Execution Scan Flash */
+@keyframes commandFlash {
+  0% {
+    background-color: var(--accent-primary-dim);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* Utility Animation Classes */
+.animate-fade-in {
+  animation: fadeIn var(--dur-fast) var(--ease-out-quint) forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp var(--dur-normal) var(--ease-out-quint) forwards;
+}
+
+.animate-panel-reveal {
+  animation: panelReveal var(--dur-normal) var(--ease-out-quint) forwards;
+}
+
+.animate-status-pulse {
+  animation: statusPulse 2s infinite ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-panel-reveal,
+  .animate-status-pulse {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

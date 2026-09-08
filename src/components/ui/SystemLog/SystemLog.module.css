@@ -1,0 +1,61 @@
+.logContainer {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.logRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  line-height: var(--leading-tight);
+}
+
+.timestamp {
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.subsystem {
+  color: var(--accent-secondary);
+  font-weight: var(--font-semibold);
+  flex-shrink: 0;
+}
+
+.levelTag {
+  font-weight: var(--font-bold);
+  flex-shrink: 0;
+}
+
+.message {
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+/* Log Level Colors */
+.info .levelTag {
+  color: var(--accent-info);
+}
+
+.warn .levelTag {
+  color: var(--accent-warning);
+}
+
+.error .levelTag {
+  color: var(--accent-error);
+}
+
+.success .levelTag {
+  color: var(--accent-primary);
+}
+
+.debug .levelTag {
+  color: var(--text-muted);
+}
