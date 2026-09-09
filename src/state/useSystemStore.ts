@@ -2,9 +2,11 @@ import { create } from 'zustand';
 import { soundEngine } from '../core/audio/soundEngine';
 
 export type SystemTheme = 'emerald' | 'cyan' | 'amber' | 'purple';
+export type ActiveView = 'home' | 'terminal' | 'showcase';
 
 interface SystemState {
   theme: SystemTheme;
+  activeView: ActiveView;
   soundEnabled: boolean;
   crtEnabled: boolean;
   matrixRainActive: boolean;
@@ -17,6 +19,7 @@ interface SystemState {
     uptimeSeconds: number;
   };
   setTheme: (theme: SystemTheme) => void;
+  setActiveView: (view: ActiveView) => void;
   toggleSound: () => void;
   toggleCrt: () => void;
   setMatrixRain: (active: boolean) => void;
@@ -27,6 +30,7 @@ interface SystemState {
 
 export const useSystemStore = create<SystemState>((set, get) => ({
   theme: 'emerald',
+  activeView: 'home',
   soundEnabled: true,
   crtEnabled: true,
   matrixRainActive: false,
@@ -41,6 +45,9 @@ export const useSystemStore = create<SystemState>((set, get) => ({
   setTheme: (theme: SystemTheme) => {
     document.documentElement.setAttribute('data-theme', theme);
     set({ theme });
+  },
+  setActiveView: (activeView: ActiveView) => {
+    set({ activeView });
   },
   toggleSound: () => {
     const next = !get().soundEnabled;

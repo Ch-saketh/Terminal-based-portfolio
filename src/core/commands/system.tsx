@@ -16,6 +16,34 @@ export const systemCommands: CommandDefinition[] = [
     })
   },
   {
+    name: 'terminal',
+    aliases: ['term', 'cli', 'console', 'shell', 'open-terminal'],
+    description: 'Open the full interactive terminal command shell',
+    usage: 'terminal',
+    category: 'system',
+    execute: (ctx) => {
+      ctx.setActiveView?.('terminal');
+      return {
+        type: 'success',
+        text: 'Interactive Terminal session active. Type any command (about, projects, skills, help). Type "home" or "exit" to return.'
+      };
+    }
+  },
+  {
+    name: 'home',
+    aliases: ['exit', 'gui', 'workstation'],
+    description: 'Return to the developer workstation home view',
+    usage: 'home',
+    category: 'system',
+    execute: (ctx) => {
+      ctx.setActiveView?.('home');
+      return {
+        type: 'info',
+        text: 'Returned to developer workstation.'
+      };
+    }
+  },
+  {
     name: 'clear',
     aliases: ['cls'],
     description: 'Clear terminal viewport buffer',

@@ -3,6 +3,7 @@ import { skillsData } from '../../content/skills';
 import { SkillItem } from '../../types/content';
 import { useTerminalStore } from '../../state/useTerminalStore';
 import { Search, FolderGit2, X, ExternalLink } from 'lucide-react';
+import { SectionHeader } from '../terminal/SectionHeader';
 import styles from './SkillStackSystem.module.css';
 
 interface SkillStackSystemProps {
@@ -72,12 +73,15 @@ export const SkillStackSystem: React.FC<SkillStackSystemProps> = ({
 
   return (
     <div className={styles.stackContainer} role="region" aria-label="Engineering Stack Diagnostic System">
-      {/* 1. Top Diagnostic Header Bar */}
+      {/* 1. Clean Prominent Section Header */}
+      <SectionHeader
+        badge="SYS.STACK_DIAGNOSTICS"
+        title="SKILLS & TECH STACK"
+        subtitle="Categorized engineering competencies, distributed architecture concepts, and toolchain"
+        path="saketh@portfolio:~/skills"
+      />
+
       <div className={styles.topBar}>
-        <div className={styles.headerTitle}>
-          <span className={styles.systemBadge}>[SYS.STACK_DIAGNOSTICS]</span>
-          <span>saketh@portfolio:~/skills</span>
-        </div>
 
         <div className={styles.legendRow}>
           <div className={styles.legendItem}>

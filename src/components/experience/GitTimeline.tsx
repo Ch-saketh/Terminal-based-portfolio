@@ -3,6 +3,7 @@ import { gitMilestonesData } from '../../content/timeline';
 import { GitCommitMilestone } from '../../types/content';
 import { useTerminalStore } from '../../state/useTerminalStore';
 import { GitCommit, Calendar, X, ExternalLink, Award, BookOpen, Layers } from 'lucide-react';
+import { SectionHeader } from '../terminal/SectionHeader';
 import styles from './GitTimeline.module.css';
 
 interface GitTimelineProps {
@@ -53,7 +54,15 @@ export const GitTimeline: React.FC<GitTimelineProps> = ({
 
   return (
     <div className={styles.gitContainer} role="region" aria-label="Career Git History and Timeline">
-      {/* 1. Header Navigation Bar */}
+      {/* 1. Clean Prominent Section Header */}
+      <SectionHeader
+        badge="CAREER & COMMITS"
+        title="EXPERIENCE & JOURNEY"
+        subtitle="Interactive git commit history, milestones, and hackathon victories"
+        path="saketh@portfolio:~/journey (HEAD -> main)"
+      />
+
+      {/* 2. Header Navigation Bar */}
       <div className={styles.headerBar}>
         <div className={styles.headerTitle}>
           <span className={styles.systemBadge}>[SYS.GIT_JOURNEY]</span>

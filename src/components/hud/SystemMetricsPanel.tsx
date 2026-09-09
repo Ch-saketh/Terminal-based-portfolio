@@ -1,10 +1,12 @@
 import React from 'react';
 import { useSystemStore } from '../../state/useSystemStore';
+import { useTerminalStore } from '../../state/useTerminalStore';
 import { Activity } from 'lucide-react';
 import styles from './Hud.module.css';
 
 export const SystemMetricsPanel: React.FC = () => {
   const metrics = useSystemStore((s) => s.metrics);
+  const executeCommand = useTerminalStore((s) => s.executeCommand);
 
   const renderSparkBar = (percentage: number, colorVar = 'var(--accent-primary)') => {
     const totalBars = 16;
@@ -20,7 +22,12 @@ export const SystemMetricsPanel: React.FC = () => {
   };
 
   return (
-    <div className={styles.panelBox}>
+    <div
+      className={styles.panelBox}
+      onClick={() => executeCommand('debug')}
+      title="Click to run system diagnostics ('debug') in terminal"
+      style={{ cursor: 'pointer' }}
+    >
       <div className={styles.panelHeader}>
         <Activity size={13} color="var(--accent-primary)" />
         <span>SYSTEM METRICS</span>

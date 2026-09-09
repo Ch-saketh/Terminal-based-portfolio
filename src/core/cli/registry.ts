@@ -19,6 +19,50 @@ class CommandRegistry {
   }
 
   /**
+   * Register an array of command definitions.
+   */
+  public registerMany(commands: CommandDefinition[]): void {
+    commands.forEach((cmd) => this.register(cmd));
+  }
+
+  /**
+   * Unregister a command by its primary name or alias.
+   */
+  public unregister(nameOrAlias: string): boolean {
+    const key = nameOrAlias.toLowerCase();
+    const primary = this.aliasMap.get(key) || key;
+    const cmd = this.commands.get(primary);
+
+    if (!cmd) return false;
+
+    // Remove aliases
+    if (cmd.aliases) {
+      cmd.aliases.forEach((alias) => {
+        this.aliasMap.delete(alias.toLowerCase());
+      });
+    }
+
+    this.commands.delete(primary);
+    return true;
+  }
+
+  /**
+   * Checks if a command or alias is registered.
+   */
+  public hasCommand(nameOrAlias: string): boolean {
+    const key = nameOrAlias.toLowerCase();
+    return this.commands.has(key) || this.aliasMap.has(key);
+  }
+
+  /**
+   * Reset all registered commands.
+   */
+  public clear(): void {
+    this.commands.clear();
+    this.aliasMap.clear();
+  }
+
+  /**
    * Retrieve a command by name or alias.
    */
   public getCommand(nameOrAlias: string): CommandDefinition | undefined {
@@ -49,3 +93,4 @@ class CommandRegistry {
 }
 
 export const commandRegistry = new CommandRegistry();
+

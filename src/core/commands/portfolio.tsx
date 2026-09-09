@@ -1,5 +1,6 @@
 import { CommandDefinition } from '../../types/terminal';
 import { profileData } from '../../content/profile';
+import { unlockManager } from '../discovery/UnlockManager';
 import { WhoamiRenderer } from '../../components/terminal/renderers/WhoamiRenderer';
 import { AboutRenderer } from '../../components/terminal/renderers/AboutRenderer';
 import { ProjectsRenderer } from '../../components/terminal/renderers/ProjectsRenderer';
@@ -45,20 +46,38 @@ export const portfolioCommands: CommandDefinition[] = [
     name: 'projects',
     aliases: ['work', 'showcase-projects'],
     description: 'Explore engineering projects, architecture decisions, and metrics',
-    usage: 'projects [--featured] [--tag=ai|rust|go] [slug]',
+    usage: 'projects [--featured] [--tag=ai|rust|go] [--search=<term>] [slug]',
     category: 'portfolio',
     options: [
       { flag: '--featured', description: 'Show only featured flagship projects' },
-      { flag: '--tag', description: 'Filter projects by tech stack (e.g. --tag=rust)' }
+      { flag: '--tag', description: 'Filter projects by tech stack (e.g. --tag=rust)' },
+      { flag: '--search', description: 'Search projects by keyword or tech stack' }
     ],
     execute: (ctx) => {
       const slugArg = ctx.args[0];
       const featured = !!ctx.flags.featured;
       const tag = typeof ctx.flags.tag === 'string' ? ctx.flags.tag : undefined;
+      const search = typeof ctx.flags.search === 'string' ? ctx.flags.search : undefined;
+
+      // Automatically navigate VFS to /projects (or /projects/<slug>)
+      if (slugArg) {
+        ctx.navigateVfs(`/projects/${slugArg}`);
+      } else {
+        ctx.navigateVfs('/projects');
+      }
+
+      unlockManager.onProjectExploration();
 
       return {
         type: 'custom',
-        component: <ProjectsRenderer filterSlug={slugArg} featuredOnly={featured} tagFilter={tag} />
+        component: (
+          <ProjectsRenderer
+            filterSlug={slugArg}
+            featuredOnly={featured}
+            tagFilter={tag}
+            initialSearch={search}
+          />
+        )
       };
     }
   },

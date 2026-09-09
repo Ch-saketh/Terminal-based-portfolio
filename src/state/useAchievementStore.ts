@@ -68,8 +68,15 @@ export const useAchievementStore = create<AchievementState>((set, get) => ({
 
   unlockAchievement: (idOrCode: string) => {
     const current = get().achievements;
+    const norm = idOrCode.toLowerCase();
     const target = current.find(
-      (a) => a.id.toLowerCase() === idOrCode.toLowerCase() || a.code.toLowerCase() === idOrCode.toLowerCase()
+      (a) =>
+        a.id.toLowerCase() === norm ||
+        a.code.toLowerCase() === norm ||
+        (norm === 'root_access' && a.id === 'root_access') ||
+        (norm === 'classified' && a.id === 'root_access') ||
+        (norm === 'system_architect' && a.id === 'system_architect') ||
+        (norm === 'deep_dive' && a.id === 'system_architect')
     );
 
     if (!target || target.unlocked) {

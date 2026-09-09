@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useTerminalStore } from '../../state/useTerminalStore';
 import { useWindowStore } from '../../state/useWindowStore';
+import { useSystemStore } from '../../state/useSystemStore';
 import { useFileSystemStore } from '../../state/useFileSystemStore';
 import { getAutocompleteSuggestions } from '../../core/cli/autocomplete';
 import { TerminalOutput } from './TerminalOutput';
@@ -8,13 +9,25 @@ import { TerminalInput } from './TerminalInput';
 import { registerAllCommands } from '../../core/commands';
 import styles from './Terminal.module.css';
 
-export const Terminal: React.FC = () => {
+export interface TerminalProps {
+  embedded?: boolean;
+  showSceneToggle?: boolean;
+  onToggleScene?: () => void;
+}
+
+export const Terminal: React.FC<TerminalProps> = ({
+  embedded = false,
+  showSceneToggle = false,
+  onToggleScene
+}) => {
   const lines = useTerminalStore((s) => s.lines);
+  const isExecuting = useTerminalStore((s) => s.isExecuting);
   const executeCommand = useTerminalStore((s) => s.executeCommand);
   const initializeBootSequence = useTerminalStore((s) => s.initializeBootSequence);
   const minimizeWindow = useWindowStore((s) => s.minimizeWindow);
   const maximizeWindow = useWindowStore((s) => s.maximizeWindow);
   const closeWindow = useWindowStore((s) => s.closeWindow);
+  const setActiveView = useSystemStore((s) => s.setActiveView);
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -23,27 +36,53 @@ export const Terminal: React.FC = () => {
     registerAllCommands();
     initializeBootSequence();
 
-    // Deep link router check (e.g. #/projects or ?cmd=whoami)
+    // Deep link router check (e.g. #/projects/weavly, #/projects, ?project=weavly, ?cmd=whoami)
     const handleRouteParam = () => {
       const urlParams = new URLSearchParams(window.location.search);
       const cmdParam = urlParams.get('cmd');
-      const hash = window.location.hash.replace(/^#\/?/, '');
+      const projectParam = urlParams.get('project');
+      const hash = window.location.hash.replace(/^#\/?/, '').trim();
 
-      const target = cmdParam || hash;
-      if (target) {
+      let targetCmd = cmdParam;
+
+      if (!targetCmd && projectParam) {
+        targetCmd = `projects ${projectParam}`;
+      } else if (!targetCmd && hash) {
+        if (hash === 'projects' || hash === 'projects/') {
+          targetCmd = 'projects';
+        } else if (hash.startsWith('projects/') || hash.startsWith('project/')) {
+          const slug = hash.split('/')[1];
+          if (slug) {
+            targetCmd = `projects ${slug}`;
+          } else {
+            targetCmd = 'projects';
+          }
+        } else {
+          targetCmd = hash;
+        }
+      }
+
+      if (targetCmd) {
         setTimeout(() => {
-          executeCommand(target);
+          executeCommand(targetCmd);
         }, 400);
       }
     };
 
     handleRouteParam();
+    window.addEventListener('hashchange', handleRouteParam);
+    return () => window.removeEventListener('hashchange', handleRouteParam);
   }, [initializeBootSequence, executeCommand]);
 
-  // Keep scroll locked to bottom when new output renders
+  // Intelligent terminal scroll: keep SectionHeaders in view for rich components, scroll to bottom for standard text CLI streams
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      const lastLine = lines[lines.length - 1];
+      if (lastLine && lastLine.type === 'custom') {
+        scrollRef.current.scrollTop = 0;
+      } else {
+        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      }
     }
   }, [lines]);
 
@@ -63,9 +102,12 @@ export const Terminal: React.FC = () => {
         <div className={styles.trafficLights}>
           <button
             className={`${styles.trafficDot} ${styles.dotClose}`}
-            onClick={() => closeWindow('terminal')}
-            title="Close Terminal"
-            aria-label="Close terminal window"
+            onClick={() => {
+              setActiveView('home');
+              closeWindow('terminal');
+            }}
+            title="Return to Workstation (home)"
+            aria-label="Close terminal and return to workstation"
           />
           <button
             className={`${styles.trafficDot} ${styles.dotMin}`}
@@ -84,10 +126,45 @@ export const Terminal: React.FC = () => {
         <div className={styles.terminalTitle}>saketh@workstation: ~ (zsh)</div>
 
         <div className={styles.terminalMeta}>
-          <div className={styles.statusIndicator}>
-            <span className={styles.statusDot} />
-            <span>ONLINE</span>
-          </div>
+          {embedded ? (
+            <>
+              <button
+                className={styles.headerClearBtn}
+                onClick={() => useTerminalStore.getState().clearLines()}
+                title="Clear terminal output"
+              >
+                [ ⌫ Clear ]
+              </button>
+              {showSceneToggle && (
+                <button
+                  className={styles.headerSceneToggleBtn}
+                  onClick={onToggleScene}
+                  title="Toggle Workstation Artwork Scene"
+                >
+                  [ 🎨 Workstation Art ]
+                </button>
+              )}
+            </>
+          ) : (
+            <button
+              className={styles.headerHomeBtn}
+              onClick={() => setActiveView('home')}
+              title="Return to Workstation (or type 'home')"
+            >
+              [ 🏠 Return to Workstation ]
+            </button>
+          )}
+          {isExecuting ? (
+            <div className={styles.statusIndicator}>
+              <span className={styles.statusDot} style={{ background: '#ffd166' }} />
+              <span className={styles.executingBadge}>EXECUTING</span>
+            </div>
+          ) : (
+            <div className={styles.statusIndicator}>
+              <span className={styles.statusDot} />
+              <span>ONLINE</span>
+            </div>
+          )}
           <span>UTF-8</span>
         </div>
       </div>

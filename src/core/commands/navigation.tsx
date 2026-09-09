@@ -1,5 +1,7 @@
 import { CommandDefinition } from '../../types/terminal';
 import { vfsInstance } from '../vfs/vfs';
+import { projectsData } from '../../content/projects';
+import { ProjectDetail } from '../../components/projects/ProjectDetail';
 
 export const navigationCommands: CommandDefinition[] = [
   {
@@ -41,6 +43,17 @@ export const navigationCommands: CommandDefinition[] = [
         return { type: 'text', text: lines.join('\n') };
       }
 
+      // Check if listing inside a project directory (e.g. /projects/weavly or ~/projects/weavly)
+      const absPath = vfsInstance.normalizePath(targetPath, ctx.cwd);
+      const isProjectDir = /(?:^|\/)projects\/[^/]+$/.test(absPath);
+
+      if (isProjectDir) {
+        const formatted = nodes
+          .map((n) => (n.type === 'directory' ? `${n.name}/` : n.name))
+          .join('\n');
+        return { type: 'text', text: formatted };
+      }
+
       const formatted = nodes
         .map((n) => (n.type === 'directory' ? `${n.name}/` : n.name))
         .join('    ');
@@ -56,6 +69,16 @@ export const navigationCommands: CommandDefinition[] = [
     execute: (ctx) => {
       const target = ctx.args[0] || '~';
       const res = ctx.navigateVfs(target);
+
+      // Smart fallback: If target is not found in cwd, check if it exists in /projects/<target>
+      if (!res.success && !target.startsWith('/') && !target.startsWith('~') && !target.startsWith('.')) {
+        const projectPath = `/projects/${target}`;
+        const fallbackRes = ctx.navigateVfs(projectPath);
+        if (fallbackRes.success) {
+          return { type: 'system' };
+        }
+      }
+
       if (!res.success) {
         return { type: 'error', text: res.error };
       }
@@ -77,6 +100,9 @@ export const navigationCommands: CommandDefinition[] = [
     description: 'Concatenate and print file contents to terminal buffer',
     usage: 'cat <file-path>',
     category: 'navigation',
+    options: [
+      { flag: '--raw', description: 'Force raw text output without presentation component' }
+    ],
     execute: (ctx) => {
       if (ctx.args.length === 0) {
         return { type: 'error', text: 'cat: missing file operand. Usage: cat <path>' };
@@ -86,6 +112,25 @@ export const navigationCommands: CommandDefinition[] = [
       if (!res.success || res.content === undefined) {
         return { type: 'error', text: res.error || 'Failed to read file.' };
       }
+
+      // Check if target is a project README.md
+      const isRaw = !!ctx.flags.raw;
+      const absPath = vfsInstance.normalizePath(target, ctx.cwd);
+      const projectMatch = absPath.match(/(?:^|\/)projects\/([^/]+)\/README\.md$/i);
+
+      if (!isRaw && projectMatch && projectMatch[1]) {
+        const slug = projectMatch[1];
+        const project = projectsData.find(
+          (p) => p.slug.toLowerCase() === slug.toLowerCase() || p.id.toLowerCase() === slug.toLowerCase()
+        );
+        if (project) {
+          return {
+            type: 'custom',
+            component: <ProjectDetail project={project} />
+          };
+        }
+      }
+
       return { type: 'text', text: res.content };
     }
   },

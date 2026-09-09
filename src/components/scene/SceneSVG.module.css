@@ -1,0 +1,16 @@
+/* SceneSVG hover effects — applied via CSS to avoid inline style duplication */
+
+svg :global(.monitor-hover-ring) {
+  transition: stroke 0.15s ease, opacity 0.15s ease;
+}
+
+svg g[role="button"]:hover :global(.monitor-hover-ring) {
+  stroke: rgba(0, 255, 100, 0.35);
+}
+
+/* Steam animation referenced in MugEl */
+@keyframes steamRise {
+  0%   { opacity: 0; transform: translateY(0); }
+  50%  { opacity: 0.5; transform: translateY(-5px); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}

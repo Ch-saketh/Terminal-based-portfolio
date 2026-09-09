@@ -35,6 +35,7 @@ export interface CommandContext {
   toggleCrt: () => void;
   openWindow: (id: string) => void;
   clearTerminal: () => void;
+  setActiveView?: (view: 'home' | 'terminal' | 'showcase') => void;
   navigateVfs: (path: string) => { success: boolean; error?: string };
 }
 

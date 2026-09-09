@@ -1,6 +1,7 @@
 import React from 'react';
 import { commandRegistry } from '../../../core/cli/registry';
 import { useTerminalStore } from '../../../state/useTerminalStore';
+import { SectionHeader } from '../SectionHeader';
 import styles from './Renderers.module.css';
 
 export const HelpRenderer: React.FC = () => {
@@ -16,12 +17,12 @@ export const HelpRenderer: React.FC = () => {
 
   return (
     <div className={styles.helpContainer}>
-      <div className={styles.helpHeader}>
-        <span className={styles.highlightText}>SAKETH.OS</span> Command Manual & Execution Reference
-      </div>
-      <p className={styles.helpSub}>
-        Click any command chip to execute it immediately, or type it into the terminal prompt.
-      </p>
+      <SectionHeader
+        badge="SYSTEM MANUAL"
+        title="COMMAND INDEX & HELP"
+        subtitle="Click any command chip below to execute it immediately, or type it in the prompt"
+        path="saketh@portfolio:~"
+      />
 
       {categories.map(({ key, label }) => {
         const cmds = allCommands.filter((c) => c.category === key);

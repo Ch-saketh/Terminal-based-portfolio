@@ -7,12 +7,14 @@ interface ProjectsRendererProps {
   filterSlug?: string;
   featuredOnly?: boolean;
   tagFilter?: string;
+  initialSearch?: string;
 }
 
 export const ProjectsRenderer: React.FC<ProjectsRendererProps> = ({
   filterSlug,
   featuredOnly,
-  tagFilter
+  tagFilter,
+  initialSearch
 }) => {
   if (filterSlug) {
     const single = projectsData.find(
@@ -30,6 +32,7 @@ export const ProjectsRenderer: React.FC<ProjectsRendererProps> = ({
       initialSlug={filterSlug}
       featuredOnly={featuredOnly}
       tagFilter={tagFilter}
+      initialSearch={initialSearch}
     />
   );
 };

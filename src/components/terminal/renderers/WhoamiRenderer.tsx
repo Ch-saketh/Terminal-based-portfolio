@@ -1,6 +1,7 @@
 import React from 'react';
 import { profileData } from '../../../content/profile';
 import { useTerminalStore } from '../../../state/useTerminalStore';
+import { SectionHeader } from '../SectionHeader';
 import styles from './Renderers.module.css';
 
 export const WhoamiRenderer: React.FC = () => {
@@ -8,6 +9,13 @@ export const WhoamiRenderer: React.FC = () => {
 
   return (
     <div className={styles.whoamiContainer} role="region" aria-label="Whoami Profile Output">
+      <SectionHeader
+        badge="DEVELOPER IDENTITY"
+        title="WHOAMI"
+        subtitle="Core developer profile, engineering roles, and system navigation"
+        path="saketh@portfolio:~"
+      />
+
       {/* 1. Profile Identity Header */}
       <div className={styles.profileHeader}>
         <div className={styles.nameGroup}>

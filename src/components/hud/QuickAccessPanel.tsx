@@ -37,7 +37,7 @@ export const QuickAccessPanel: React.FC = () => {
       id: 'email',
       label: 'Email',
       icon: <Mail size={18} />,
-      action: () => executeCommand('contact')
+      action: () => executeCommand('contact', { clearBefore: true, noEcho: true })
     },
     {
       id: 'leetcode',
@@ -49,7 +49,7 @@ export const QuickAccessPanel: React.FC = () => {
       id: 'projects',
       label: 'Projects',
       icon: <FolderGit2 size={18} />,
-      action: () => executeCommand('projects')
+      action: () => executeCommand('projects', { clearBefore: true, noEcho: true })
     }
   ];
 

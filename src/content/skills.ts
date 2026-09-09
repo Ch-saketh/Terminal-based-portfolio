@@ -2,113 +2,10 @@ import { SkillCategory } from '../types/content';
 
 export const skillsData: SkillCategory[] = [
   {
-    category: 'Languages',
-    slug: 'languages',
-    iconName: 'Code',
-    description: 'Core programming languages for systems, backend services, AI models, and web applications.',
-    skills: [
-      {
-        id: 'typescript',
-        name: 'TypeScript',
-        category: 'Languages',
-        classification: 'Primary',
-        asciiMeter: '████████████████',
-        experienceYears: 4,
-        whatUsedFor: 'Building type-safe client-side operating systems, high-concurrency Node.js microservices, and React application architectures.',
-        associatedProjects: [
-          { name: 'SAKETH.OS', slug: 'saketh-os' },
-          { name: 'Weavly / Zyra', slug: 'weavly' },
-          { name: 'CinePortal', slug: 'cineportal' }
-        ],
-        engineeringConcepts: ['Generic Constraints', 'Discriminated Unions', 'AST Generation', 'Conditional Types', 'Type Narrowing'],
-        relatedTech: ['Node.js', 'React', 'JavaScript', 'Vite'],
-        keyCapabilities: ['Strict Compiler Modes', 'Utility Types', 'Interface Contracts', 'ESM / CJS Interop']
-      },
-      {
-        id: 'python',
-        name: 'Python',
-        category: 'Languages',
-        classification: 'Primary',
-        asciiMeter: '████████████████',
-        experienceYears: 4,
-        whatUsedFor: 'Developing AI inference microservices, vector embedding pipelines, asynchronous web scrapers, and data pipelines.',
-        associatedProjects: [
-          { name: 'Weavly / Zyra', slug: 'weavly' },
-          { name: 'PageMatch', slug: 'pagematch' }
-        ],
-        engineeringConcepts: ['Asyncio Event Loops', 'Pydantic Data Models', 'Memory Profiling', 'Multiprocessing Pools', 'Vector Computation'],
-        relatedTech: ['FastAPI', 'PyTorch', 'Qdrant', 'Celery', 'Playwright'],
-        keyCapabilities: ['Asynchronous Runtimes', 'FastEmbed Integration', 'Type Annotations (mypy)', 'REST API Design']
-      },
-      {
-        id: 'java',
-        name: 'Java',
-        category: 'Languages',
-        classification: 'Primary',
-        asciiMeter: '████████████████',
-        experienceYears: 3,
-        whatUsedFor: 'Enterprise-grade microservices, transactional backend workflows, Spring Boot APIs, and robust auth filters.',
-        associatedProjects: [
-          { name: 'Weavly / Zyra', slug: 'weavly' }
-        ],
-        engineeringConcepts: ['JVM Memory Model', 'Garbage Collection Tuning', 'Multi-threaded Concurrency', 'Reflection', 'Dependency Injection'],
-        relatedTech: ['Spring Boot', 'Spring Security', 'Maven', 'Lombok', 'JUnit'],
-        keyCapabilities: ['Spring Boot 3', 'JWT Authentication Filter', 'JPA / Hibernate', 'High-Throughput Concurrency']
-      },
-      {
-        id: 'golang',
-        name: 'Go (Golang)',
-        category: 'Languages',
-        classification: 'Working Knowledge',
-        asciiMeter: '████████████',
-        experienceYears: 2,
-        whatUsedFor: 'High-concurrency WebSocket connection hubs, room state synchronization, and low-latency network proxies.',
-        associatedProjects: [
-          { name: 'CinePortal', slug: 'cineportal' }
-        ],
-        engineeringConcepts: ['Goroutines & Channels', 'Mutex Synchronization', 'Non-blocking I/O', 'Memory Allocation', 'Go Standard Library'],
-        relatedTech: ['Gorilla WebSockets', 'gRPC', 'Docker'],
-        keyCapabilities: ['Concurrent Connection Multiplexing', 'Sub-millisecond Routing', 'Zero-allocation Buffering']
-      },
-      {
-        id: 'rust',
-        name: 'Rust',
-        category: 'Languages',
-        classification: 'Exploring',
-        asciiMeter: '████████',
-        experienceYears: 1,
-        whatUsedFor: 'Exploring systems programming, memory-safe data structures, async runtimes, and WebAssembly compilation.',
-        associatedProjects: [
-          { name: 'SAKETH.OS', slug: 'saketh-os' }
-        ],
-        engineeringConcepts: ['Borrow Checker & Lifetimes', 'Tokio Async Runtime', 'Zero-Cost Abstractions', 'Trait Bounds', 'Pattern Matching'],
-        relatedTech: ['Tokio', 'Wasm-pack', 'Cargo'],
-        keyCapabilities: ['Memory Safety without GC', 'Fearless Concurrency', 'WebAssembly Runtimes']
-      },
-      {
-        id: 'sql',
-        name: 'SQL',
-        category: 'Languages',
-        classification: 'Primary',
-        asciiMeter: '████████████████',
-        experienceYears: 4,
-        whatUsedFor: 'Designing relational schemas, complex analytical queries, indexing strategies, and database migrations.',
-        associatedProjects: [
-          { name: 'Weavly / Zyra', slug: 'weavly' },
-          { name: 'PageMatch', slug: 'pagematch' },
-          { name: 'CinePortal', slug: 'cineportal' }
-        ],
-        engineeringConcepts: ['ACID Transactions', 'B-Tree & GIN Indexing', 'EXPLAIN ANALYZE', 'Window Functions', 'Partitioning'],
-        relatedTech: ['PostgreSQL', 'MySQL', 'Prisma', 'Hibernate'],
-        keyCapabilities: ['Query Optimization', 'Schema Normalization', 'Deadlock Avoidance', 'JSONB Querying']
-      }
-    ]
-  },
-  {
     category: 'Backend',
     slug: 'backend',
     iconName: 'Server',
-    description: 'Server frameworks, distributed communication protocols, microservices, and asynchronous task workers.',
+    description: 'High-throughput backend architectures, microservices, REST APIs, and database persistence layers.',
     skills: [
       {
         id: 'spring-boot',
@@ -117,13 +14,14 @@ export const skillsData: SkillCategory[] = [
         classification: 'Primary',
         asciiMeter: '████████████████',
         experienceYears: 3,
-        whatUsedFor: 'Architecting core services, JWT auth filters, catalog hydration pipelines, and RESTful service orchestration.',
+        whatUsedFor: 'Building decoupled REST API endpoints, user authentication, checkout data blocks, and transaction-safe services.',
         associatedProjects: [
-          { name: 'Weavly / Zyra', slug: 'weavly' }
+          { name: 'Weavly / Zyra', slug: 'weavly' },
+          { name: 'LUXZERA', slug: 'luxzera' }
         ],
-        engineeringConcepts: ['Inversion of Control (IoC)', 'Aspect-Oriented Programming (AOP)', 'Filter Chains', 'Connection Pooling', 'Transactional Boundaries'],
-        relatedTech: ['Java', 'Spring Security', 'PostgreSQL', 'Redis', 'JPA'],
-        keyCapabilities: ['JWT Auth Architecture', 'Exception Interceptors', 'High-Concurrency Servlets', 'Actuator Health Metrics']
+        engineeringConcepts: ['Inversion of Control (IoC)', 'Dependency Injection', 'Spring MVC', 'Application Context', 'Actuator'],
+        relatedTech: ['Java', 'Spring Security', 'Hibernate', 'JPA', 'MySQL'],
+        keyCapabilities: ['REST Controller Design', 'Service Layer Abstraction', 'Exception Middleware', 'Configuration Profiles']
       },
       {
         id: 'fastapi',
@@ -132,141 +30,83 @@ export const skillsData: SkillCategory[] = [
         classification: 'Primary',
         asciiMeter: '████████████████',
         experienceYears: 3,
-        whatUsedFor: 'Building low-latency AI inference microservices, vector generation endpoints, and crawler scheduling APIs.',
+        whatUsedFor: 'High-performance asynchronous Python microservices for AI vector search, embeddings, and RAG pipelines.',
         associatedProjects: [
           { name: 'Weavly / Zyra', slug: 'weavly' },
           { name: 'PageMatch', slug: 'pagematch' }
         ],
-        engineeringConcepts: ['Asynchronous Request Handling', 'Pydantic Validation', 'Dependency Injection', 'OpenAPI Schema Generation', 'Background Tasks'],
-        relatedTech: ['Python', 'Uvicorn', 'Qdrant', 'PyTorch', 'Celery'],
-        keyCapabilities: ['Sub-20ms Request Overhead', 'Async Vector Pipelines', 'Batch Processing Handlers']
+        engineeringConcepts: ['ASGI Concurrency', 'Pydantic Schemas', 'Async/Await Event Loops', 'Dependency Injection'],
+        relatedTech: ['Python', 'Uvicorn', 'Qdrant', 'PyTorch'],
+        keyCapabilities: ['Asynchronous Endpoints', 'OpenAPI Schema Generation', 'Streaming Responses', 'Background Tasks']
       },
       {
-        id: 'nodejs',
-        name: 'Node.js & Express',
+        id: 'node-express',
+        name: 'Node.js & Express.js',
         category: 'Backend',
         classification: 'Primary',
         asciiMeter: '████████████████',
-        experienceYears: 4,
-        whatUsedFor: 'Developing real-time API services, WebSocket gateways, and custom build-tool servers.',
-        associatedProjects: [
-          { name: 'SAKETH.OS', slug: 'saketh-os' },
-          { name: 'CinePortal', slug: 'cineportal' }
-        ],
-        engineeringConcepts: ['Event Loop & Libuv', 'Stream Buffering', 'Middleware Pipeline Pattern', 'Cluster Module'],
-        relatedTech: ['TypeScript', 'Express', 'Socket.io', 'WS'],
-        keyCapabilities: ['Non-blocking I/O', 'Streaming Response Endpoints', 'JSON Middleware']
-      },
-      {
-        id: 'rest-apis',
-        name: 'REST APIs & WebSockets',
-        category: 'Backend',
-        classification: 'Primary',
-        asciiMeter: '████████████████',
-        experienceYears: 4,
-        whatUsedFor: 'Designing resilient client-server protocols, stateless API contracts, and bidirectional real-time sockets.',
-        associatedProjects: [
-          { name: 'Weavly / Zyra', slug: 'weavly' },
-          { name: 'CinePortal', slug: 'cineportal' },
-          { name: 'PageMatch', slug: 'pagematch' }
-        ],
-        engineeringConcepts: ['Statelessness', 'Idempotency', 'HTTP/1.1 vs HTTP/2', 'WebSocket Handshake', 'Heartbeat Pings & Reconnects'],
-        relatedTech: ['Spring Boot', 'FastAPI', 'Gorilla WebSockets', 'Axios'],
-        keyCapabilities: ['API Versioning', 'Rate-Limiting Headers', 'Structured Error Payloads', 'Binary Frame Streaming']
-      },
-      {
-        id: 'celery',
-        name: 'Celery & Task Queues',
-        category: 'Backend',
-        classification: 'Working Knowledge',
-        asciiMeter: '████████████',
-        experienceYears: 2,
-        whatUsedFor: 'Orchestrating distributed web scraping jobs, asynchronous batch embedding jobs, and cron scheduling.',
-        associatedProjects: [
-          { name: 'PageMatch', slug: 'pagematch' }
-        ],
-        engineeringConcepts: ['Task Serialization', 'Prefetch Multipliers', 'Dead Letter Queues', 'Worker Acknowledgments', 'Exponential Backoff'],
-        relatedTech: ['Redis Broker', 'Python', 'Flower', 'PostgreSQL'],
-        keyCapabilities: ['Distributed Worker Concurrency', 'Task Retries', 'Result Backend Hydration']
-      }
-    ]
-  },
-  {
-    category: 'Frontend',
-    slug: 'frontend',
-    iconName: 'Layout',
-    description: 'Modern component architectures, state machines, design systems, and responsive terminal UX.',
-    skills: [
-      {
-        id: 'react',
-        name: 'React 18 / 19',
-        category: 'Frontend',
-        classification: 'Primary',
-        asciiMeter: '████████████████',
-        experienceYears: 4,
-        whatUsedFor: 'Engineering interactive terminal operating systems, high-density HUD dashboards, and reactive web applications.',
-        associatedProjects: [
-          { name: 'SAKETH.OS', slug: 'saketh-os' },
-          { name: 'Weavly / Zyra', slug: 'weavly' },
-          { name: 'CinePortal', slug: 'cineportal' }
-        ],
-        engineeringConcepts: ['Reconciliation & Virtual DOM', 'Custom Hook Extraction', 'Fiber Tree Architecture', 'State Colocation', 'Memoization'],
-        relatedTech: ['TypeScript', 'Zustand', 'Vite', 'Tailwind CSS'],
-        keyCapabilities: ['Atomic Zustand Store Binding', 'Zero-Lag 60fps Terminal Buffer', 'Dynamic Command Renderers']
-      },
-      {
-        id: 'nextjs',
-        name: 'Next.js',
-        category: 'Frontend',
-        classification: 'Working Knowledge',
-        asciiMeter: '████████████',
         experienceYears: 3,
-        whatUsedFor: 'Server-side rendered streaming apps, SEO-optimized web dashboards, and API route proxies.',
+        whatUsedFor: 'Developing backend microservices, real-time bidding APIs, WebSocket servers, and full-stack services.',
         associatedProjects: [
+          { name: 'Quantum-Secure E-Auction', slug: 'quantum-e-auction' },
           { name: 'CinePortal', slug: 'cineportal' }
         ],
-        engineeringConcepts: ['Server Side Rendering (SSR)', 'Static Site Generation (SSG)', 'App Router', 'Hydration Boundaries', 'Route Handlers'],
-        relatedTech: ['React', 'TypeScript', 'Tailwind CSS'],
-        keyCapabilities: ['Dynamic Route Generation', 'Server Actions', 'Optimized Font & Asset Pipeline']
+        engineeringConcepts: ['Event-Driven Architecture', 'Middleware Chains', 'Non-blocking I/O', 'JSON Payload Validation'],
+        relatedTech: ['JavaScript', 'TypeScript', 'WebSockets', 'MongoDB', 'PostgreSQL'],
+        keyCapabilities: ['API Routing', 'Socket Server Management', 'Authentication Middleware', 'Error Handling']
       },
       {
-        id: 'css-architecture',
-        name: 'Vanilla CSS & Design Tokens',
-        category: 'Frontend',
+        id: 'hibernate-jpa',
+        name: 'Hibernate & JPA',
+        category: 'Backend',
         classification: 'Primary',
         asciiMeter: '████████████████',
-        experienceYears: 4,
-        whatUsedFor: 'Building zero-runtime CSS token architectures, terminal glow effects, scanlines, and fluid responsive layouts.',
+        experienceYears: 2,
+        whatUsedFor: 'Object-relational mapping, tuning relational schemas, and eliminating N+1 query loops to cut latency by 60%.',
         associatedProjects: [
-          { name: 'SAKETH.OS', slug: 'saketh-os' },
-          { name: 'Weavly / Zyra', slug: 'weavly' }
+          { name: 'LUXZERA', slug: 'luxzera' }
         ],
-        engineeringConcepts: ['CSS Custom Properties', 'BEM Naming', 'CSS Grid & Flexbox Matrix', 'Hardware Acceleration (GPU)', 'Prefers-Reduced-Motion'],
-        relatedTech: ['CSS Modules', 'PostCSS', 'Design Tokens'],
-        keyCapabilities: ['Dark-Theme Token Foundations', 'Scanline CRT Overlays', 'Responsive Breakpoint Matrices']
+        engineeringConcepts: ['Entity Lifecycle', 'FetchType Lazy/Eager', 'JPQL Queries', 'Caching Layers', 'Transaction Boundaries'],
+        relatedTech: ['Java', 'Spring Boot', 'MySQL', 'PostgreSQL'],
+        keyCapabilities: ['Join Fetch Optimization', 'Batch Fetching', 'Entity Relationships', 'Schema Generation']
       },
       {
-        id: 'web-audio',
-        name: 'Web Audio API',
-        category: 'Frontend',
+        id: 'spring-security',
+        name: 'Spring Security',
+        category: 'Backend',
         classification: 'Working Knowledge',
         asciiMeter: '████████████',
         experienceYears: 2,
-        whatUsedFor: 'Procedural audio synthesis for keyboard clicks, boot chords, and system alerts without audio file downloads.',
+        whatUsedFor: 'Configuring secure authentication filters, password hashing, and role-based endpoint authorization.',
         associatedProjects: [
-          { name: 'SAKETH.OS', slug: 'saketh-os' }
+          { name: 'LUXZERA', slug: 'luxzera' }
         ],
-        engineeringConcepts: ['AudioContext Graphs', 'Oscillator Nodes', 'Gain Envelopes (ADSR)', 'Biquad Filters', 'Frequency Modulation'],
-        relatedTech: ['Web Audio API', 'TypeScript'],
-        keyCapabilities: ['Procedural Keyclick Chords', 'Boot Sequence Audio Arpeggios', 'Zero Network Asset Overhead']
+        engineeringConcepts: ['Filter Chains', 'Authentication Providers', 'CSRF Protection', 'JWT Validation'],
+        relatedTech: ['Java', 'Spring Boot', 'REST APIs'],
+        keyCapabilities: ['Security Filter Configuration', 'Bearer Token Handling', 'Route Guards', 'Session Policies']
+      },
+      {
+        id: 'flask',
+        name: 'Flask',
+        category: 'Backend',
+        classification: 'Working Knowledge',
+        asciiMeter: '████████████',
+        experienceYears: 2,
+        whatUsedFor: 'Lightweight Python microservices, model serving endpoints, and prototype API backends.',
+        associatedProjects: [
+          { name: 'Hybrid Book Recommender', slug: 'book-recommendation' }
+        ],
+        engineeringConcepts: ['WSGI Standard', 'Route Decorators', 'Blueprint Modularization', 'JSON Serialization'],
+        relatedTech: ['Python', 'Scikit-learn', 'LightFM'],
+        keyCapabilities: ['Microservice Architecture', 'Rapid Prototyping', 'REST Endpoints', 'ML Model Serving']
       }
     ]
   },
   {
     category: 'AI / ML',
-    slug: 'ai',
+    slug: 'ai-ml',
     iconName: 'Cpu',
-    description: 'Vector embeddings, semantic search, hybrid RAG, multi-modal model integration, and vector databases.',
+    description: 'Machine learning algorithms, vector databases, recommendation engines, and LLM evaluation suites.',
     skills: [
       {
         id: 'qdrant',
@@ -274,60 +114,118 @@ export const skillsData: SkillCategory[] = [
         category: 'AI / ML',
         classification: 'Primary',
         asciiMeter: '████████████████',
-        experienceYears: 2,
-        whatUsedFor: 'High-dimensional vector storage, HNSW semantic search, and payload filtering for 100k+ multi-modal fashion embeddings.',
-        associatedProjects: [
-          { name: 'Weavly / Zyra', slug: 'weavly' }
-        ],
-        engineeringConcepts: ['HNSW Graph Indexing', 'Cosine & Dot-Product Metrics', 'Payload Pre-filtering', 'Vector Quantization', 'Collection Sharding'],
-        relatedTech: ['FastAPI', 'FastEmbed', 'Python', 'Docker'],
-        keyCapabilities: ['Sub-40ms Vector Retrieval', 'Multi-attribute Payload Filtering', 'Inverted Index Optimization']
-      },
-      {
-        id: 'clip-embeddings',
-        name: 'Multi-Modal Embeddings (CLIP)',
-        category: 'AI / ML',
-        classification: 'Primary',
-        asciiMeter: '████████████████',
-        experienceYears: 2,
-        whatUsedFor: 'Generating joint image-text latent vectors to understand aesthetic style, color harmony, and outfit pairing.',
-        associatedProjects: [
-          { name: 'Weavly / Zyra', slug: 'weavly' }
-        ],
-        engineeringConcepts: ['Contrastive Learning', 'Vision Transformer (ViT) Backbones', '512-D Latent Space Projection', 'Zero-Shot Classification'],
-        relatedTech: ['PyTorch', 'FastEmbed', 'Qdrant', 'HuggingFace'],
-        keyCapabilities: ['Image-to-Image Similarity', 'Text-to-Image Querying', 'Style Aesthetic Clustering']
-      },
-      {
-        id: 'hybrid-rag',
-        name: 'Hybrid RAG & Semantic Retrieval',
-        category: 'AI / ML',
-        classification: 'Primary',
-        asciiMeter: '████████████████',
-        experienceYears: 2,
-        whatUsedFor: 'Combining sparse keyword filtering with dense vector similarity search to eliminate hallucination in recommendations.',
+        experienceYears: 3,
+        whatUsedFor: 'Indexing multi-modal visual embeddings and powering sub-50ms HNSW vector similarity search over 100k+ items.',
         associatedProjects: [
           { name: 'Weavly / Zyra', slug: 'weavly' },
           { name: 'PageMatch', slug: 'pagematch' }
         ],
-        engineeringConcepts: ['Dense + Sparse Fusion', 'Reciprocal Rank Fusion (RRF)', 'Re-ranking Cross-Encoders', 'Context Window Injection'],
-        relatedTech: ['Qdrant', 'FastAPI', 'LangChain', 'OpenAI / Gemini APIs'],
-        keyCapabilities: ['Precision Re-ranking', 'Context-Aware Outfits', 'Metadata-Grounded Filtering']
+        engineeringConcepts: ['HNSW Indexing', 'Cosine Similarity', 'Payload Filtering', 'Quantization (Scalar/Product)', 'Collection Sharding'],
+        relatedTech: ['FastAPI', 'Python', 'FastEmbed', 'CLIP'],
+        keyCapabilities: ['Multi-Tenant Collections', 'Filtered Vector Search', 'Snapshot Backups', 'gRPC & REST Clients']
+      },
+      {
+        id: 'python-ml',
+        name: 'Python (ML & Data)',
+        category: 'AI / ML',
+        classification: 'Primary',
+        asciiMeter: '████████████████',
+        experienceYears: 3,
+        whatUsedFor: 'Machine learning pipelines, LightFM recommendation engines, TF-IDF vectorization, and LLM code evaluation.',
+        associatedProjects: [
+          { name: 'Hybrid Book Recommender', slug: 'book-recommendation' },
+          { name: 'Weavly / Zyra', slug: 'weavly' }
+        ],
+        engineeringConcepts: ['Sparse Matrix Computation', 'WARP Loss Tuning', 'TF-IDF Vectorization', 'Model Evaluation'],
+        relatedTech: ['LightFM', 'Scikit-learn', 'Hugging Face', 'Pandas', 'NumPy'],
+        keyCapabilities: ['Data Pipelines', 'Recommendation Systems', 'LLM Benchmarking', 'API Deployment']
       },
       {
         id: 'pytorch',
-        name: 'PyTorch',
+        name: 'PyTorch & CLIP',
         category: 'AI / ML',
         classification: 'Working Knowledge',
         asciiMeter: '████████████',
         experienceYears: 2,
-        whatUsedFor: 'Model fine-tuning, tensor operations, matrix distance calculations, and embedding inference pipelines.',
+        whatUsedFor: 'Vision transformer inference, multi-modal feature extraction, and cosine similarity ranking.',
         associatedProjects: [
           { name: 'Weavly / Zyra', slug: 'weavly' }
         ],
-        engineeringConcepts: ['Autograd', 'Tensor Operations', 'CUDA Acceleration', 'TorchScript / ONNX Export', 'Batch Inference'],
-        relatedTech: ['Python', 'FastEmbed', 'HuggingFace'],
-        keyCapabilities: ['Quantized Inference (INT8)', 'Color Space Tensor Computations', 'Cosine Matrix Multiplications']
+        engineeringConcepts: ['Tensors & Autograd', 'Vision Transformers', 'Multi-Modal Embeddings', 'Model Quantization'],
+        relatedTech: ['Python', 'FastAPI', 'Qdrant'],
+        keyCapabilities: ['Feature Extraction', 'Model Optimization', 'Batch Inference', 'ONNX Export']
+      },
+      {
+        id: 'huggingface',
+        name: 'Hugging Face Hub',
+        category: 'AI / ML',
+        classification: 'Working Knowledge',
+        asciiMeter: '████████████',
+        experienceYears: 1,
+        whatUsedFor: 'Publishing machine learning models and hosting public inference endpoints for Hybrid Book Recommender.',
+        associatedProjects: [
+          { name: 'Hybrid Book Recommender', slug: 'book-recommendation' }
+        ],
+        engineeringConcepts: ['Model Card Documentation', 'Inference APIs', 'Spaces Deployment', 'Dataset Management'],
+        relatedTech: ['Python', 'LightFM', 'Scikit-learn'],
+        keyCapabilities: ['Model Publishing', 'Public Inference API', 'Community Sharing', 'Cloud Hosting']
+      }
+    ]
+  },
+  {
+    category: 'Frontend',
+    slug: 'frontend',
+    iconName: 'Layout',
+    description: 'Component-driven interactive web applications, real-time client systems, and terminal user interfaces.',
+    skills: [
+      {
+        id: 'react',
+        name: 'React.js',
+        category: 'Frontend',
+        classification: 'Primary',
+        asciiMeter: '████████████████',
+        experienceYears: 3,
+        whatUsedFor: 'Building responsive user interfaces, real-time quantum auction interfaces, and interactive terminal operating systems.',
+        associatedProjects: [
+          { name: 'Quantum-Secure E-Auction', slug: 'quantum-e-auction' },
+          { name: 'LUXZERA', slug: 'luxzera' },
+          { name: 'CinePortal', slug: 'cineportal' }
+        ],
+        engineeringConcepts: ['Component Composition', 'Hooks & State', 'Virtual DOM', 'Reconciliation', 'Responsive Design'],
+        relatedTech: ['JavaScript', 'TypeScript', 'Vite', 'Tailwind CSS', 'WebSockets'],
+        keyCapabilities: ['Custom Hooks', 'Real-Time State Binding', 'Modular Architecture', 'Performance Optimization']
+      },
+      {
+        id: 'websockets',
+        name: 'WebSockets & WebRTC',
+        category: 'Frontend',
+        classification: 'Primary',
+        asciiMeter: '████████████████',
+        experienceYears: 2,
+        whatUsedFor: 'Bidirectional low-latency communication for real-time quantum-encrypted bid broadcasts and watch parties.',
+        associatedProjects: [
+          { name: 'Quantum-Secure E-Auction', slug: 'quantum-e-auction' },
+          { name: 'CinePortal', slug: 'cineportal' }
+        ],
+        engineeringConcepts: ['Full-Duplex Communication', 'Connection Handshakes', 'Heartbeat Keepalive', 'Broadcast Rooms'],
+        relatedTech: ['Node.js', 'Express.js', 'React.js'],
+        keyCapabilities: ['Sub-10ms State Broadcast', 'Room Management', 'Automatic Reconnection', 'Payload Framing']
+      },
+      {
+        id: 'tailwind',
+        name: 'Tailwind CSS',
+        category: 'Frontend',
+        classification: 'Primary',
+        asciiMeter: '████████████████',
+        experienceYears: 3,
+        whatUsedFor: 'Utility-first styling, dark mode themes, responsive grid compositions, and design systems.',
+        associatedProjects: [
+          { name: 'Quantum-Secure E-Auction', slug: 'quantum-e-auction' },
+          { name: 'LUXZERA', slug: 'luxzera' }
+        ],
+        engineeringConcepts: ['Design Tokens', 'JIT Compiler', 'CSS Grid/Flexbox', 'Responsive Breakpoints'],
+        relatedTech: ['React.js', 'Vite', 'CSS Modules'],
+        keyCapabilities: ['Custom Config', 'Color Themes', 'Responsive Utilities', 'Clean UI Layouts']
       }
     ]
   },
@@ -335,7 +233,7 @@ export const skillsData: SkillCategory[] = [
     category: 'Databases',
     slug: 'databases',
     iconName: 'Database',
-    description: 'Relational, vector, in-memory, and columnar database storage systems.',
+    description: 'Relational data stores, NoSQL document stores, and distributed caches.',
     skills: [
       {
         id: 'postgresql',
@@ -343,16 +241,45 @@ export const skillsData: SkillCategory[] = [
         category: 'Databases',
         classification: 'Primary',
         asciiMeter: '████████████████',
-        experienceYears: 4,
-        whatUsedFor: 'Primary ACID transactional store for users, project metadata, catalog items, and scraping history.',
+        experienceYears: 3,
+        whatUsedFor: 'Relational modeling, complex queries, full-text search, and backend persistence at NexLevr and Weavly.',
         associatedProjects: [
           { name: 'Weavly / Zyra', slug: 'weavly' },
-          { name: 'PageMatch', slug: 'pagematch' },
-          { name: 'CinePortal', slug: 'cineportal' }
+          { name: 'PageMatch', slug: 'pagematch' }
         ],
-        engineeringConcepts: ['MVCC (Multi-Version Concurrency Control)', 'GIN & B-Tree Indexes', 'Foreign Key Constraints', 'Connection Pooling (HikariCP/PgBouncer)'],
-        relatedTech: ['SQL', 'Hibernate', 'Prisma', 'Spring Boot'],
-        keyCapabilities: ['JSONB Document Queries', 'Transaction Isolation Levels', 'Migration Versioning']
+        engineeringConcepts: ['MVCC Concurrency', 'B-Tree & GIN Indexes', 'Foreign Key Constraints', 'Connection Pooling'],
+        relatedTech: ['SQL', 'Node.js', 'Spring Boot', 'Docker'],
+        keyCapabilities: ['Relational Queries', 'Indexing Strategies', 'ACID Compliance', 'Database Optimization']
+      },
+      {
+        id: 'mysql',
+        name: 'MySQL',
+        category: 'Databases',
+        classification: 'Primary',
+        asciiMeter: '████████████████',
+        experienceYears: 3,
+        whatUsedFor: 'Relational data modeling, foreign key constraints, and transactional consistency for LUXZERA.',
+        associatedProjects: [
+          { name: 'LUXZERA', slug: 'luxzera' }
+        ],
+        engineeringConcepts: ['InnoDB Engine', 'B-Tree Indexes', 'Transaction Isolation', 'Query Optimization'],
+        relatedTech: ['Java', 'Spring Boot', 'Hibernate', 'SQL'],
+        keyCapabilities: ['Schema Design', 'Data Integrity', 'Explain Plans', 'Backup & Restore']
+      },
+      {
+        id: 'mongodb',
+        name: 'MongoDB',
+        category: 'Databases',
+        classification: 'Primary',
+        asciiMeter: '████████████████',
+        experienceYears: 2,
+        whatUsedFor: 'NoSQL document storage, auction item catalogs, and real-time bid logging in Quantum E-Auction.',
+        associatedProjects: [
+          { name: 'Quantum-Secure E-Auction', slug: 'quantum-e-auction' }
+        ],
+        engineeringConcepts: ['Document Schemas', 'BSON Serialization', 'Aggregation Pipelines', 'Replica Sets'],
+        relatedTech: ['Node.js', 'Express.js', 'JavaScript'],
+        keyCapabilities: ['Flexible Schemas', 'High-Speed Writes', 'Compound Indexes', 'Query Projections']
       },
       {
         id: 'redis',
@@ -360,243 +287,166 @@ export const skillsData: SkillCategory[] = [
         category: 'Databases',
         classification: 'Primary',
         asciiMeter: '████████████████',
-        experienceYears: 4,
-        whatUsedFor: 'Tiered response caching, Celery task broker, rate-limiting counters, and WebSocket room Pub/Sub.',
+        experienceYears: 2,
+        whatUsedFor: 'In-memory caching of search queries, distributed session management, and pub/sub messaging.',
         associatedProjects: [
           { name: 'Weavly / Zyra', slug: 'weavly' },
-          { name: 'PageMatch', slug: 'pagematch' },
           { name: 'CinePortal', slug: 'cineportal' }
         ],
-        engineeringConcepts: ['Single-Threaded Event Loop', 'In-Memory Key-Value Eviction (LRU)', 'Pub/Sub Messaging', 'Redis Data Structures (Hashes, Sets, Sorted Sets)'],
-        relatedTech: ['Celery', 'Spring Data Redis', 'Go Redis', 'Node Redis'],
-        keyCapabilities: ['Atomic Counter Invalidation', 'Sub-millisecond Cache Lookups', 'Distributed Lock Primitives']
-      },
-      {
-        id: 'clickhouse',
-        name: 'ClickHouse & Columnar Storage',
-        category: 'Databases',
-        classification: 'Working Knowledge',
-        asciiMeter: '████████████',
-        experienceYears: 2,
-        whatUsedFor: 'Exploring high-throughput time-series metrics logging, telemetry analytics, and vectorized analytical querying.',
-        associatedProjects: [
-          { name: 'PageMatch', slug: 'pagematch' }
-        ],
-        engineeringConcepts: ['Columnar Compression', 'Vectorized Query Execution', 'MergeTree Engine', 'Partition Pruning'],
-        relatedTech: ['PostgreSQL', 'Grafana', 'Prometheus'],
-        keyCapabilities: ['High-Velocity Event Ingestion', 'Real-Time Aggregations across Millions of Rows']
+        engineeringConcepts: ['In-Memory Key-Value', 'Cache Eviction (LRU)', 'Pub/Sub Architecture', 'Atomic Operations'],
+        relatedTech: ['Node.js', 'Spring Boot', 'FastAPI'],
+        keyCapabilities: ['High-Throughput Caching', 'Session Store', 'Pub/Sub Messaging', 'TTL Management']
       }
     ]
   },
   {
-    category: 'Cloud',
-    slug: 'cloud',
-    iconName: 'Cloud',
-    description: 'Cloud provider services, managed container runtimes, object storage, and global CDNs.',
+    category: 'Languages',
+    slug: 'languages',
+    iconName: 'Code',
+    description: 'Core programming languages from Saketh’s technical CV for backend systems, ML, and web apps.',
     skills: [
       {
-        id: 'aws',
-        name: 'AWS (Amazon Web Services)',
-        category: 'Cloud',
+        id: 'java',
+        name: 'Java',
+        category: 'Languages',
         classification: 'Primary',
         asciiMeter: '████████████████',
         experienceYears: 3,
-        whatUsedFor: 'Deploying containerized microservices (ECS/Fargate), S3 asset storage, RDS PostgreSQL, and CloudFront distribution.',
+        whatUsedFor: 'Enterprise backends, transaction-safe Spring Boot APIs, and Hibernate relational query tuning.',
         associatedProjects: [
-          { name: 'Weavly / Zyra', slug: 'weavly' },
-          { name: 'CinePortal', slug: 'cineportal' }
+          { name: 'LUXZERA', slug: 'luxzera' },
+          { name: 'Weavly / Zyra', slug: 'weavly' }
         ],
-        engineeringConcepts: ['VPC Subnetting & Security Groups', 'IAM Role Policies', 'Auto Scaling Groups', 'TLS Termination at ALB'],
-        relatedTech: ['Docker', 'PostgreSQL', 'CloudFront', 'S3'],
-        keyCapabilities: ['Fargate Container Orchestration', 'Presigned S3 Upload URLs', 'Zero-Downtime Blue/Green Deploys']
+        engineeringConcepts: ['OOP Design Patterns', 'Multithreading', 'JVM Optimization', 'Exception Handling', 'Memory Safety'],
+        relatedTech: ['Spring Boot', 'Spring Security', 'Hibernate', 'JPA', 'MySQL'],
+        keyCapabilities: ['RESTful Web Services', 'Transaction Management', 'Relational Mapping', 'Backend Architecture']
       },
       {
-        id: 'cloudflare',
-        name: 'Cloudflare & Edge Infrastructure',
-        category: 'Cloud',
+        id: 'python-lang',
+        name: 'Python',
+        category: 'Languages',
         classification: 'Primary',
         asciiMeter: '████████████████',
         experienceYears: 3,
-        whatUsedFor: 'Edge deployment, DNS management, DDoS mitigation, SSL/TLS termination, and Cloudflare Pages hosting.',
+        whatUsedFor: 'Machine learning pipelines, LightFM recommendation engines, TF-IDF vectorization, and LLM code evaluation.',
         associatedProjects: [
-          { name: 'SAKETH.OS', slug: 'saketh-os' },
+          { name: 'Hybrid Book Recommender', slug: 'book-recommendation' },
+          { name: 'Weavly / Zyra', slug: 'weavly' }
+        ],
+        engineeringConcepts: ['Sparse Matrix Computation', 'Asyncio', 'Data Cleaning', 'WARP Loss Tuning', 'Model Evaluation'],
+        relatedTech: ['LightFM', 'Scikit-learn', 'Flask', 'Hugging Face', 'Pandas'],
+        keyCapabilities: ['Data Pipelines', 'Recommendation Systems', 'LLM Benchmarking', 'API Integration']
+      },
+      {
+        id: 'sql-lang',
+        name: 'SQL',
+        category: 'Languages',
+        classification: 'Primary',
+        asciiMeter: '████████████████',
+        experienceYears: 3,
+        whatUsedFor: 'Relational database schema design, index tuning, join optimization, and resolving N+1 query loops.',
+        associatedProjects: [
+          { name: 'LUXZERA', slug: 'luxzera' }
+        ],
+        engineeringConcepts: ['Relational Normalization', 'Index Structures', 'ACID Transactions', 'Query Execution Plans', 'Aggregation'],
+        relatedTech: ['MySQL', 'PostgreSQL', 'Hibernate', 'JPA'],
+        keyCapabilities: ['Complex Joins', 'Schema Migrations', 'Performance Tuning', 'Constraint Integrity']
+      },
+      {
+        id: 'javascript-lang',
+        name: 'JavaScript / TypeScript',
+        category: 'Languages',
+        classification: 'Primary',
+        asciiMeter: '████████████████',
+        experienceYears: 3,
+        whatUsedFor: 'Full-stack development across React frontends, Node.js/Express APIs, and WebSocket servers.',
+        associatedProjects: [
+          { name: 'Quantum-Secure E-Auction', slug: 'quantum-e-auction' },
+          { name: 'LUXZERA', slug: 'luxzera' },
           { name: 'CinePortal', slug: 'cineportal' }
         ],
-        engineeringConcepts: ['Edge Caching & Purging', 'Anycast Routing', 'DNSSEC', 'Origin Shielding', 'WAF Rules'],
-        relatedTech: ['Vite', 'Cloudflare Pages', 'SSL/TLS'],
-        keyCapabilities: ['Global Low-Latency Asset Delivery', 'Edge Security Rules', 'Instant Cache Purging']
+        engineeringConcepts: ['Asynchronous Event Loop', 'DOM Manipulation', 'Component Lifecycle', 'State Management', 'ES6+'],
+        relatedTech: ['React.js', 'Node.js', 'Express.js', 'WebSockets', 'Vite'],
+        keyCapabilities: ['Interactive UIs', 'Real-Time Streaming', 'REST Client Integration', 'Modular Code']
+      },
+      {
+        id: 'golang',
+        name: 'Go (Golang)',
+        category: 'Languages',
+        classification: 'Exploring',
+        asciiMeter: '████████',
+        experienceYears: 1,
+        whatUsedFor: 'High-throughput microservices, goroutine concurrency, and low-latency networking utilities.',
+        associatedProjects: [],
+        engineeringConcepts: ['Goroutines & Channels', 'Memory Allocation', 'Interface Composition', 'Standard Library Networking'],
+        relatedTech: ['gRPC', 'Docker', 'Linux'],
+        keyCapabilities: ['Concurrent Programming', 'Fast Compilation', 'CLI Tooling', 'Network Services']
       }
     ]
   },
   {
-    category: 'DevOps',
-    slug: 'devops',
-    iconName: 'Settings',
-    description: 'Containerization, continuous integration/continuous deployment, and POSIX Linux system administration.',
+    category: 'Tools & DevOps',
+    slug: 'tools',
+    iconName: 'Wrench',
+    description: 'Containerization, version control, cloud platforms, and engineering toolchains.',
     skills: [
       {
         id: 'docker',
-        name: 'Docker & Containerization',
-        category: 'DevOps',
-        classification: 'Primary',
-        asciiMeter: '████████████████',
-        experienceYears: 4,
-        whatUsedFor: 'Packaging multi-service applications into reproducible, isolated, multi-stage container images.',
+        name: 'Docker',
+        category: 'Tools & DevOps',
+        classification: 'Working Knowledge',
+        asciiMeter: '████████████',
+        experienceYears: 2,
+        whatUsedFor: 'Containerizing backend microservices, database services, and reproducible development runtimes.',
         associatedProjects: [
-          { name: 'Weavly / Zyra', slug: 'weavly' },
-          { name: 'PageMatch', slug: 'pagematch' },
-          { name: 'CinePortal', slug: 'cineportal' }
+          { name: 'LUXZERA', slug: 'luxzera' },
+          { name: 'Weavly / Zyra', slug: 'weavly' }
         ],
-        engineeringConcepts: ['Multi-Stage Builds', 'Linux Namespaces & Cgroups', 'Layer Caching Optimization', 'Volume Mounts', 'Docker Compose Networking'],
-        relatedTech: ['Kubernetes', 'Linux', 'Spring Boot', 'Python'],
-        keyCapabilities: ['Minimal Alpine/Distroless Images', 'Isolated Multi-Service Local Stacks', 'Fast CI Build Times']
+        engineeringConcepts: ['Container Isolation', 'Image Layering', 'Multi-Stage Dockerfiles', 'Docker Compose'],
+        relatedTech: ['Linux', 'Git', 'Node.js', 'Java'],
+        keyCapabilities: ['Containerization', 'Environment Parity', 'Compose Networking', 'Volume Mounts']
       },
       {
-        id: 'github-actions',
-        name: 'CI/CD & GitHub Actions',
-        category: 'DevOps',
-        classification: 'Primary',
-        asciiMeter: '████████████████',
-        experienceYears: 4,
-        whatUsedFor: 'Automating linting, unit/component testing, Docker image generation, and automated production deployments.',
-        associatedProjects: [
-          { name: 'SAKETH.OS', slug: 'saketh-os' },
-          { name: 'Weavly / Zyra', slug: 'weavly' },
-          { name: 'PageMatch', slug: 'pagematch' }
-        ],
-        engineeringConcepts: ['Workflow Matrix Builds', 'Secret Management', 'Artifact Caching', 'Branch Protection Triggers', 'Semantic Release'],
-        relatedTech: ['Docker', 'Vitest', 'ESLint', 'Git'],
-        keyCapabilities: ['Automated PR Quality Gates', 'Parallelized Test Runners', 'Automated Semantic Versioning']
-      },
-      {
-        id: 'linux-posix',
-        name: 'Linux & POSIX Shell Scripting',
-        category: 'DevOps',
-        classification: 'Primary',
-        asciiMeter: '████████████████',
-        experienceYears: 5,
-        whatUsedFor: 'System management, process inspection (htop/lsof/netstat), automation scripting in Bash/Zsh, and POSIX VFS architecture.',
-        associatedProjects: [
-          { name: 'SAKETH.OS', slug: 'saketh-os' },
-          { name: 'PageMatch', slug: 'pagematch' }
-        ],
-        engineeringConcepts: ['File Descriptors & Pipes', 'Signal Handling (SIGTERM/SIGINT)', 'Standard I/O Streams', 'Cron Schedules', 'Permissions (rwx)'],
-        relatedTech: ['Zsh', 'Bash', 'Systemd', 'cgroups'],
-        keyCapabilities: ['POSIX Filesystem Standards', 'Server Diagnostics & Log Grepping', 'Automated Maintenance Scripts']
-      }
-    ]
-  },
-  {
-    category: 'Tools',
-    slug: 'tools',
-    iconName: 'Tool',
-    description: 'Developer tooling, headless browsers, test suites, bundlers, and diagnostics.',
-    skills: [
-      {
-        id: 'playwright',
-        name: 'Playwright & Browser Automation',
-        category: 'Tools',
+        id: 'git-github',
+        name: 'Git & GitHub',
+        category: 'Tools & DevOps',
         classification: 'Primary',
         asciiMeter: '████████████████',
         experienceYears: 3,
-        whatUsedFor: 'Headless browser crawling, stealth DOM extraction, dynamic SPA screenshotting, and E2E verification.',
+        whatUsedFor: 'Version control, branch management, pull request reviews, and collaborative team workflows.',
         associatedProjects: [
-          { name: 'PageMatch', slug: 'pagematch' }
+          { name: 'LUXZERA', slug: 'luxzera' },
+          { name: 'Quantum-Secure E-Auction', slug: 'quantum-e-auction' }
         ],
-        engineeringConcepts: ['CDP (Chrome DevTools Protocol)', 'Context & Page Isolation', 'Selector Engines', 'Stealth Fingerprint Evasion'],
-        relatedTech: ['Python', 'FastAPI', 'Chromium'],
-        keyCapabilities: ['Headless Chromium Management', 'Stealth Script Execution', 'High-Speed Page Scraping']
+        engineeringConcepts: ['Branching Strategies', 'Merge Conflict Resolution', 'Rebasing', 'Semantic Commit Messages'],
+        relatedTech: ['GitHub Actions', 'VS Code', 'Linux'],
+        keyCapabilities: ['Version Control', 'Pull Requests', 'Repo Management', 'Git CLI Mastery']
       },
       {
-        id: 'vitest',
-        name: 'Vitest & Testing Library',
-        category: 'Tools',
+        id: 'linux',
+        name: 'Linux (Fedora)',
+        category: 'Tools & DevOps',
+        classification: 'Working Knowledge',
+        asciiMeter: '████████████',
+        experienceYears: 2,
+        whatUsedFor: 'Primary development operating system, shell scripting, package management (DNF), and process debugging.',
+        associatedProjects: [],
+        engineeringConcepts: ['POSIX CLI', 'File Permissions', 'Process Lifecycle', 'Systemd Services', 'Bash Scripting'],
+        relatedTech: ['Docker', 'Git', 'Bash', 'VS Code'],
+        keyCapabilities: ['Terminal Navigation', 'Package Management', 'Process Monitoring', 'Environment Config']
+      },
+      {
+        id: 'tools-dev',
+        name: 'Postman & VS Code',
+        category: 'Tools & DevOps',
         classification: 'Primary',
         asciiMeter: '████████████████',
         experienceYears: 3,
-        whatUsedFor: 'Unit and component test suites, terminal engine verification, CLI parser assertions, and mock isolation.',
-        associatedProjects: [
-          { name: 'SAKETH.OS', slug: 'saketh-os' },
-          { name: 'CinePortal', slug: 'cineportal' }
-        ],
-        engineeringConcepts: ['Test Isolation', 'Mocking & Spying', 'Snapshot Testing', 'Coverage Threshold Enforcement'],
-        relatedTech: ['TypeScript', 'Vite', 'React Testing Library'],
-        keyCapabilities: ['Sub-second Test Execution', 'DOM Component Assertions', 'CI Integration']
-      },
-      {
-        id: 'git',
-        name: 'Git & Version Control',
-        category: 'Tools',
-        classification: 'Primary',
-        asciiMeter: '████████████████',
-        experienceYears: 5,
-        whatUsedFor: 'Atomic commits, trunk-based development, semantic branch management, and open-source collaboration.',
-        associatedProjects: [
-          { name: 'SAKETH.OS', slug: 'saketh-os' },
-          { name: 'Weavly / Zyra', slug: 'weavly' },
-          { name: 'PageMatch', slug: 'pagematch' },
-          { name: 'CinePortal', slug: 'cineportal' }
-        ],
-        engineeringConcepts: ['DAG Object Model', 'Interactive Rebasing', 'Merge Conflict Resolution', 'Git Hooks', 'Cherry-picking'],
-        relatedTech: ['GitHub', 'GitHub Actions'],
-        keyCapabilities: ['Clean Commit Histories', 'Release Tagging', 'Collaborative PR Workflows']
-      }
-    ]
-  },
-  {
-    category: 'Core CS',
-    slug: 'cs',
-    iconName: 'BookOpen',
-    description: 'Fundamental computer science concepts, distributed systems theory, algorithm design, and system architecture.',
-    skills: [
-      {
-        id: 'system-design',
-        name: 'System Design & Distributed Architecture',
-        category: 'Core CS',
-        classification: 'Primary',
-        asciiMeter: '████████████████',
-        experienceYears: 4,
-        whatUsedFor: 'Designing high-scale distributed systems, choosing optimal database topologies, event-driven pipelines, and caching layers.',
-        associatedProjects: [
-          { name: 'Weavly / Zyra', slug: 'weavly' },
-          { name: 'PageMatch', slug: 'pagematch' },
-          { name: 'CinePortal', slug: 'cineportal' }
-        ],
-        engineeringConcepts: ['CAP Theorem & PACELC', 'Consistent Hashing', 'Load Balancing Topologies', 'Rate Limiting Algorithms', 'Idempotency Keys'],
-        relatedTech: ['Redis', 'PostgreSQL', 'Kafka', 'Qdrant', 'Spring Boot'],
-        keyCapabilities: ['Microservices Decomposition', 'Low-Latency Caching Topologies', 'Disaster Recovery & Chaos Resilience']
-      },
-      {
-        id: 'dsa',
-        name: 'Data Structures & Algorithms',
-        category: 'Core CS',
-        classification: 'Primary',
-        asciiMeter: '████████████████',
-        experienceYears: 4,
-        whatUsedFor: 'Writing high-efficiency AST traversal algorithms, vector cosine computations, trie-based autocomplete, and Merkle diffing.',
-        associatedProjects: [
-          { name: 'SAKETH.OS', slug: 'saketh-os' },
-          { name: 'PageMatch', slug: 'pagematch' }
-        ],
-        engineeringConcepts: ['Time & Space Complexity (Big-O)', 'Trees & Graph Traversals (BFS/DFS)', 'Tries & Prefix Trees', 'Dynamic Programming', 'Sliding Window & Two Pointers'],
-        relatedTech: ['TypeScript', 'Python', 'Java', 'LeetCode'],
-        keyCapabilities: ['AST Parsing & Autocomplete', 'Graph Pathfinding', 'Optimized In-Memory Indexing']
-      },
-      {
-        id: 'networking',
-        name: 'Networking & Protocols',
-        category: 'Core CS',
-        classification: 'Primary',
-        asciiMeter: '████████████████',
-        experienceYears: 4,
-        whatUsedFor: 'Building low-latency WebSocket clusters, WebRTC peer-to-peer mesh synchronization, and HTTP/2 stream management.',
-        associatedProjects: [
-          { name: 'CinePortal', slug: 'cineportal' },
-          { name: 'SAKETH.OS', slug: 'saketh-os' }
-        ],
-        engineeringConcepts: ['OSI Model & TCP/IP Stack', 'TCP 3-Way Handshake & Congestion Control', 'HTTP/1.1 vs HTTP/2 vs HTTP/3 (QUIC)', 'WebSockets & Frame Protocol', 'WebRTC & STUN/TURN ICE Candidates'],
-        relatedTech: ['Go', 'WebSockets', 'WebRTC', 'Nginx'],
-        keyCapabilities: ['Clock Drift Compensation Algorithms', 'P2P Audio/Video Mesh', 'WebSocket Multiplexing']
+        whatUsedFor: 'API contract testing, mock servers, automated test collections, and code authoring environment.',
+        associatedProjects: [],
+        engineeringConcepts: ['HTTP Testing', 'Environment Variables', 'Automated Collections', 'IDE Optimization'],
+        relatedTech: ['REST APIs', 'Git', 'Node.js'],
+        keyCapabilities: ['Endpoint Verification', 'Payload Inspection', 'Environment Switching', 'Debugging']
       }
     ]
   }

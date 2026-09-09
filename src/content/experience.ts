@@ -2,84 +2,68 @@ import { ExperienceItem } from '../types/content';
 
 export const experienceData: ExperienceItem[] = [
   {
-    id: 'exp-principal-lead',
-    role: 'Lead Systems Architect & Full-Stack Engineer',
-    company: 'Nexus Distributed Tech',
-    location: 'Remote / Global',
-    type: 'Full-time',
+    id: 'exp-handshake-ai',
+    role: 'AI Technical Trainer & Code Evaluator (Contract)',
+    company: 'Handshake AI',
+    location: 'Remote',
+    type: 'Contract',
     period: {
-      start: '2023',
+      start: '2025',
       end: 'Present',
       isCurrent: true
     },
     summary:
-      'Led the architectural overhaul of mission-critical event streaming pipelines and microservice edge routing infrastructure.',
+      'Evaluate AI-generated code snippets and system designs across Python, Java, and SQL for logical correctness, performance, and security edge cases.',
     impactMetrics: [
-      'Scaled event ingestion from 200M to 1.8B daily events with 99.995% delivery reliability',
-      'Reduced p99 edge API latency from 45ms to 3.8ms across 12 global regions',
-      'Architected automated disaster recovery and chaos engineering drills cutting MTTR by 65%'
+      'Authored complex technical test prompts and benchmark suites to evaluate LLM reasoning capabilities and code output reliability',
+      'Assessed multi-language implementations for algorithmic efficiency, memory safety, and vulnerability vectors',
+      'Provided structured evaluation feedback directly improving LLM coding performance across backend domains'
     ],
     keyAchievements: [
-      'Mentored a team of 9 senior engineers across Go, Rust, and TypeScript tracks',
-      'Designed and deployed internal developer portal and CLI toolchain accelerating onboarding time by 3x',
-      'Championed zero-trust security architecture with mutual TLS and automated certificate rotation'
+      'Designed rigorous evaluation test cases covering complex data structures, concurrency, and SQL optimization',
+      'Benchmarked reasoning pathways of frontier language models across real-world software engineering tasks',
+      'Established high standards for automated code evaluation rubrics across Python and Java architectures'
     ],
     technologies: [
-      'Go',
-      'Rust',
-      'Kubernetes',
-      'Kafka',
-      'PostgreSQL',
-      'Redis',
-      'Terraform',
-      'Prometheus'
+      'Python',
+      'Java',
+      'SQL',
+      'System Design',
+      'LLM Benchmarking',
+      'Security Analysis'
     ]
   },
   {
-    id: 'exp-senior-backend',
-    role: 'Senior Backend Engineer',
-    company: 'HyperScale Cloud Platform',
-    location: 'Bangalore, IN',
-    type: 'Full-time',
+    id: 'exp-nexlevr',
+    role: 'Software Engineering Intern',
+    company: 'NexLevr',
+    location: 'Remote',
+    type: 'Internship',
     period: {
-      start: '2021',
-      end: '2023',
-      isCurrent: false
+      start: '2024',
+      end: 'Present',
+      isCurrent: true
     },
     summary:
-      'Core contributor to multi-tenant cloud storage orchestration and asynchronous worker scheduling subsystem.',
+      'Maintain backend stability for the NexLevr platform while developing new features to enhance user engagement and platform scalability.',
     impactMetrics: [
-      'Engineered distributed lock manager and worker pool processing 50,000+ jobs/min',
-      'Optimized database connection pooling and slow queries, saving $120,000 in monthly AWS infrastructure cost'
+      'Contributed to full-stack web development and REST API integration across core platform services',
+      'Maintained backend service uptime and optimized database query handling for smooth user experiences',
+      'Built responsive UI features and connected real-time data flows across the web application'
     ],
     keyAchievements: [
-      'Spearheaded migration from monolithic Ruby on Rails to event-driven Go microservices',
-      'Authored RFCs for idempotent API patterns and database partitioning schemas',
-      'Implemented automated regression testing pipeline with 92% code coverage threshold'
+      'Developed and shipped production REST API endpoints with robust input validation and error handling',
+      'Collaborated closely with engineering team to debug edge cases and accelerate sprint deliverables',
+      'Enhanced platform responsiveness and user onboarding flows through modular frontend components'
     ],
-    technologies: ['Go', 'TypeScript', 'Node.js', 'AWS', 'Docker', 'PostgreSQL', 'Redis', 'gRPC']
-  },
-  {
-    id: 'exp-software-engineer',
-    role: 'Software Engineer',
-    company: 'Velocity Systems',
-    location: 'Bangalore, IN',
-    type: 'Full-time',
-    period: {
-      start: '2019',
-      end: '2021',
-      isCurrent: false
-    },
-    summary:
-      'Developed high-concurrency client-facing APIs and real-time dashboard analytics interfaces.',
-    impactMetrics: [
-      'Shipped real-time collaborative workspace used by 150,000+ active enterprise users',
-      'Reduced web client bundle size by 54% through code-splitting and asset optimization'
-    ],
-    keyAchievements: [
-      'Constructed modular frontend component system adopted by 4 cross-functional product teams',
-      'Integrated WebSocket state synchronization engine with optimistic client-side updates'
-    ],
-    technologies: ['TypeScript', 'React', 'Node.js', 'GraphQL', 'Docker', 'PostgreSQL', 'Jest']
+    technologies: [
+      'React.js',
+      'Node.js',
+      'Express.js',
+      'REST APIs',
+      'PostgreSQL',
+      'JavaScript',
+      'Git'
+    ]
   }
 ];

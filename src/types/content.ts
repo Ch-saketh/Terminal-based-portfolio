@@ -107,7 +107,7 @@ export interface ExperienceItem {
   role: string;
   company: string;
   location: string;
-  type: 'Full-time' | 'Contract' | 'Open Source';
+  type: 'Full-time' | 'Contract' | 'Open Source' | 'Internship';
   period: {
     start: string;
     end: string;

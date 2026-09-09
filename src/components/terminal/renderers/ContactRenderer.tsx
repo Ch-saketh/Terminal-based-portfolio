@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { profileData } from '../../../content/profile';
-import { Github, Linkedin, Mail, Twitter, Key, Send, CheckCircle2 } from 'lucide-react';
+import { Github, Linkedin, Mail, Twitter, Key, Send, CheckCircle2, Phone } from 'lucide-react';
+import { SectionHeader } from '../SectionHeader';
 import styles from './Renderers.module.css';
 
 export const ContactRenderer: React.FC = () => {
@@ -26,9 +27,12 @@ export const ContactRenderer: React.FC = () => {
 
   return (
     <div className={styles.contactContainer}>
-      <div className={styles.helpHeader}>
-        <span className={styles.highlightText}>COMMUNICATION RELAY</span> & Direct Channels
-      </div>
+      <SectionHeader
+        badge="COMMUNICATION RELAY"
+        title="GET IN TOUCH"
+        subtitle="Direct contact channels, social profiles, and email messaging relay"
+        path="saketh@portfolio:~/contact"
+      />
 
       <div className={styles.contactLinksGrid}>
         <a href={`mailto:${profileData.email}`} className={styles.contactLinkCard}>
@@ -37,6 +41,14 @@ export const ContactRenderer: React.FC = () => {
             <span>Email</span>
           </div>
           <span className={styles.usageText}>{profileData.email}</span>
+        </a>
+
+        <a href="tel:+919392345156" className={styles.contactLinkCard}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <Phone size={16} color="#10b981" />
+            <span>Phone</span>
+          </div>
+          <span className={styles.usageText}>+91-9392345156</span>
         </a>
 
         <a
@@ -62,7 +74,7 @@ export const ContactRenderer: React.FC = () => {
             <Linkedin size={16} color="#3b82f6" />
             <span>LinkedIn</span>
           </div>
-          <span className={styles.usageText}>/in/saketh-ch</span>
+          <span className={styles.usageText}>saketh-chokkapu</span>
         </a>
 
         {profileData.twitter && (

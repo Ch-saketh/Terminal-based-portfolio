@@ -1,6 +1,7 @@
 import React from 'react';
 import { TerminalOutputLine } from '../../types/terminal';
 import { TerminalPrompt } from './TerminalPrompt';
+import { useTerminalStore } from '../../state/useTerminalStore';
 import styles from './Terminal.module.css';
 
 interface TerminalOutputProps {
@@ -8,6 +9,8 @@ interface TerminalOutputProps {
 }
 
 export const TerminalOutput: React.FC<TerminalOutputProps> = ({ lines }) => {
+  const isExecuting = useTerminalStore((s) => s.isExecuting);
+
   return (
     <div className={styles.outputStreamContainer} aria-live="polite">
       {lines.map((line) => {
@@ -74,6 +77,14 @@ export const TerminalOutput: React.FC<TerminalOutputProps> = ({ lines }) => {
           </div>
         );
       })}
+
+      {isExecuting && (
+        <div className={styles.executingRow} aria-live="assertive">
+          <span className={styles.spinnerIcon}>◐</span>
+          <span className={styles.executingText}>Executing kernel command...</span>
+        </div>
+      )}
     </div>
   );
 };
+

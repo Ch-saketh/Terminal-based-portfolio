@@ -8,19 +8,12 @@ export const systemConfig = {
   defaultTheme: 'emerald' as const,
   buildDate: '2026-09-08',
   asciiArt: `
-  ██████╗  █████╗ ██╗  ██╗███████╗████████╗██╗  ██╗    ██████╗ ███████╗
-  ██╔════╝ ██╔══██╗██║ ██╔╝██╔════╝╚══██╔══╝██║  ██║   ██╔═══██╗██╔════╝
-  ███████╗ ███████║█████╔╝ █████╗     ██║   ███████║   ██║   ██║███████╗
-  ╚════██║ ██╔══██║██╔═██╗ ██╔══╝     ██║   ██╔══██║   ██║   ██║╚════██║
-  ███████║ ██║  ██║██║  ██╗███████╗   ██║   ██║  ██║██╗╚██████╔╝███████║
-  ╚══════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝ ╚═════╝ ╚══════╝
-`,
+  ┌─────────────────────────────────────────────────────────────┐
+  │  SAKETH.OS [v2.4.0-LTS] — Interactive Developer Workstation │
+  │  Type "help" or click any navigation tab to explore.       │
+  └─────────────────────────────────────────────────────────────┘`,
   bootMessages: [
-    'Initializing SAKETH.OS Kernel v2.4.0-LTS...',
-    'Loading virtual memory & POSIX filesystem [OK]',
-    'Mounting /home/saketh/projects, /skills, /experience [OK]',
-    'Initializing WebAudio procedural sound synthesizer [OK]',
-    'Spawning interactive shell daemon (zsh) [OK]',
-    'Type "help" or click suggestion chips to explore.'
+    'POSIX filesystem mounted at /home/saketh [OK]',
+    'Ready for commands. Type "help", "about", or "projects".'
   ]
 };

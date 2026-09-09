@@ -4,9 +4,9 @@ export const gitMilestonesData: GitCommitMilestone[] = [
   {
     hash: 'a81f2c7',
     parentHash: '91be72a',
-    date: '2024-08-15',
+    date: '2025-01-28',
     author: 'Saketh Chokkapu <chokkapusaketh@gmail.com>',
-    message: 'feat(weavly): build multi-modal fashion intelligence & outfit recommendation system',
+    message: 'feat(weavly): build recommendation system (Weavly) & LUXZERA platform',
     shortMessage: 'Built recommendation system (Weavly)',
     event: 'Weavly / Zyra AI Launch',
     category: 'project',
@@ -14,31 +14,31 @@ export const gitMilestonesData: GitCommitMilestone[] = [
     branchColor: 'var(--color-primary-green, #00ff88)',
     graphConnector: '*   ',
     whatHappened:
-      'Engineered a production-ready fashion recommendation engine combining multi-modal CLIP visual embeddings, Qdrant vector retrieval, and Spring Boot high-throughput microservices. Scaled vector search to 100k+ SKUs with sub-50ms latency.',
+      'Developed intelligent recommendation systems including LUXZERA and Weavly. Engineered transaction-safe API endpoints in Java and Spring Boot, tuning relational queries with Hibernate to cut latency from 150ms to 60ms.',
     whatWasLearned:
-      'Vector databases perform optimally with payload pre-filtering; decoupling AI inference microservices from business APIs is critical for independent scaling.',
-    technologies: ['Java', 'Spring Boot', 'Python', 'FastAPI', 'Qdrant', 'CLIP', 'Redis', 'PostgreSQL', 'Docker'],
+      'Decoupled layered architecture and explicit JOIN FETCH queries are critical for high-concurrency relational performance.',
+    technologies: ['Java', 'Spring Boot', 'Hibernate', 'JPA', 'MySQL', 'React.js', 'REST APIs', 'Qdrant'],
     metrics: [
-      '38ms p99 vector retrieval latency',
-      '1,200+ RPS sustained throughput',
-      '94.2% style relevance score in A/B testing'
+      'Query latency slashed from 150ms to 60ms (60% improvement)',
+      'Transaction-safe checkout and live user preference states',
+      'Two-engineer collaborative feature delivery'
     ],
     links: [
-      { label: 'View Project Deep Dive', url: '#', isCli: true, cliCmd: 'projects weavly' },
-      { label: 'GitHub Repository', url: 'https://github.com/Ch-saketh/weavly' },
-      { label: 'Live Demo', url: 'https://weavly-demo.saketh.dev' }
+      { label: 'View Project Deep Dive', url: '#', isCli: true, cliCmd: 'projects luxzera' },
+      { label: 'GitHub Repository', url: 'https://github.com/Ch-saketh/LUXZERA' }
     ],
-    diffPreview: `+ // Multi-Modal FastEmbed Vector Projection
-+ CollectionConfig config = new CollectionConfig(512, Distance.COSINE);
-+ qdrantClient.createCollection("wardrobe_embeddings", config);
-+ List<ScoredPoint> matches = qdrantClient.search("wardrobe_embeddings", queryVector, filterPayload);`
+    diffPreview: `+ const client = new QdrantClient({ url: 'http://localhost:6333' });
++ await client.createCollection("wardrobe_embeddings", { vectors: { size: 512, distance: "Cosine" } });
++ // Hibernate Join Fetch Tuning to eliminate N+1 queries
++ @Query("SELECT o FROM Outfit o JOIN FETCH o.items WHERE o.userDimensions = :dims")
++ List<Outfit> findOutfitsByDimensions(@Param("dims") UserDimensions dims);`
   },
   {
     hash: '91be72a',
-    parentHash: '4cd881e',
-    date: '2024-05-22',
+    parentHash: '7f3a1b2',
+    date: '2025-01-20',
     author: 'Saketh Chokkapu <chokkapusaketh@gmail.com>',
-    message: 'award(hackathon): 1st Place - Quantum Valley AI Innovation Hackathon',
+    message: 'award(hackathon): Quantum Valley Hackathon (1st Place / 2nd Prize) - BB84 QKD System',
     shortMessage: 'Quantum Valley Hackathon (1st Place)',
     event: 'Quantum Valley AI Hackathon',
     category: 'hackathon',
@@ -46,171 +46,168 @@ export const gitMilestonesData: GitCommitMilestone[] = [
     branchColor: '#ffbd2e',
     graphConnector: '| * ',
     whatHappened:
-      'Won 1st Place out of 120+ engineering teams at Quantum Valley Hackathon. Designed and demonstrated an autonomous multimodal agent capable of real-time computer vision reasoning, structured tool execution, and zero-shot catalog pairing in under 36 hours.',
+      'Served as Lead Frontend Developer for Team Ekalavya (Problem Statement AQVH911); built the real-time encryption interface for a Quantum-Secure E-Auction System simulating BB84 Quantum Key Distribution and real-time QBER monitoring.',
     whatWasLearned:
-      'Rapid prototype validation requires tight feedback loops, robust fallback error handling, and high-clarity API interfaces between team members.',
-    technologies: ['Python', 'FastAPI', 'PyTorch', 'OpenAI Vision API', 'WebSockets', 'React'],
+      'Simulating quantum polarization bases and eavesdropping detection in software provides a compelling visual demonstration of quantum cryptographic security.',
+    technologies: ['React.js', 'Vite', 'Node.js', 'Express.js', 'WebSockets', 'MongoDB', 'Tailwind CSS'],
     metrics: [
-      'Ranked #1 of 120+ participant teams',
-      'Engineered full end-to-end MVP in 36 consecutive hours'
+      'Awarded Prize for Problem Statement AQVH911',
+      'Real-time QBER eavesdropping detection on active channels'
+    ],
+    links: [
+      { label: 'View Project Deep Dive', url: '#', isCli: true, cliCmd: 'projects quantum-e-auction' },
+      { label: 'View Award Details', url: '#', isCli: true, cliCmd: 'achievements' }
+    ],
+    diffPreview: `+ // BB84 Quantum Key Distribution Simulation
++ const photonBases = generateRandomBases(bitsLength);
++ const qber = calculateQuantumBitErrorRate(aliceBases, bobBases);
++ if (qber > 0.11) abortKeyNegotiation("Eavesdropping detected");`
+  },
+  {
+    hash: '4cd881e',
+    parentHash: '7f3a1b2',
+    date: '2024-11-20',
+    author: 'Saketh Chokkapu <chokkapusaketh@gmail.com>',
+    message: 'feat(cineportal): build CinePortal (Real-Time Watch Party) & synchronization mesh',
+    shortMessage: 'Built CinePortal (Real-Time Watch Party)',
+    event: 'CinePortal Engineering Release',
+    category: 'project',
+    branch: 'main',
+    branchColor: 'var(--color-primary-green, #00ff88)',
+    graphConnector: '* | ',
+    whatHappened:
+      'Built a distributed real-time synchronized video playback platform with WebRTC peer-to-peer mesh and sub-50ms NTP clock drift compensation.',
+    whatWasLearned:
+      'Predictive timestamp extrapolation and WebRTC ICE health monitors ensure jitter-free collaborative playback.',
+    technologies: ['TypeScript', 'React', 'Node.js', 'WebSockets', 'WebRTC', 'Redis'],
+    metrics: [
+      '<40ms average playback drift across test rooms',
+      'Sub-50ms synchronization across international networks'
+    ],
+    links: [
+      { label: 'View Project Deep Dive', url: '#', isCli: true, cliCmd: 'projects cineportal' }
+    ],
+    diffPreview: `+ // Sub-50ms Playback Drift Compensation
++ const driftMs = remoteTimestamp - localVideo.currentTime * 1000;
++ if (Math.abs(driftMs) > 40) localVideo.playbackRate = driftMs > 0 ? 1.03 : 0.97;`
+  },
+  {
+    hash: '7f3a1b2',
+    parentHash: '5e8c4d9',
+    date: '2025-01-05',
+    author: 'Saketh Chokkapu <chokkapusaketh@gmail.com>',
+    message: 'exp(handshake): join Handshake AI as AI Technical Trainer & Code Evaluator',
+    shortMessage: 'Joined Handshake AI',
+    event: 'Handshake AI Contract Role',
+    category: 'career',
+    branch: 'career',
+    branchColor: '#00f2fe',
+    graphConnector: '| | *',
+    whatHappened:
+      'Evaluated AI-generated code snippets and system designs across Python, Java, and SQL for logical correctness, performance, and security edge cases. Authored complex technical test prompts and benchmark suites to evaluate LLM reasoning capabilities.',
+    whatWasLearned:
+      'Rigorous evaluation requires deep understanding of edge cases, time complexity boundaries, and subtle vulnerabilities in generated code.',
+    technologies: ['Python', 'Java', 'SQL', 'LLM Benchmarking', 'System Design'],
+    metrics: [
+      'Multi-language code evaluations across Python, Java, and SQL',
+      'Comprehensive benchmark suites authored for frontier model reasoning'
+    ],
+    links: [
+      { label: 'View Experience', url: '#', isCli: true, cliCmd: 'experience' }
+    ],
+    diffPreview: `+ // LLM Reasoning Benchmark Rubric
++ def evaluate_solution(ast_tree, runtime_profile):
++     assert no_concurrency_race_conditions(ast_tree)
++     assert optimal_query_plan_adherence(runtime_profile)`
+  },
+  {
+    hash: '5e8c4d9',
+    parentHash: '3d2a7f1',
+    date: '2024-11-15',
+    author: 'Saketh Chokkapu <chokkapusaketh@gmail.com>',
+    message: 'award(hackathon): 2nd Prize - National AI Hackathon',
+    shortMessage: 'National AI Hackathon (2nd Prize)',
+    event: 'National AI Hackathon',
+    category: 'hackathon',
+    branch: 'hackathons',
+    branchColor: '#ffbd2e',
+    graphConnector: '| * |',
+    whatHappened:
+      'Deployed interface layout components and state management routines for an automated evaluation system, debugging data tracking anomalies under high request volumes.',
+    whatWasLearned:
+      'High request volumes require aggressive memoization, defensive state handling, and structured request deduplication.',
+    technologies: ['React.js', 'JavaScript', 'Node.js', 'REST APIs'],
+    metrics: [
+      'Awarded 2nd Prize in National Competition',
+      'Zero UI state desync during high volume live judge evaluations'
     ],
     links: [
       { label: 'View Award Details', url: '#', isCli: true, cliCmd: 'achievements' }
     ],
-    diffPreview: `+ // Autonomous Vision Reasoning Pipeline
-+ async def analyze_apparel_stream(frame: bytes) -> RecommendationPayload:
-+     features = await vision_encoder.extract_features(frame)
-+     return await ensemble_scorer.rank_styles(features)`
+    diffPreview: `+ // Resilient State Handler for Evaluation Ingestion
++ const dispatchWithDeduplication = (eventBatch) => {
++     const deduplicated = filterInFlightEvents(eventBatch);
++     commitState(deduplicated);
++ };`
   },
   {
-    hash: '4cd881e',
-    parentHash: 'e7d23a1',
-    date: '2024-03-10',
+    hash: '3d2a7f1',
+    parentHash: '1c9f8e2',
+    date: '2024-06-10',
     author: 'Saketh Chokkapu <chokkapusaketh@gmail.com>',
-    message: 'feat(cineportal): engineer real-time synchronized streaming & WebRTC watch platform',
-    shortMessage: 'Built CinePortal (Real-Time Watch Party)',
-    event: 'CinePortal Collaborative Media Launch',
-    category: 'project',
-    branch: 'main',
-    branchColor: 'var(--color-primary-cyan, #00f2fe)',
-    graphConnector: '* | ',
-    whatHappened:
-      'Architected a synchronized media platform allowing distributed groups to stream video with <50ms playback drift. Engineered an NTP-inspired clock synchronization algorithm over Go WebSockets paired with peer-to-peer WebRTC audio/video communication.',
-    whatWasLearned:
-      'Subtle playback rate adjustments (0.98x - 1.02x) correct clock drift seamlessly without jarring video pauses.',
-    technologies: ['Go', 'TypeScript', 'Next.js', 'WebSockets', 'WebRTC', 'Redis Pub/Sub', 'FFmpeg', 'Docker'],
-    metrics: [
-      '< 50ms average playback drift across global nodes',
-      '20,000+ concurrent WebSocket connections per cluster node'
-    ],
-    links: [
-      { label: 'View Project Deep Dive', url: '#', isCli: true, cliCmd: 'projects cineportal' },
-      { label: 'GitHub Repository', url: 'https://github.com/Ch-saketh/cineportal' }
-    ],
-    diffPreview: `+ // Master NTP Drift Correction Protocol
-+ func (r *Room) SyncPlayback(clientTime int64, serverTime int64) {
-+     drift := serverTime - clientTime
-+     if math.Abs(float64(drift)) > 50 {
-+         r.BroadcastRateAdjustment(calculateRate(drift))
-+     }
-+ }`
-  },
-  {
-    hash: 'e7d23a1',
-    parentHash: 'b14c99d',
-    date: '2023-11-18',
-    author: 'Saketh Chokkapu <chokkapusaketh@gmail.com>',
-    message: 'feat(pagematch): build distributed AST-based web scraping & semantic diff engine',
-    shortMessage: 'Built PageMatch (Semantic Web Scraper)',
-    event: 'PageMatch Web Intelligence Engine',
+    message: 'feat(recommendation): build hybrid book recommendation engine deployed to Hugging Face',
+    shortMessage: 'Hybrid ML Recommender Published',
+    event: 'Hybrid Book Recommender Launch',
     category: 'project',
     branch: 'main',
     branchColor: 'var(--color-primary-green, #00ff88)',
-    graphConnector: '*   ',
+    graphConnector: '* | |',
     whatHappened:
-      'Built a distributed web scraping and semantic content difference engine capable of rendering JavaScript SPAs via Playwright, stripping non-deterministic DOM noise using AST Merkle trees, and alerting on real semantic updates.',
+      'Built an end-to-end data pipeline as Team Head, processing over 3 million data rows from the Amazon Book Reviews dataset alongside structured content arrays. Engineered a hybrid retrieval flow combining TF-IDF textual features with a collaborative LightFM model using a sparse interaction matrix. Achieved precision@5 of 0.1688, deployed publicly on Hugging Face.',
     whatWasLearned:
-      'DOM structural hashing saves 85%+ CPU by eliminating unnecessary string parsing on unchanged subtrees.',
-    technologies: ['Python', 'FastAPI', 'Playwright', 'Celery', 'Redis', 'PostgreSQL', 'Docker'],
+      'Sparse matrices prevent RAM spikes when dealing with millions of interactions, and hybrid models solve the cold-start problem reliably.',
+    technologies: ['Python', 'LightFM', 'TF-IDF', 'Scikit-learn', 'Hugging Face', 'Pandas'],
     metrics: [
-      '50,000+ daily URL ingestion capacity',
-      '98.4% reduction in false-positive change alerts'
+      '3,000,000+ review rows processed in data pipeline',
+      'Precision@5 of 0.1688 achieved with WARP loss optimization',
+      'Public model inference deployed on Hugging Face'
     ],
     links: [
-      { label: 'View Project Deep Dive', url: '#', isCli: true, cliCmd: 'projects pagematch' },
-      { label: 'GitHub Repository', url: 'https://github.com/Ch-saketh/pagematch' }
+      { label: 'View Project Deep Dive', url: '#', isCli: true, cliCmd: 'projects book-recommendation' }
     ],
-    diffPreview: `+ // Merkle DOM Subtree Hash Comparator
-+ def compute_dom_diff(prev_tree: MerkleNode, curr_tree: MerkleNode) -> List[DiffItem]:
-+     if prev_tree.hash == curr_tree.hash:
-+         return [] # Zero change in subtree
-+     return traverse_and_extract_semantic_mutations(prev_tree, curr_tree)`
+    diffPreview: `+ // Hybrid LightFM Model Fitting with WARP Loss
++ model = LightFM(loss='warp', no_components=64)
++ model.fit(train_interactions, item_features=tfidf_features, epochs=30)
++ p_at_5 = precision_at_k(model, test_interactions, k=5).mean()`
   },
   {
-    hash: 'b14c99d',
-    parentHash: 'f3a802c',
-    date: '2023-08-04',
+    hash: '1c9f8e2',
+    parentHash: '',
+    date: '2024-03-01',
     author: 'Saketh Chokkapu <chokkapusaketh@gmail.com>',
-    message: 'feat(saketh-os): architect interactive developer operating system & CLI engine',
-    shortMessage: 'Architected SAKETH.OS Terminal Shell',
-    event: 'SAKETH.OS Initial Architecture Release',
-    category: 'architecture',
-    branch: 'main',
-    branchColor: 'var(--color-primary-cyan, #00f2fe)',
-    graphConnector: '*   ',
-    whatHappened:
-      'Engineered an interactive browser developer operating system in TypeScript. Built an AST tokenizer, virtual POSIX filesystem with path normalization, Web Audio procedural sound synthesizer, and zero-runtime CSS token architecture.',
-    whatWasLearned:
-      'Decoupling domain state (VFS, AST parser, command registry) from React view layers enables complete determinism and comprehensive testability.',
-    technologies: ['TypeScript', 'React', 'Zustand', 'Web Audio API', 'Vite', 'Vitest'],
-    metrics: [
-      '100/100 Lighthouse Performance & Accessibility',
-      '< 78KB gzipped bundle footprint',
-      '0ms server roundtrips for all CLI navigation'
-    ],
-    links: [
-      { label: 'View Project Deep Dive', url: '#', isCli: true, cliCmd: 'projects saketh-os' },
-      { label: 'GitHub Repository', url: 'https://github.com/Ch-saketh/Terminal-based-portfolio' }
-    ],
-    diffPreview: `+ // AST CLI Parser & VFS In-Memory Tree
-+ export class CommandTokenizer {
-+     tokenize(input: string): CommandAST { ... }
-+ }`
-  },
-  {
-    hash: 'f3a802c',
-    parentHash: '2d91ae4',
-    date: '2023-05-15',
-    author: 'Saketh Chokkapu <chokkapusaketh@gmail.com>',
-    message: 'milestone(edu): graduate B.Tech in Computer Science & Engineering',
-    shortMessage: 'B.Tech CSE Graduation (Honors)',
-    event: 'University Graduation',
-    category: 'education',
-    branch: 'releases',
-    branchColor: '#c084fc',
-    graphConnector: '*   ',
-    whatHappened:
-      'Graduated with Bachelor of Technology in Computer Science & Engineering. Rigorous focus on Distributed Systems, Compilers, Machine Learning, Operating Systems Internals, and Database Engineering.',
-    whatWasLearned:
-      'Foundational first-principles computer science fundamentals—data structures, memory models, network layers, and concurrency—remain constant through every shifting technology wave.',
-    technologies: ['Computer Science', 'Distributed Systems', 'Algorithms', 'Operating Systems', 'Compilers'],
-    metrics: [
-      'Top tier academic standing',
-      'Authored final year capstone on distributed telemetry collection'
-    ],
-    links: [
-      { label: 'Inspect Education Profile', url: '#', isCli: true, cliCmd: 'about' }
-    ],
-    diffPreview: `+ // B.Tech Computer Science & Engineering Completed
-+ Degree: Bachelor of Technology
-+ Major: Computer Science & Engineering
-+ University: Jawaharlal Nehru Technological University`
-  },
-  {
-    hash: '2d91ae4',
-    parentHash: undefined,
-    date: '2021-08-01',
-    author: 'Saketh Chokkapu <chokkapusaketh@gmail.com>',
-    message: 'init(genesis): initialize software engineering career & open-source journey',
-    shortMessage: 'Initial Commit (Engineering Genesis)',
-    event: 'Journey Genesis',
+    message: 'exp(nexlevr): join NexLevr as Software Engineering Intern',
+    shortMessage: 'Joined NexLevr',
+    event: 'NexLevr Internship',
     category: 'career',
-    branch: 'main',
-    branchColor: 'var(--color-primary-green, #00ff88)',
-    graphConnector: '*   ',
+    branch: 'career',
+    branchColor: '#00f2fe',
+    graphConnector: '  *  ',
     whatHappened:
-      'Began deep dive into software systems, open-source development, and building real-world software products. Shipped first high-impact full-stack web applications and cloud deployments.',
+      'Maintained backend stability for the NexLevr platform while developing new features to enhance user engagement. Contributed to full-stack web development and REST API integration across core platform services.',
     whatWasLearned:
-      'Engineering craft is built through deliberate practice, building real products that solve genuine problems, and learning from production failures.',
-    technologies: ['JavaScript', 'Python', 'Git', 'Linux', 'SQL'],
+      'Production backend stability requires thorough API validation, defensive database query execution, and proactive error logging.',
+    technologies: ['Node.js', 'Express.js', 'React.js', 'PostgreSQL', 'REST APIs', 'Git'],
     metrics: [
-      '350+ Open Source commits shipped',
-      'Over 1,200 production releases executed'
+      'Maintained platform backend stability across production sprints',
+      'Delivered user-facing features and API integrations'
     ],
     links: [
-      { label: 'Inspect Full Profile', url: '#', isCli: true, cliCmd: 'whoami' }
+      { label: 'View Experience', url: '#', isCli: true, cliCmd: 'experience' }
     ],
-    diffPreview: `+ // Genesis Commit
-+ console.log("Hello, World! SAKETH.OS Initialized.");`
+    diffPreview: `+ // NexLevr Core Service Endpoint
++ router.post('/api/features', authenticateToken, async (req, res) => {
++     const result = await featureService.processEngagement(req.body);
++     res.json({ success: true, data: result });
++ });`
   }
 ];

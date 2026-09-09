@@ -22,7 +22,7 @@ interface TerminalState {
   navigateHistory: (direction: 'up' | 'down') => void;
   appendLine: (line: Omit<TerminalOutputLine, 'id'>) => void;
   clearLines: () => void;
-  executeCommand: (rawInput: string) => Promise<void>;
+  executeCommand: (rawInput: string, options?: { clearBefore?: boolean; noEcho?: boolean }) => Promise<void>;
   initializeBootSequence: () => void;
 }
 
@@ -75,18 +75,24 @@ export const useTerminalStore = create<TerminalState>((set, get) => ({
     set({ lines: [] });
   },
 
-  executeCommand: async (rawInput: string) => {
+  executeCommand: async (rawInput: string, options?: { clearBefore?: boolean; noEcho?: boolean }) => {
     const trimmed = rawInput.trim();
     const cwd = useFileSystemStore.getState().cwd;
     const startTime = performance.now();
 
-    // Echo the user input line with prompt
-    get().appendLine({
-      type: 'command',
-      content: rawInput,
-      commandText: rawInput,
-      cwd
-    });
+    if (options?.clearBefore) {
+      get().clearLines();
+    }
+
+    // Echo the user input line with prompt unless noEcho is requested
+    if (!options?.noEcho) {
+      get().appendLine({
+        type: 'command',
+        content: rawInput,
+        commandText: rawInput,
+        cwd
+      });
+    }
 
     if (!trimmed) {
       set({ input: '', historyIndex: -1 });
@@ -149,6 +155,7 @@ export const useTerminalStore = create<TerminalState>((set, get) => ({
       toggleCrt: () => useSystemStore.getState().toggleCrt(),
       openWindow: (id) => useWindowStore.getState().openWindow(id),
       clearTerminal: () => get().clearLines(),
+      setActiveView: (view) => useSystemStore.getState().setActiveView(view),
       navigateVfs: (path) => useFileSystemStore.getState().changeDirectory(path)
     };
 

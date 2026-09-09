@@ -52,6 +52,21 @@ export const TerminalInput: React.FC = () => {
       return;
     }
 
+    const applyAutocomplete = (match: string) => {
+      const lastSpaceIdx = input.lastIndexOf(' ');
+      let nextValue: string;
+      if (lastSpaceIdx === -1) {
+        nextValue = match.endsWith('/') ? match : `${match} `;
+      } else {
+        const base = input.slice(0, lastSpaceIdx + 1);
+        nextValue = match.endsWith('/') ? `${base}${match}` : `${base}${match} `;
+      }
+      setInput(nextValue);
+      setCursorPos(nextValue.length);
+      setAutoCompleteMatches([]);
+      inputRef.current?.focus();
+    };
+
     // Tab: Autocomplete
     if (e.key === 'Tab') {
       e.preventDefault();
@@ -59,11 +74,7 @@ export const TerminalInput: React.FC = () => {
       if (res && res.matches.length > 0) {
         if (res.matches.length === 1) {
           // Exact single match
-          const tokens = input.trimEnd().split(' ');
-          tokens[tokens.length - 1] = res.suggestion;
-          const completed = tokens.join(' ');
-          setInput(completed);
-          setAutoCompleteMatches([]);
+          applyAutocomplete(res.matches[0]);
         } else {
           // Multiple matches
           setAutoCompleteMatches(res.matches);
@@ -104,17 +115,17 @@ export const TerminalInput: React.FC = () => {
     if (e.key === 'Enter') {
       e.preventDefault();
       if (autoCompleteMatches.length > 0) {
-        // Apply selected autocomplete
-        const selected = autoCompleteMatches[selectedMatchIdx];
-        const tokens = input.trimEnd().split(' ');
-        tokens[tokens.length - 1] = selected;
-        setInput(`${tokens.join(' ')} `);
-        setAutoCompleteMatches([]);
+        applyAutocomplete(autoCompleteMatches[selectedMatchIdx]);
         return;
       }
 
       const toExec = input;
-      executeCommand(toExec);
+      const baseCmd = toExec.trim().split(' ')[0].toLowerCase();
+      if (['about', 'projects', 'skills', 'experience', 'contact', 'help', 'whoami'].includes(baseCmd)) {
+        executeCommand(toExec, { clearBefore: true, noEcho: true });
+      } else {
+        executeCommand(toExec);
+      }
       setAutoCompleteMatches([]);
     }
   };
@@ -128,11 +139,22 @@ export const TerminalInput: React.FC = () => {
   };
 
   const handleSelectAutocomplete = (match: string) => {
-    const tokens = input.trimEnd().split(' ');
-    tokens[tokens.length - 1] = match;
-    setInput(`${tokens.join(' ')} `);
+    const lastSpaceIdx = input.lastIndexOf(' ');
+    let nextValue: string;
+    if (lastSpaceIdx === -1) {
+      nextValue = match.endsWith('/') ? match : `${match} `;
+    } else {
+      const base = input.slice(0, lastSpaceIdx + 1);
+      nextValue = match.endsWith('/') ? `${base}${match}` : `${base}${match} `;
+    }
+    setInput(nextValue);
+    setCursorPos(nextValue.length);
     setAutoCompleteMatches([]);
     inputRef.current?.focus();
+  };
+
+  const syncCursorPos = (e: React.SyntheticEvent<HTMLInputElement>) => {
+    setCursorPos(e.currentTarget.selectionStart || 0);
   };
 
   // Emulated text before, at, and after cursor
@@ -156,7 +178,9 @@ export const TerminalInput: React.FC = () => {
           value={input}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
-          onSelect={(e) => setCursorPos(e.currentTarget.selectionStart || 0)}
+          onKeyUp={syncCursorPos}
+          onClick={syncCursorPos}
+          onSelect={syncCursorPos}
           className={styles.hiddenNativeInput}
           autoCapitalize="off"
           autoComplete="off"

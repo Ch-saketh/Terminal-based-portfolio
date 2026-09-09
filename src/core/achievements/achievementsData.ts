@@ -15,10 +15,23 @@ export const initialAchievements: Achievement[] = [
     iconName: 'Power'
   },
   {
+    id: 'explorer',
+    code: 'EXPLORER',
+    title: 'Repository Explorer',
+    description: 'Explored project repositories, traversed virtual filesystem trees, and inspected system specs.',
+    hint: 'Explore projects with "projects" or inspect hardware with "neofetch".',
+    category: 'discovery',
+    isSecret: false,
+    unlocked: false,
+    unlockedAt: null,
+    xp: 75,
+    iconName: 'Folder'
+  },
+  {
     id: 'builder',
     code: 'BUILDER',
     title: 'Architect & Builder',
-    description: 'Explored flagship production projects, system architecture diagrams, and engineering trade-offs.',
+    description: 'Explored flagship production projects, source specifications, and engineering trade-offs.',
     hint: 'Navigate project directories with "projects" or "cd projects/weavly".',
     category: 'projects',
     isSecret: false,
@@ -30,9 +43,9 @@ export const initialAchievements: Achievement[] = [
   {
     id: 'hackathon',
     code: 'HACKATHON',
-    title: 'Quantum Valley Hackathon',
-    description: 'Discovered the 1st Place AI Hackathon victory and multimodal vision pipeline milestone.',
-    hint: 'Explore Git career history with "git log" or "git show 91be72a".',
+    title: 'Hackathon Champion (Amaravati & National AI)',
+    description: '2nd Prize at Amaravati Quantum Valley Hackathon (BB84 QKD E-Auction) & 2nd Prize at National AI Hackathon (Automated Evaluation System).',
+    hint: 'Explore achievements with "achievements" or "git log".',
     category: 'mastery',
     isSecret: false,
     unlocked: false,
@@ -54,30 +67,30 @@ export const initialAchievements: Achievement[] = [
     iconName: 'Zap'
   },
   {
+    id: 'system_architect',
+    code: 'SYSTEM_ARCHITECT',
+    title: 'System Architect',
+    description: 'Inspected system architecture topologies, data flow diagrams, and architectural trade-offs.',
+    hint: 'View architecture in projects with "cat projects/weavly/architecture/system-design.md".',
+    category: 'projects',
+    isSecret: false,
+    unlocked: false,
+    unlockedAt: null,
+    xp: 120,
+    iconName: 'Cpu'
+  },
+  {
     id: 'root_access',
-    code: 'ROOT_ACCESS',
-    title: 'Root Elevation (Sudo)',
-    description: 'Elevated privileges with "sudo make-me-hireable" and unlocked the executive candidate briefing.',
-    hint: 'Execute superuser command in terminal.',
+    code: 'CLASSIFIED',
+    title: 'Classified Executive Dossier',
+    description: 'Elevated privileges with "sudo make-me-hireable" and unlocked the candidate assessment matrix.',
+    hint: 'Execute superuser candidate command in terminal: "sudo make-me-hireable".',
     category: 'secrets',
     isSecret: true,
     unlocked: false,
     unlockedAt: null,
     xp: 200,
     iconName: 'ShieldAlert'
-  },
-  {
-    id: 'deep_dive',
-    code: 'DEEP_DIVE',
-    title: 'Telemetry Deep Dive',
-    description: 'Inspected technology capabilities, architecture concepts, and associated projects in the Stack Matrix.',
-    hint: 'Run "skills" or "inspect spring-boot".',
-    category: 'system',
-    isSecret: false,
-    unlocked: false,
-    unlockedAt: null,
-    xp: 100,
-    iconName: 'Cpu'
   },
   {
     id: 'matrix_rain',
@@ -117,19 +130,6 @@ export const initialAchievements: Achievement[] = [
     unlockedAt: null,
     xp: 100,
     iconName: 'Lock'
-  },
-  {
-    id: 'explorer',
-    code: 'EXPLORER',
-    title: 'Hardware & OS Telemetry',
-    description: 'Inspected developer workstation hardware, kernel specs, and color palette with neofetch.',
-    hint: 'Run "neofetch" or "sysinfo".',
-    category: 'system',
-    isSecret: false,
-    unlocked: false,
-    unlockedAt: null,
-    xp: 75,
-    iconName: 'Monitor'
   },
   {
     id: 'philosopher',

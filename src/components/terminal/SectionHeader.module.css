@@ -1,0 +1,79 @@
+.sectionHeaderContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 20px;
+  background: linear-gradient(180deg, rgba(0, 255, 136, 0.05) 0%, rgba(6, 15, 12, 0.65) 100%);
+  border: 1px solid rgba(0, 255, 136, 0.22);
+  border-left: 4px solid var(--color-primary-green, #00ff88);
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  user-select: none;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sectionBadge {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-primary-green, #00ff88);
+  letter-spacing: 0.08em;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+}
+
+.sectionPath {
+  font-size: 11px;
+  color: #768390;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.accentBar {
+  width: 4px;
+  height: 24px;
+  background: var(--color-primary-green, #00ff88);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  line-height: 1.2;
+}
+
+.headerAction {
+  display: flex;
+  align-items: center;
+}
+
+.sectionSubtitle {
+  margin: 0;
+  font-size: 12.5px;
+  color: #adbac7;
+  line-height: 1.5;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+}

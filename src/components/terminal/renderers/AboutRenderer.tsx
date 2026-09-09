@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { profileData } from '../../../content/profile';
 import { useTerminalStore } from '../../../state/useTerminalStore';
+import { SectionHeader } from '../SectionHeader';
 import styles from './AboutRenderer.module.css';
 
 interface AboutRendererProps {
@@ -20,7 +21,15 @@ export const AboutRenderer: React.FC<AboutRendererProps> = ({ initialTab = 'md' 
 
   return (
     <div className={styles.aboutContainer} role="region" aria-label="About Developer Profile">
-      {/* 1. Terminal Inspector Header Bar */}
+      {/* 1. Clean Prominent Section Header */}
+      <SectionHeader
+        badge="DEVELOPER PROFILE"
+        title="ABOUT SAKETH"
+        subtitle="AI & software engineer specializing in scalable full-stack and machine learning systems"
+        path="saketh@portfolio:~/about"
+      />
+
+      {/* 2. Format Switcher Tabs */}
       <div className={styles.inspectorHeader}>
         <div className={styles.inspectorTitle}>
           <span className={styles.systemBadge}>[SYS.PROFILE_INSPECTOR]</span>
@@ -183,19 +192,19 @@ export const AboutRenderer: React.FC<AboutRendererProps> = ({ initialTab = 'md' 
       {/* 5. Quick Terminal Action Buttons */}
       <div className={styles.quickActionsRow}>
         <span className={styles.actionLabel}>Execute:</span>
-        <button className={styles.cmdChip} onClick={() => executeCommand('whoami')}>
+        <button className={styles.cmdChip} onClick={() => executeCommand('whoami', { clearBefore: true, noEcho: true })}>
           &gt; whoami
         </button>
-        <button className={styles.cmdChip} onClick={() => executeCommand('cat about.md')}>
+        <button className={styles.cmdChip} onClick={() => executeCommand('cat about.md', { clearBefore: true, noEcho: true })}>
           &gt; cat about.md
         </button>
-        <button className={styles.cmdChip} onClick={() => executeCommand('cat profile.json')}>
+        <button className={styles.cmdChip} onClick={() => executeCommand('cat profile.json', { clearBefore: true, noEcho: true })}>
           &gt; cat profile.json
         </button>
-        <button className={styles.cmdChip} onClick={() => executeCommand('projects')}>
+        <button className={styles.cmdChip} onClick={() => executeCommand('projects', { clearBefore: true, noEcho: true })}>
           &gt; projects
         </button>
-        <button className={styles.cmdChip} onClick={() => executeCommand('skills')}>
+        <button className={styles.cmdChip} onClick={() => executeCommand('skills', { clearBefore: true, noEcho: true })}>
           &gt; skills
         </button>
       </div>

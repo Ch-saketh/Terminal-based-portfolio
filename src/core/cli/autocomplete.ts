@@ -66,6 +66,20 @@ export function getAutocompleteSuggestions(input: string, cwd: string): Autocomp
     }
   }
 
+  // Custom command autocompletion if defined
+  if (cmd?.autocomplete) {
+    const customMatches = cmd.autocomplete(tokens.slice(1), cwd);
+    const filtered = customMatches.filter((m) => m.toLowerCase().startsWith(currentToken.toLowerCase()));
+    if (filtered.length > 0) {
+      return {
+        suggestion: filtered.length === 1 ? `${filtered[0]} ` : findCommonPrefix(filtered),
+        matches: filtered,
+        prefix: currentToken,
+        isPartial: filtered.length > 1
+      };
+    }
+  }
+
   // File system path autocompletion for navigation or cat/cd/open commands
   if (['cat', 'cd', 'ls', 'open', 'tree'].includes(commandName) || isPathLike(currentToken)) {
     const targetPath = currentToken || '.';

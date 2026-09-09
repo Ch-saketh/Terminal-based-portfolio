@@ -80,6 +80,56 @@ Links:
 - Docs: ${p.links.docs || 'N/A'}
 `
         },
+        'architecture': {
+          name: 'architecture',
+          type: 'directory',
+          permissions: 'drwxr-xr-x',
+          children: {
+            'system-design.md': {
+              name: 'system-design.md',
+              type: 'file',
+              extension: 'md',
+              permissions: '-rw-r--r--',
+              sizeBytes: 950,
+              content: `# ${p.name} — System Architecture\n\n${p.architecture.overview}\n\n## Data Flow Diagram:\n\`\`\`\n${p.architecture.diagramAscii || 'N/A'}\n\`\`\`\n\n## Key Architecture Decisions:\n${p.architecture.keyDecisions.map((d) => `- ${d}`).join('\n')}`
+            },
+            'trade-offs.md': {
+              name: 'trade-offs.md',
+              type: 'file',
+              extension: 'md',
+              permissions: '-rw-r--r--',
+              sizeBytes: 600,
+              content: `# Engineering Trade-Offs & Decisions\n\n${p.architecture.keyDecisions.map((d, i) => `### Decision ${i + 1}\n${d}`).join('\n\n')}`
+            },
+            'challenges.md': {
+              name: 'challenges.md',
+              type: 'file',
+              extension: 'md',
+              permissions: '-rw-r--r--',
+              sizeBytes: 800,
+              content: `# ${p.name} — Engineering Challenges\n\n${p.challenges
+                .map(
+                  (c, i) => `## ${i + 1}. ${c.challenge}\n**Engineered Resolution:** ${c.resolution}`
+                )
+                .join('\n\n')}`
+            }
+          }
+        },
+        'features': {
+          name: 'features',
+          type: 'directory',
+          permissions: 'drwxr-xr-x',
+          children: {
+            'specs.md': {
+              name: 'specs.md',
+              type: 'file',
+              extension: 'md',
+              permissions: '-rw-r--r--',
+              sizeBytes: 650,
+              content: `# ${p.name} Feature Specifications\n\n${p.features.map((f) => `- [x] ${f}`).join('\n')}`
+            }
+          }
+        },
         'stack.json': {
           name: 'stack.json',
           type: 'file',
@@ -104,84 +154,6 @@ Links:
             null,
             2
           )
-        },
-        'challenges.md': {
-          name: 'challenges.md',
-          type: 'file',
-          extension: 'md',
-          permissions: '-rw-r--r--',
-          sizeBytes: 800,
-          content: `# ${p.name} — Engineering Challenges
-
-${p.challenges
-  .map(
-    (c, i) => `## ${i + 1}. ${c.challenge}
-**Engineered Resolution:** ${c.resolution}`
-  )
-  .join('\n\n')}
-`
-        },
-        architecture: {
-          name: 'architecture',
-          type: 'directory',
-          permissions: 'drwxr-xr-x',
-          children: {
-            'system-design.md': {
-              name: 'system-design.md',
-              type: 'file',
-              extension: 'md',
-              permissions: '-rw-r--r--',
-              sizeBytes: 950,
-              content: `# ${p.name} — System Architecture\n\n${p.architecture.overview}\n\n## Data Flow Diagram:\n\`\`\`\n${p.architecture.diagramAscii || 'N/A'}\n\`\`\`\n\n## Key Architecture Decisions:\n${p.architecture.keyDecisions.map((d) => `- ${d}`).join('\n')}`
-            },
-            'trade-offs.md': {
-              name: 'trade-offs.md',
-              type: 'file',
-              extension: 'md',
-              permissions: '-rw-r--r--',
-              sizeBytes: 600,
-              content: `# Engineering Trade-Offs & Decisions\n\n${p.architecture.keyDecisions.map((d, i) => `### Decision ${i + 1}\n${d}`).join('\n\n')}`
-            }
-          }
-        },
-        features: {
-          name: 'features',
-          type: 'directory',
-          permissions: 'drwxr-xr-x',
-          children: {
-            'specs.md': {
-              name: 'specs.md',
-              type: 'file',
-              extension: 'md',
-              permissions: '-rw-r--r--',
-              sizeBytes: 650,
-              content: `# ${p.name} Feature Specifications\n\n${p.features.map((f) => `- [x] ${f}`).join('\n')}`
-            }
-          }
-        },
-        screenshots: {
-          name: 'screenshots',
-          type: 'directory',
-          permissions: 'drwxr-xr-x',
-          children: {
-            'manifest.json': {
-              name: 'manifest.json',
-              type: 'file',
-              extension: 'json',
-              permissions: '-rw-r--r--',
-              sizeBytes: 150,
-              content: JSON.stringify(
-                {
-                  project: p.slug,
-                  images: p.images || [
-                    { caption: `${p.name} Architecture Overview`, url: '/assets/architecture.png' }
-                  ]
-                },
-                null,
-                2
-              )
-            }
-          }
         }
       }
     };
@@ -299,11 +271,233 @@ ${e.technologies.join(', ')}
     };
   });
 
+  // ── Root Virtual Directories ──
+  const aboutDir = {
+    name: 'about',
+    type: 'directory' as const,
+    permissions: 'drwxr-xr-x',
+    children: {
+      'README.md': {
+        name: 'README.md',
+        type: 'file' as const,
+        extension: 'md',
+        permissions: '-rw-r--r--',
+        sizeBytes: 1600,
+        content: `# ${profileData.name} — Engineering Profile
+Headline: ${profileData.headline}
+Location: ${profileData.location}
+Status: ${profileData.status}
+
+## Roles
+${profileData.roles.map((r) => `- ${r}`).join('\n')}
+
+## Bio
+${profileData.bio.join('\n\n')}
+
+## Development Philosophy
+${profileData.developmentPhilosophy.map((p) => `* **${p.title}**: ${p.description}`).join('\n')}
+
+## Current Focus
+${profileData.currentFocus.map((f) => `- ${f}`).join('\n')}
+`
+      },
+      'profile.json': {
+        name: 'profile.json',
+        type: 'file' as const,
+        extension: 'json',
+        permissions: '-rw-r--r--',
+        sizeBytes: JSON.stringify(profileData.profileJson).length,
+        content: JSON.stringify(profileData.profileJson, null, 2)
+      },
+      'bio.txt': {
+        name: 'bio.txt',
+        type: 'file' as const,
+        extension: 'txt',
+        permissions: '-rw-r--r--',
+        sizeBytes: profileData.bio.join('\n').length,
+        content: `${profileData.name} (${profileData.handle})\n${profileData.headline}\nLocation: ${profileData.location}\n\n${profileData.bio.join('\n\n')}\n`
+      },
+      'education.md': {
+        name: 'education.md',
+        type: 'file' as const,
+        extension: 'md',
+        permissions: '-rw-r--r--',
+        sizeBytes: 800,
+        content: `# Education & Academics\n\n${profileData.education
+          .map(
+            (e) => `### ${e.degree}
+Institution: ${e.institution} (${e.timeline})
+Location: ${e.location}
+Key Focus: ${e.focus.join(', ')}`
+          )
+          .join('\n\n')}\n`
+      },
+      'philosophy.md': {
+        name: 'philosophy.md',
+        type: 'file' as const,
+        extension: 'md',
+        permissions: '-rw-r--r--',
+        sizeBytes: 600,
+        content: `# Engineering Philosophy\n\n${profileData.developmentPhilosophy
+          .map((p) => `### ${p.title}\n${p.description}`)
+          .join('\n\n')}\n`
+      }
+    }
+  };
+
+  const projectsDir = {
+    name: 'projects',
+    type: 'directory' as const,
+    permissions: 'drwxr-xr-x',
+    children: projectDirectories
+  };
+
+  const skillsDir = {
+    name: 'skills',
+    type: 'directory' as const,
+    permissions: 'drwxr-xr-x',
+    children: {
+      'README.md': {
+        name: 'README.md',
+        type: 'file' as const,
+        extension: 'md',
+        permissions: '-rw-r--r--',
+        sizeBytes: 900,
+        content: `# SAKETH.OS Technical Skills & Tooling\n\nCore Competencies:\n- Backend: Java, Spring Boot, Python, FastAPI, Node.js, REST, Microservices\n- AI / ML: Machine Learning, Vector Databases (Qdrant), LightFM, PyTorch, RAG\n- Databases: PostgreSQL, MongoDB, Redis, MySQL, Hibernate/JPA\n- Cloud & DevOps: AWS (ECS, EC2, S3), Docker, Git, CI/CD\n- Frontend: React.js, Next.js, TypeScript, Tailwind CSS\n\nExplore 'stack-matrix.md' and categorized JSON files in this directory.`
+      },
+      ...skillFiles
+    }
+  };
+
+  const experienceDir = {
+    name: 'experience',
+    type: 'directory' as const,
+    permissions: 'drwxr-xr-x',
+    children: {
+      'README.md': {
+        name: 'README.md',
+        type: 'file' as const,
+        extension: 'md',
+        permissions: '-rw-r--r--',
+        sizeBytes: 800,
+        content: `# Career Journey & Production Deployments\n\nExplore 'git-log.md' for commit history or inspect individual role files in this directory.`
+      },
+      ...experienceFiles
+    }
+  };
+
+  const achievementsDir = {
+    name: 'achievements',
+    type: 'directory' as const,
+    permissions: 'drwxr-xr-x',
+    children: {
+      'README.md': {
+        name: 'README.md',
+        type: 'file' as const,
+        extension: 'md',
+        permissions: '-rw-r--r--',
+        sizeBytes: 1200,
+        content: `# Honors, Awards & Scale Milestones\n\n- 🏆 2nd Prize Winner — Amaravati Quantum Valley Hackathon (AQVH911: BB84 QKD E-Auction Platform)\n- 🏆 2nd Prize Winner — National AI Hackathon (Automated Student Evaluation System)\n- ⚡ Production Scale: Multi-tenant vector retrieval pipelines with sub-40ms p99 latency\n- 🎓 B.Tech Computer Science & Engineering (CGPA: 8.61)`
+      },
+      'awards.json': {
+        name: 'awards.json',
+        type: 'file' as const,
+        extension: 'json',
+        permissions: '-rw-r--r--',
+        sizeBytes: 500,
+        content: JSON.stringify(
+          [
+            {
+              award: '2nd Prize Winner',
+              competition: 'Amaravati Quantum Valley Hackathon',
+              project: 'Quantum-Secure E-Auction System (BB84 QKD)',
+              year: '2024'
+            },
+            {
+              award: '2nd Prize Winner',
+              competition: 'National AI Hackathon',
+              project: 'Automated Student Evaluation System',
+              year: '2024'
+            }
+          ],
+          null,
+          2
+        )
+      },
+      'hackathons.md': {
+        name: 'hackathons.md',
+        type: 'file' as const,
+        extension: 'md',
+        permissions: '-rw-r--r--',
+        sizeBytes: 900,
+        content: `# Hackathon Competitions & Technical Accolades\n\n### Amaravati Quantum Valley Hackathon — 2nd Prize\nEngineered a tamper-proof live bidding platform combining BB84 Quantum Key Distribution with real-time Quantum Bit Error Rate (QBER) eavesdropping detection.\n\n### National AI Hackathon — 2nd Prize\nDeveloped an automated student evaluation pipeline evaluating descriptive technical answers using semantic embeddings and NLP scoring.`
+      }
+    }
+  };
+
+  const contactDir = {
+    name: 'contact',
+    type: 'directory' as const,
+    permissions: 'drwxr-xr-x',
+    children: {
+      'README.md': {
+        name: 'README.md',
+        type: 'file' as const,
+        extension: 'md',
+        permissions: '-rw-r--r--',
+        sizeBytes: 700,
+        content: `# Contact & Communication Channels\n\n- Email: ${profileData.email}\n- GitHub: ${profileData.github}\n- LinkedIn: ${profileData.linkedin}\n- Twitter/X: ${profileData.twitter}\n\nType 'contact' in the terminal for the interactive dispatch form.`
+      },
+      'contact.json': {
+        name: 'contact.json',
+        type: 'file' as const,
+        extension: 'json',
+        permissions: '-rw-r--r--',
+        sizeBytes: 256,
+        content: JSON.stringify(
+          {
+            name: profileData.name,
+            email: profileData.email,
+            github: profileData.github,
+            linkedin: profileData.linkedin,
+            twitter: profileData.twitter,
+            location: profileData.location,
+            gpgFingerprint: profileData.gpgKeyFingerprint
+          },
+          null,
+          2
+        )
+      },
+      'links.md': {
+        name: 'links.md',
+        type: 'file' as const,
+        extension: 'md',
+        permissions: '-rw-r--r--',
+        sizeBytes: 400,
+        content: `# External Links\n\n- GitHub: [${profileData.github}](${profileData.github})\n- LinkedIn: [${profileData.linkedin}](${profileData.linkedin})\n- Twitter: [${profileData.twitter}](${profileData.twitter})\n- Email: mailto:${profileData.email}\n`
+      },
+      'gpg-key.asc': {
+        name: 'gpg-key.asc',
+        type: 'file' as const,
+        extension: 'asc',
+        permissions: '-r--r--r--',
+        sizeBytes: 120,
+        content: `-----BEGIN PGP PUBLIC KEY BLOCK-----\nFingerprint: ${profileData.gpgKeyFingerprint}\nUser: ${profileData.name} <${profileData.email}>\n[Simulated 4096-bit RSA Master Key]\n-----END PGP PUBLIC KEY BLOCK-----`
+      }
+    }
+  };
+
   const root: VFSDirectory = {
     name: '/',
     type: 'directory',
     permissions: 'drwxr-xr-x',
     children: {
+      about: aboutDir,
+      projects: projectsDir,
+      skills: skillsDir,
+      experience: experienceDir,
+      achievements: achievementsDir,
+      contact: contactDir,
       home: {
         name: 'home',
         type: 'directory',
@@ -435,24 +629,12 @@ User: ${profileData.name} <${profileData.email}>
                 sizeBytes: 150,
                 content: `export USER=saketh\nexport HOST=saketh-workstation\nexport SHELL=/bin/zsh\nalias ll="ls -la"\nalias cls="clear"`
               },
-              projects: {
-                name: 'projects',
-                type: 'directory',
-                permissions: 'drwxr-xr-x',
-                children: projectDirectories
-              },
-              skills: {
-                name: 'skills',
-                type: 'directory',
-                permissions: 'drwxr-xr-x',
-                children: skillFiles
-              },
-              experience: {
-                name: 'experience',
-                type: 'directory',
-                permissions: 'drwxr-xr-x',
-                children: experienceFiles
-              }
+              about: aboutDir,
+              projects: projectsDir,
+              skills: skillsDir,
+              experience: experienceDir,
+              achievements: achievementsDir,
+              contact: contactDir
             }
           }
         }
